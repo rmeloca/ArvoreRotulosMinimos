@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/br/edu/utfpr/cm/algoritmo/BuscaLargura.java=UTF-8
+encoding//src/br/edu/utfpr/cm/algoritmo/BuscaProfundidade.java=UTF-8
+encoding//src/br/edu/utfpr/cm/algoritmo/testes/TesteBuscaLargura.java=UTF-8
+encoding//src/br/edu/utfpr/cm/algoritmo/testes/TesteGrafoListaAdjacencia.java=UTF-8
+encoding//src/br/edu/utfpr/cm/factory/GrafoListaAdjacencia.java=UTF-8
+encoding//src/br/edu/utfpr/cm/factory/GrafoMatrizAdjacencia.java=UTF-8
+encoding//src/br/edu/utfpr/cm/grafo/Grafo.java=UTF-8
