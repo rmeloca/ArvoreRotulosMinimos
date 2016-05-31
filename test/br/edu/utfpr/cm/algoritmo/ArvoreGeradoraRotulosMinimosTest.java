@@ -24,6 +24,8 @@ import static org.junit.Assert.*;
  */
 public class ArvoreGeradoraRotulosMinimosTest {
 
+    private ArvoreGeradoraRotulosMinimos arvoreGeradoraRotulosMinimos;
+
     public ArvoreGeradoraRotulosMinimosTest() {
     }
 
@@ -69,6 +71,7 @@ public class ArvoreGeradoraRotulosMinimosTest {
                     }
                 }
             }
+            arvoreGeradoraRotulosMinimos.executar();
             //calcula
             line = bufferedReader.readLine();
         }
