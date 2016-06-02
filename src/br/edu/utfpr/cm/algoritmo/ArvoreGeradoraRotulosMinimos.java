@@ -5,14 +5,17 @@
  */
 package br.edu.utfpr.cm.algoritmo;
 
+import br.edu.utfpr.cm.algoritmo.entidades.Label;
 import br.edu.utfpr.cm.algoritmo.entidades.VerticeRotulosMinimos;
 import br.edu.utfpr.cm.grafo.ArestaPonderada;
 import br.edu.utfpr.cm.grafo.Grafo;
-import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,26 +37,51 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
 
     private Grafo grafo;
 
-    private HashMap<String, Integer> unusedLabelsHasEdgesCovered;
-    private List<String> selectedLabels;
+    private List<Label> unusedLabels;
 
-    private VerticeRotulosMinimos root;
+    private List<String> selectedLabels;
 
     public ArvoreGeradoraRotulosMinimos(Grafo grafo) {
         this.grafo = grafo;
-        open = new ArrayList<>();
-        closed = new ArrayList<>();
-        unusedLabelsHasEdgesCovered = new HashMap<>();
+
+        unusedLabels = getUnusedLabelsList();
         selectedLabels = new ArrayList<>();
 
-        Iterator<VerticeRotulosMinimos> vertices = this.grafo.getVertices();
-        while (vertices.hasNext()) {
-            VerticeRotulosMinimos next = vertices.next();
-            unusedLabelsHasEdgesCovered.put(next.getId(), getNumberOfEdgesCovered(next.getId()));
-        }
+        open = new ArrayList<>();
+        closed = new ArrayList<>();
 
         //1. Put the root node r on OPEN.
-        open.add(root);
+        open.add(null);
+    }
+
+    private List<Label> getUnusedLabelsList() {
+        List<Label> unusedLabels;
+        HashMap<String, Integer> labelHasEdgesCovered;
+        ArestaPonderada next;
+        Integer peso;
+        Iterator<ArestaPonderada> arestas;
+
+        unusedLabels = new ArrayList<>();
+        labelHasEdgesCovered = new HashMap<>();
+
+        arestas = grafo.getArestas();
+        while (arestas.hasNext()) {
+            next = arestas.next();
+            peso = labelHasEdgesCovered.get(String.valueOf(next.getPeso()));
+            if (peso == null) {
+                peso = 0;
+            }
+            peso++;
+            labelHasEdgesCovered.put(String.valueOf(next.getPeso()), peso);
+        }
+
+        for (Map.Entry<String, Integer> entry : labelHasEdgesCovered.entrySet()) {
+            unusedLabels.add(new Label(entry.getKey(), entry.getValue()));
+        }
+
+        Collections.sort(unusedLabels);
+
+        return unusedLabels;
     }
 
     private VerticeRotulosMinimos heuristica() {
@@ -83,6 +111,7 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
                 } else {
                     //5. Otherwise expand n.
                     //If there are k unselected labels, then n has k children, one for each unselected label.
+                    ListIterator<Label> listIterator = unusedLabels.listIterator();
                     for (VerticeRotulosMinimos son : open) {
                         //6. For each child son of n
                         //If n1 is not already on OPEN or CLOSE
@@ -119,7 +148,8 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
         return minimumF;
     }
 
-    private Integer getNumberOfEdgesCovered(String id) {
+    @Deprecated
+    private int getNumberOfEdgesCovered(String id) {
         int numberOfEdgesCovered = 0;
         Iterator<ArestaPonderada> arestas = grafo.getArestas();
         while (arestas.hasNext()) {
@@ -128,7 +158,7 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
                 numberOfEdgesCovered++;
             }
         }
-        return numberOfEdgesCovered * 2;
+        return numberOfEdgesCovered;
     }
 
 }
