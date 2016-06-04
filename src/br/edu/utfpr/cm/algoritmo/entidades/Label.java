@@ -5,6 +5,10 @@
  */
 package br.edu.utfpr.cm.algoritmo.entidades;
 
+import br.edu.utfpr.cm.grafo.ArestaPonderada;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author romulo
@@ -12,23 +16,19 @@ package br.edu.utfpr.cm.algoritmo.entidades;
 public class Label implements Comparable<Label> {
 
     private final String value;
-    private int edgesCovered;
+    private List<ArestaPonderada> edgesCovered;
 
-    public Label(String value, int edgesCovered) {
+    public Label(String value, List<ArestaPonderada> edgesCovered) {
         this.value = value;
         this.edgesCovered = edgesCovered;
     }
 
     public Label(String value) {
         this.value = value;
-        this.edgesCovered = 0;
+        this.edgesCovered = new ArrayList<>();
     }
 
-    public void increaseEdgesCovered() {
-        edgesCovered++;
-    }
-
-    public int getEdgesCovered() {
+    public List<ArestaPonderada> getEdgesCovered() {
         return edgesCovered;
     }
 
@@ -43,7 +43,7 @@ public class Label implements Comparable<Label> {
 
     @Override
     public int compareTo(Label other) {
-        return Integer.compare(edgesCovered, other.edgesCovered);
+        return Integer.compare(edgesCovered.size(), other.edgesCovered.size());
     }
 
 }

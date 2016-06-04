@@ -5,10 +5,11 @@
  */
 package br.edu.utfpr.cm.algoritmo;
 
+import br.edu.utfpr.cm.algoritmo.entidades.Node;
 import br.edu.utfpr.cm.algoritmo.entidades.Label;
-import br.edu.utfpr.cm.algoritmo.entidades.VerticeRotulosMinimos;
 import br.edu.utfpr.cm.grafo.ArestaPonderada;
 import br.edu.utfpr.cm.grafo.Grafo;
+import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,37 +29,50 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
     /**
      * OPEN is the storage place for all generated but unexpanded nodes.
      */
-    private List<VerticeRotulosMinimos> open;
+    private final List<Node> generatedNodes;
 
     /**
      * CLOSED is the storage place for the expanded nodes.
      */
-    private List<VerticeRotulosMinimos> closed;
+    private final List<Node> tracePath;
 
-    private Grafo grafo;
+    /**
+     * Grafo sobre o qual opera-se o algoritmo.
+     */
+    private final Grafo grafo;
 
-    private List<Label> unusedLabels;
+    /**
+     * Lista de rótulos não utilizados no passo atual.
+     */
+    private final List<Label> unusedLabels;
 
-    private List<String> selectedLabels;
-
+    /**
+     * Construtor.
+     *
+     * @param grafo
+     */
     public ArvoreGeradoraRotulosMinimos(Grafo grafo) {
         this.grafo = grafo;
 
         unusedLabels = getUnusedLabelsList();
-        selectedLabels = new ArrayList<>();
 
-        open = new ArrayList<>();
-        closed = new ArrayList<>();
+        generatedNodes = new ArrayList<>();
+        tracePath = new ArrayList<>();
 
         //1. Put the root node r on OPEN.
-        open.add(null);
+        generatedNodes.add(new Node());
     }
 
+    /**
+     * Obtém a lista de rótulos utilizados. Provê a separação entre as arestas
+     * que utilizam determinados rótulos.
+     *
+     * @return
+     */
     private List<Label> getUnusedLabelsList() {
         List<Label> unusedLabels;
-        HashMap<String, Integer> labelHasEdgesCovered;
+        HashMap<String, List<ArestaPonderada>> labelHasEdgesCovered;
         ArestaPonderada next;
-        Integer peso;
         Iterator<ArestaPonderada> arestas;
 
         unusedLabels = new ArrayList<>();
@@ -67,44 +81,39 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
         arestas = grafo.getArestas();
         while (arestas.hasNext()) {
             next = arestas.next();
-            peso = labelHasEdgesCovered.get(String.valueOf(next.getPeso()));
-            if (peso == null) {
-                peso = 0;
+            if (!labelHasEdgesCovered.containsKey(String.valueOf(next.getPeso()))) {
+                labelHasEdgesCovered.put(String.valueOf(next.getPeso()), new ArrayList<>());
             }
-            peso++;
-            labelHasEdgesCovered.put(String.valueOf(next.getPeso()), peso);
+            labelHasEdgesCovered.get(String.valueOf(next.getPeso())).add(next);
         }
 
-        for (Map.Entry<String, Integer> entry : labelHasEdgesCovered.entrySet()) {
+        for (Map.Entry<String, List<ArestaPonderada>> entry : labelHasEdgesCovered.entrySet()) {
             unusedLabels.add(new Label(entry.getKey(), entry.getValue()));
         }
 
         Collections.sort(unusedLabels);
-
         return unusedLabels;
     }
 
-    private VerticeRotulosMinimos heuristica() {
-        //If there are more than one node with the same minimum f value, the latest generated node will be selected.
-        throw new UnsupportedOperationException();
-    }
-
-    //Input: A graph G = (V, E) where each edge has a label in L and |V| = n, |E| = m, and |L| = l.
-    //Output: A spanning tree with minimum number of tree edge labels.
+    /**
+     * Input: A graph G = (V, E) where each edge has a label in L and |V| = n,
+     * |E| = m, and |L| = l. Output: A spanning tree with minimum number of tree
+     * edge labels.
+     */
     @Override
     public void executar() {
-        VerticeRotulosMinimos minimumF;
+        Node minimumF;
         try {
             while (true) {
                 //2. If OPEN is empty, exit with failure.
-                if (open.isEmpty()) {
+                if (generatedNodes.isEmpty()) {
                     //Since a solution always exists, this will never be executed.
                     throw new Exception("Falha");
                 }
                 //3. Remove from OPEN and place on CLOSED a node n for which f is minimum.
                 minimumF = getMinimumF();
-                open.remove(minimumF);
-                closed.add(minimumF);
+                generatedNodes.remove(minimumF);
+                tracePath.add(minimumF);
                 //4. If n is a goal node (a spanning subgraph is formed), goto Step 8.
                 if (minimumF != null) {
                     return;
@@ -112,15 +121,15 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
                     //5. Otherwise expand n.
                     //If there are k unselected labels, then n has k children, one for each unselected label.
                     ListIterator<Label> listIterator = unusedLabels.listIterator();
-                    for (VerticeRotulosMinimos son : open) {
+                    for (Node son : generatedNodes) {
                         //6. For each child son of n
                         //If n1 is not already on OPEN or CLOSE
-                        if (!open.contains(son) && !closed.contains(son)) {
+                        if (!generatedNodes.contains(son) && !tracePath.contains(son)) {
                             //calculate f(son) = g(son) + h(son)
                             //where g(son) = g(n) + 1 and g(r) = 0.
-                            son.setF(0);
+
                             //Put n1 into OPEN.
-                            open.add(son);
+                            generatedNodes.add(son);
                         }
                     }
                 }
@@ -132,22 +141,36 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
         throw new UnsupportedOperationException();
     }
 
-    private VerticeRotulosMinimos getMinimumF() {
-        if (open == null) {
+    /**
+     * Obtém o nó cuja função heurística é mínima. If there are more than one
+     * node with the same minimum f value, the latest generated node will be
+     * selected.
+     *
+     * @return
+     */
+    private Node getMinimumF() {
+        if (generatedNodes == null) {
             return null;
         }
-        if (open.size() == 0) {
+        if (generatedNodes.isEmpty()) {
             return null;
         }
-        VerticeRotulosMinimos minimumF = open.get(0);
-        for (VerticeRotulosMinimos verticeRotulosMinimos : open) {
-            if (verticeRotulosMinimos.getF() < minimumF.getF()) {
-                minimumF = verticeRotulosMinimos;
+        Node minimumF = generatedNodes.get(generatedNodes.size() - 1);
+        for (Node generatedNode : generatedNodes) {
+            if (generatedNode.getF() < minimumF.getF()) {
+                minimumF = generatedNode;
             }
         }
         return minimumF;
     }
 
+    /**
+     * Obtém o número de arestas que um rótulo cobre.
+     *
+     * @param id
+     * @return
+     * @deprecated unusedLabelList already provides the number.
+     */
     @Deprecated
     private int getNumberOfEdgesCovered(String id) {
         int numberOfEdgesCovered = 0;
