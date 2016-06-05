@@ -9,6 +9,8 @@ public interface Grafo<V extends Vertice, A extends Aresta<V, V>> {
     public final int PONDERADO = 2;
     public final int DIRECIONADO_PONDERADO = 3;
 
+    public int getQuantidadeVertices();
+
     public Iterator<V> getVerticesAdjacentes(V u);
 
     public Iterator<V> getVertices();

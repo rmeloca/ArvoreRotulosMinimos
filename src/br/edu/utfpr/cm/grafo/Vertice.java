@@ -49,4 +49,9 @@ public class Vertice {
         return "< " + this.id + " >";
     }
 
+    @Override
+    protected Object clone() {
+        return new Vertice(this.id);
+    }
+
 }

@@ -11,13 +11,13 @@ import java.util.List;
 
 public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Vertice>> {
 
-    int[][] grafo;
-    int numeroMaxVertices;
-    int numeroVertices;
-    Orientacao orientacao;
-    List<Aresta<Vertice, Vertice>> arestas;
-    HashMap<Vertice, Integer> verticeInteger;
-    HashMap<Integer, Vertice> integerVertice;
+    private int[][] grafo;
+    private int numeroMaxVertices;
+    private int numeroVertices;
+    private final Orientacao orientacao;
+    private final List<Aresta<Vertice, Vertice>> arestas;
+    private final HashMap<Vertice, Integer> verticeInteger;
+    private final HashMap<Integer, Vertice> integerVertice;
 
     public GrafoMatrizAdjacencia(Orientacao orientacao) {
         this.orientacao = orientacao;
@@ -138,6 +138,5 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     public void removerVertice(Vertice vertice) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }

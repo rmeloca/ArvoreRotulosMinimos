@@ -115,20 +115,18 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
                 generatedNodes.remove(minimumF);
                 tracePath.add(minimumF);
                 //4. If n is a goal node (a spanning subgraph is formed), goto Step 8.
-                if (minimumF != null) {
-                    return;
+                if (isGoalNode(minimumF)) {
+                    break;
                 } else {
-                    //5. Otherwise expand n.
-                    //If there are k unselected labels, then n has k children, one for each unselected label.
-                    ListIterator<Label> listIterator = unusedLabels.listIterator();
-                    for (Node son : generatedNodes) {
+                    //5. Otherwise expand n
+                    for (Node son : expandNode(minimumF)) {
                         //6. For each child son of n
                         //If n1 is not already on OPEN or CLOSE
                         if (!generatedNodes.contains(son) && !tracePath.contains(son)) {
                             //calculate f(son) = g(son) + h(son)
                             //where g(son) = g(n) + 1 and g(r) = 0.
-
-                            //Put n1 into OPEN.
+                            son.calculateF();
+                            //Put son into OPEN.
                             generatedNodes.add(son);
                         }
                     }
@@ -182,6 +180,35 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
             }
         }
         return numberOfEdgesCovered;
+    }
+
+    /**
+     * Expande um nó. Combinação dos labels utilizados no nó recebido com todos
+     * os labels ainda não utilizados.
+     *
+     * @param minimumF
+     * @return
+     */
+    private List<Node> expandNode(Node minimumF) {
+        //If there are k unselected labels, then n has k children, one for each unselected label.
+        Node clone;
+        List<Node> expandedNodes = new ArrayList<>();
+        for (Label unusedLabel : unusedLabels) {
+            clone = (Node) minimumF.clone();
+            clone.addLabel(unusedLabel);
+            expandedNodes.add(clone);
+        }
+        return expandedNodes;
+    }
+
+    /**
+     * Apenas uma componente é formada.
+     *
+     * @param minimumF
+     * @return
+     */
+    private boolean isGoalNode(Node minimumF) {
+        return minimumF.getVerticesCovered().size() == grafo.getQuantidadeVertices();
     }
 
 }

@@ -15,11 +15,19 @@ import br.edu.utfpr.cm.grafo.Vertice;
 public class GrafoListaAdjacencia implements
         Grafo<Vertice, Aresta<Vertice, Vertice>> {
 
-    HashMap<Vertice, ArrayList<Vertice>> grafo = new HashMap<Vertice, ArrayList<Vertice>>();
-    Orientacao orientacao;
+    private final HashMap<Vertice, ArrayList<Vertice>> grafo;
+    private final Orientacao orientacao;
+    private int quantidadeVertices;
 
     public GrafoListaAdjacencia(Orientacao orientacao) {
+        this.grafo = new HashMap<>();
         this.orientacao = orientacao;
+        quantidadeVertices = 0;
+    }
+
+    @Override
+    public int getQuantidadeVertices() {
+        return quantidadeVertices;
     }
 
     @Override
@@ -87,6 +95,7 @@ public class GrafoListaAdjacencia implements
                 this.grafo.put(v, adj);
             }
         }
+        this.quantidadeVertices++;
     }
 
     @Override
@@ -99,6 +108,7 @@ public class GrafoListaAdjacencia implements
         }
         // se o vértice já está no grafo, troca a referência
         verticeAdicionado = v;
+        this.quantidadeVertices++;
     }
 
     @Override
