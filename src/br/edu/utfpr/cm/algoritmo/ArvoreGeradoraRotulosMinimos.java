@@ -9,13 +9,11 @@ import br.edu.utfpr.cm.algoritmo.entidades.Node;
 import br.edu.utfpr.cm.algoritmo.entidades.Label;
 import br.edu.utfpr.cm.grafo.ArestaPonderada;
 import br.edu.utfpr.cm.grafo.Grafo;
-import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -125,7 +123,7 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
                         if (!generatedNodes.contains(son) && !tracePath.contains(son)) {
                             //calculate f(son) = g(son) + h(son)
                             //where g(son) = g(n) + 1 and g(r) = 0.
-                            son.calculateF();
+                            son.calculateF(this.unusedLabels);
                             //Put son into OPEN.
                             generatedNodes.add(son);
                         }
@@ -158,6 +156,9 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
             if (generatedNode.getF() < minimumF.getF()) {
                 minimumF = generatedNode;
             }
+        }
+        for (Label label : minimumF.getSelectedLabels()) {
+            this.unusedLabels.remove(label);
         }
         return minimumF;
     }

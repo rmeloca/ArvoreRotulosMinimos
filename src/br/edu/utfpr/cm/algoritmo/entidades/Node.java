@@ -5,6 +5,7 @@
  */
 package br.edu.utfpr.cm.algoritmo.entidades;
 
+import br.edu.utfpr.cm.grafo.ArestaPonderada;
 import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +36,12 @@ public class Node {
         }
     }
 
-    public void calculateF() {
-        this.f = getG() + getH();
+    public List<Label> getSelectedLabels() {
+        return selectedLabels;
+    }
+
+    public void calculateF(List<Label> unusedLabels) {
+        this.f = getG() + getH(unusedLabels);
         throw new UnsupportedOperationException();
     }
 
@@ -48,7 +53,7 @@ public class Node {
         return this.selectedLabels.size();
     }
 
-    private int getH() {
+    private int getH(List<Label> unusedLabels) {
         throw new UnsupportedOperationException();
     }
 
@@ -62,6 +67,10 @@ public class Node {
             }
         }
         return vertices;
+    }
+
+    public List<ArestaPonderada> getAcyclicEdges() {
+        throw new UnsupportedOperationException();
     }
 
     @Override
