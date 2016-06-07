@@ -40,11 +40,6 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
     private final Grafo grafo;
 
     /**
-     * Lista de rótulos não utilizados no passo atual.
-     */
-    private final List<Label> unusedLabels;
-
-    /**
      * Construtor.
      *
      * @param grafo
@@ -52,13 +47,13 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
     public ArvoreGeradoraRotulosMinimos(Grafo grafo) {
         this.grafo = grafo;
 
-        unusedLabels = getUnusedLabelsList();
-
         generatedNodes = new ArrayList<>();
         tracePath = new ArrayList<>();
 
+        List<Label> unusedLabels = getUnusedLabelsList();
+
         //1. Put the root node r on OPEN.
-        generatedNodes.add(new Node());
+        generatedNodes.add(new Node(null, unusedLabels));
     }
 
     /**
@@ -123,7 +118,7 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
                         if (!generatedNodes.contains(son) && !tracePath.contains(son)) {
                             //calculate f(son) = g(son) + h(son)
                             //where g(son) = g(n) + 1 and g(r) = 0.
-                            son.calculateF(this.unusedLabels);
+                            son.calculateF();
                             //Put son into OPEN.
                             generatedNodes.add(son);
                         }
@@ -156,9 +151,6 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
             if (generatedNode.getF() < minimumF.getF()) {
                 minimumF = generatedNode;
             }
-        }
-        for (Label label : minimumF.getSelectedLabels()) {
-            this.unusedLabels.remove(label);
         }
         return minimumF;
     }
@@ -194,7 +186,7 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
         //If there are k unselected labels, then n has k children, one for each unselected label.
         Node clone;
         List<Node> expandedNodes = new ArrayList<>();
-        for (Label unusedLabel : unusedLabels) {
+        for (Label unusedLabel : minimumF.getUnusedLabels()) {
             clone = (Node) minimumF.clone();
             clone.addLabel(unusedLabel);
             expandedNodes.add(clone);
