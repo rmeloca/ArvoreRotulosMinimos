@@ -15,4 +15,10 @@ public class ArestaPonderada extends Aresta<Vertice, Vertice> {
     public void setPeso(double peso) {
         this.peso = peso;
     }
+
+    @Override
+    public Object clone() {
+        return new ArestaPonderada((Vertice) getVertice1().clone(), (Vertice) getVertice2().clone(), peso);
+    }
+
 }
