@@ -162,11 +162,30 @@ public class GrafoListaAdjacencia implements
 
     @Override
     public void removerAresta(Aresta<Vertice, Vertice> aresta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Vertice verticeOrigem = aresta.getVertice1();
+        Vertice verticeDestino = aresta.getVertice2();
+        if(grafo.containsKey(verticeOrigem)){
+            return;
+        }
+        ArrayList<Vertice> listaVerticesDestino = grafo.remove(verticeOrigem);
+        if(listaVerticesDestino == null){
+            return;
+        }
+        if(!listaVerticesDestino.contains(verticeDestino)){
+            return;
+        }
+        listaVerticesDestino.remove(verticeDestino);
+        if(listaVerticesDestino.isEmpty()){
+            return;
+        }
+        grafo.put(verticeOrigem, listaVerticesDestino);
     }
 
     @Override
     public void removerVertice(Vertice vertice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        grafo.remove(vertice);
+        for (Vertice v : grafo.keySet()) {
+            grafo.remove(v, vertice);
+        }
     }
 }

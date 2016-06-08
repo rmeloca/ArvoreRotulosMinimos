@@ -15,6 +15,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.Test;
 
 /**
@@ -28,6 +31,15 @@ public class ArvoreGeradoraRotulosMinimosTest {
     public ArvoreGeradoraRotulosMinimosTest() {
     }
 
+    @Test
+    public void testar() {
+        try {
+            testFile(getClass().getResourceAsStream("../instancias/group_1"));
+        } catch (IOException ex) {
+            Logger.getLogger(ArvoreGeradoraRotulosMinimosTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void testFile(InputStream inputStream) throws IOException {
         testFile(Representacao.LISTA_ADJACENCIA, Orientacao.DIRIGIDO, inputStream);
     }
@@ -37,7 +49,7 @@ public class ArvoreGeradoraRotulosMinimosTest {
         BufferedReader bufferedReader;
         String line;
         String[] split;
-        Grafo grafo;
+        Grafo grafo = null;
         Vertice verticeOrigem;
         Vertice verticeDestino;
         int valorLabel;
@@ -47,6 +59,8 @@ public class ArvoreGeradoraRotulosMinimosTest {
         inputStreamReader = new InputStreamReader(inputStream);
         bufferedReader = new BufferedReader(inputStreamReader);
         line = "";
+        System.out.println("oiee");
+
         while (line != null) {
             line = bufferedReader.readLine();
             split = line.split(" ");
@@ -74,6 +88,14 @@ public class ArvoreGeradoraRotulosMinimosTest {
             //calcula
             line = bufferedReader.readLine();
         }
+        if (grafo != null) {
+            for (Iterator iterator = grafo.getVertices(); iterator.hasNext();) {
+                Object next = iterator.next();
+                System.out.println("V:" + next.toString());
+
+            }
+        }
+        System.out.println("oi");
         throw new UnsupportedOperationException();
     }
 
