@@ -39,7 +39,9 @@ public class GrafoFactoryTest {
             System.out.println("Peso: "+ nextPonderada.getPeso() + "\n\n");
             }
         }
+        System.out.println("----------------------------------------");
         g.removerAresta(new Aresta(new Vertice("19"), new Vertice("0")));
+        System.out.println("----------------------------------------");
         
         for (Iterator<Aresta> iterator = g.getArestas(); iterator.hasNext();) {
             Aresta<Vertice,Vertice> next = iterator.next();
@@ -50,6 +52,7 @@ public class GrafoFactoryTest {
             System.out.println("Peso: "+ nextPonderada.getPeso() + "\n\n");
             }
         }
+        
     }
 
 }

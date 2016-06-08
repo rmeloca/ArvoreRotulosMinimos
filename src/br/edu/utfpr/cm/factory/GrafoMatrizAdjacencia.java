@@ -38,7 +38,7 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     private void inicializaMatriz(double[][] matriz) {
         for (double[] linha : matriz) {
             for (int i = 0; i < linha.length; i++) {
-                linha[i] = 0;
+                linha[i] = -1;
             }
         }
     }
@@ -146,12 +146,29 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     }
 
     @Override
-    public void removerAresta(Aresta<Vertice, Vertice> aresta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void removerAresta(Aresta<Vertice, Vertice> arestaRemovida) {
+        if (!this.arestas.contains(arestaRemovida)) {//sobrescrever equals
+            return;
+        }
+        if (arestaRemovida.getVertice1() == null || arestaRemovida.getVertice2() == null) {
+            throw new RuntimeException("Não é possível adicionar uma aresta com vértice nulos no grafo");
+        }
+        if (!verticeInteger.containsKey(arestaRemovida.getVertice1())) {
+            throw new RuntimeException("Não é possível remover uma aresta que não tenha no grafo");
+        }
+        if (!verticeInteger.containsKey(arestaRemovida.getVertice2())) {
+            throw new RuntimeException("Não é possível remover uma aresta que não tenha no grafo");
+        }
+        grafo[verticeInteger.get(arestaRemovida.getVertice1())][verticeInteger.get(arestaRemovida.getVertice2())] = -1;
+        arestas.remove(arestaRemovida);
+        if (orientacao == Orientacao.NAO_DIRIGIDO) {
+            grafo[verticeInteger.get(arestaRemovida.getVertice2())][verticeInteger.get(arestaRemovida.getVertice1())] = -1;
+            arestas.remove(new Aresta(arestaRemovida.getVertice2(), arestaRemovida.getVertice1()));
+        }
     }
 
     @Override
-    public void removerVertice(Vertice vertice) {
+    public void removerVertice(Vertice verticeRemovido) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
