@@ -45,24 +45,28 @@ public class GrafoFactory implements Factory {
         quantidadeLabels = Integer.valueOf(split[1]);
 
         while (line != null) {
-            line = bufferedReader.readLine();
             grafo = constroiGrafo(representacao, orientacao);
-            for (int i = 0; i < quantidadeVertices - 1; i++) {
+            for (int i = 0; i <= quantidadeVertices - 1; i++) {
                 grafo.adicionaVertice(new Vertice(String.valueOf(i)));
             }
-            for (int i = quantidadeVertices - 1; i >= 0; i++) {
+            for (int i = quantidadeVertices - 1; i > 0; i--) {
                 line = bufferedReader.readLine();
+                if (line.isEmpty()) {
+                    break;
+                }
                 split = line.split(" ");
                 verticeOrigem = grafo.getVertice(String.valueOf(i));
-                for (int j = 0; j < quantidadeVertices; j++) {
+                for (int j = 0; j < i; j++) {
                     verticeDestino = grafo.getVertice(String.valueOf(j));
                     valorLabel = Integer.valueOf(split[j]);
                     if (valorLabel != quantidadeLabels) {
                         grafo.adicionaAresta(new ArestaPonderada(verticeOrigem, verticeDestino, valorLabel));
+//                        grafo.adicionaAresta(new ArestaPonderada(verticeDestino, verticeOrigem, valorLabel));
                     }
                 }
             }
             listaGrafos.add(grafo);
+            line = bufferedReader.readLine();
 
         }
 

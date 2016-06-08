@@ -37,7 +37,7 @@ public class AestrelaTest {
         try {
             testFile(getClass().getResourceAsStream("../instancias/group_1/HDGraph20_20.txt"));
         } catch (IOException ex) {
-            Logger.getLogger(ArvoreGeradoraRotulosMinimosTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AestrelaTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -105,10 +105,7 @@ public class AestrelaTest {
         InputStream inputStream = (getClass().getResourceAsStream("../instancias/group_1/HDGraph20_20.txt"));
         List<Grafo> lista = GrafoFactory.lerGrafos(Representacao.LISTA_ADJACENCIA, Orientacao.DIRIGIDO, inputStream);
         Grafo g = lista.get(0);
-        while (g.getVertices().hasNext()) {
-            Object next = g.getVertices().next();
-            System.out.println("Vertice "+next.toString());
-        }
+      
     }
 
 }
