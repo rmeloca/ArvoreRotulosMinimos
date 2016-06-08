@@ -45,6 +45,10 @@ public class Aestrela implements Algoritmo {
      * @param grafo
      */
     public Aestrela(Grafo grafo) {
+        if (grafo == null) {
+            throw new RuntimeException("Grafo não pode ser nulo!");
+        }
+
         this.grafo = grafo;
 
         generatedNodes = new ArrayList<>();

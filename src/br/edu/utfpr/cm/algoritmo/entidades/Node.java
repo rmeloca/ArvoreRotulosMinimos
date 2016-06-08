@@ -29,8 +29,10 @@ public class Node {
         this.verticesCovered = new ArrayList<>();
         this.edgesCovered = new ArrayList<>();
         this.n = quantidadeVerticesNoGrafo;
-        for (Label selectedLabel : selectedLabels) {
-            addLabel(selectedLabel);
+        if (selectedLabels != null) {
+            for (Label selectedLabel : selectedLabels) {
+                addLabel(selectedLabel);
+            }
         }
     }
 

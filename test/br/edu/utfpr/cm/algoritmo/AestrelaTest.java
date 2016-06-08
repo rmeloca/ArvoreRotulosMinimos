@@ -23,7 +23,7 @@ public class AestrelaTest {
     public void testarAEstrela() {
         Grafo grafo = GrafoFactory.constroiGrafo(Representacao.LISTA_ADJACENCIA, Orientacao.NAO_DIRIGIDO);
         this.aestrela = new Aestrela(grafo);
-        this.aestrela.executar();
+        this.aestrela.execute();
     }
 
 }
