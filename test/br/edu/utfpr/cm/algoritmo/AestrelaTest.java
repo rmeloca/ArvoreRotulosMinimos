@@ -26,11 +26,11 @@ import org.junit.Test;
  *
  * @author romulo
  */
-public class ArvoreGeradoraRotulosMinimosTest {
+public class AestrelaTest {
 
-    private ArvoreGeradoraRotulosMinimos arvoreGeradoraRotulosMinimos;
+    private Aestrela arvoreGeradoraRotulosMinimos;
 
-    public ArvoreGeradoraRotulosMinimosTest() {
+    public AestrelaTest() {
     }
 
     public void testar() {

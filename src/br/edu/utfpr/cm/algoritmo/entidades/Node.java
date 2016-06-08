@@ -67,7 +67,6 @@ public class Node {
 
     public void calculateF() {
         this.f = getG() + getH();
-        throw new UnsupportedOperationException();
     }
 
     public int getF() {
@@ -80,7 +79,13 @@ public class Node {
 
     private int getH() {
         int edgeNeeded = this.n - 1 - getAcyclicEdges().size();
-        throw new UnsupportedOperationException();
+        int sum = 0;
+        int size = this.unusedLabels.size();
+        int estimativa;
+        for (estimativa = 0; sum <= edgeNeeded && estimativa < size; estimativa++) {
+            sum += this.unusedLabels.get(estimativa).getEdgesCovered().size();
+        }
+        return estimativa;
     }
 
     public List<Vertice> getVerticesCovered() {

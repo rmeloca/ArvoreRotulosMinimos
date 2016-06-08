@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author romulo
  */
-public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
+public class Aestrela implements Algoritmo {
 
     /**
      * OPEN is the storage place for all generated but unexpanded nodes.
@@ -44,7 +44,7 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
      *
      * @param grafo
      */
-    public ArvoreGeradoraRotulosMinimos(Grafo grafo) {
+    public Aestrela(Grafo grafo) {
         this.grafo = grafo;
 
         generatedNodes = new ArrayList<>();
@@ -88,13 +88,19 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
         return unusedLabels;
     }
 
+    @Override
+    public void executar() {
+        throw new UnsupportedOperationException("Not supported.");
+    }
+
     /**
      * Input: A graph G = (V, E) where each edge has a label in L and |V| = n,
      * |E| = m, and |L| = l. Output: A spanning tree with minimum number of tree
      * edge labels.
+     *
+     * @return
      */
-    @Override
-    public void executar() {
+    public List<ArestaPonderada> execute() {
         Node minimumF;
         try {
             while (true) {
@@ -126,10 +132,11 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
                 }
             }
             //8. Find a spanning tree of the subgraph.
+            return minimumF.getAcyclicEdges();
         } catch (Exception ex) {
-            Logger.getLogger(ArvoreGeradoraRotulosMinimos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Aestrela.class.getName()).log(Level.SEVERE, null, ex);
         }
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -153,26 +160,6 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
             }
         }
         return minimumF;
-    }
-
-    /**
-     * Obtém o número de arestas que um rótulo cobre.
-     *
-     * @param id
-     * @return
-     * @deprecated unusedLabelList already provides the number.
-     */
-    @Deprecated
-    private int getNumberOfEdgesCovered(String id) {
-        int numberOfEdgesCovered = 0;
-        Iterator<ArestaPonderada> arestas = grafo.getArestas();
-        while (arestas.hasNext()) {
-            ArestaPonderada next = arestas.next();
-            if (id.equals(next.getPeso())) {
-                numberOfEdgesCovered++;
-            }
-        }
-        return numberOfEdgesCovered;
     }
 
     /**
