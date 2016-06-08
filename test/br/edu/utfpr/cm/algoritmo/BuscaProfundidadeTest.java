@@ -11,7 +11,7 @@ import br.edu.utfpr.cm.factory.Orientacao;
 import br.edu.utfpr.cm.factory.Representacao;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
-import static org.junit.Assert.*;
+import br.edu.utfpr.cm.grafo.Vertice;
 import org.junit.Test;
 
 /**
@@ -51,7 +51,19 @@ public class BuscaProfundidadeTest {
         Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g;
         g = GrafoFactory.constroiGrafo(Representacao.LISTA_ADJACENCIA, Orientacao.DIRIGIDO);
 
-        VerticeBuscaProfundidade s = g.getVertices().next();
+        VerticeBuscaProfundidade s = new VerticeBuscaProfundidade();
+        s.setId("a");
+        g.adicionaVertice(s);
+
+        s = new VerticeBuscaProfundidade();
+        s.setId("b");
+        g.adicionaVertice(s);
+
+        s = new VerticeBuscaProfundidade();
+        s.setId("c");
+        g.adicionaVertice(s);
+
+        s = g.getVertices().next();
         BuscaProfundidade instance = new BuscaProfundidade(g, s);
         instance.inicializaGrafo();
 
