@@ -26,4 +26,19 @@ public class Aresta<U extends Vertice, V extends Vertice> {
         this.v2 = v2;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Aresta)) {
+            return false;
+        }
+        Aresta aresta = (Aresta) obj;
+        if (!this.v1.equals(aresta.v1)) {
+            return false;
+        }
+        if (!this.v2.equals(aresta.v2)) {
+            return false;
+        }
+        return true;
+    }
+
 }

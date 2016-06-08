@@ -3,6 +3,7 @@ package br.edu.utfpr.cm.factory;
 import java.util.Iterator;
 
 import br.edu.utfpr.cm.grafo.Aresta;
+import br.edu.utfpr.cm.grafo.ArestaPonderada;
 import br.edu.utfpr.cm.grafo.Grafo;
 import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Vertice>> {
 
-    private int[][] grafo;
+    private double[][] grafo;
     private int numeroMaxVertices;
     private int numeroVertices;
     private final Orientacao orientacao;
@@ -24,7 +25,7 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
         numeroMaxVertices = 10;
         numeroVertices = 0;
         arestas = new ArrayList<>();
-        int[][] grafo = new int[numeroMaxVertices][numeroMaxVertices];
+        this.grafo = new double[numeroMaxVertices][numeroMaxVertices];
         inicializaMatriz();
         verticeInteger = new HashMap<>();
         integerVertice = new HashMap<>();
@@ -34,8 +35,8 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
         inicializaMatriz(this.grafo);
     }
 
-    private void inicializaMatriz(int[][] matriz) {
-        for (int[] linha : matriz) {
+    private void inicializaMatriz(double[][] matriz) {
+        for (double[] linha : matriz) {
             for (int i = 0; i < linha.length; i++) {
                 linha[i] = 0;
             }
@@ -44,14 +45,14 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
 
     private void dobrarMatriz() {
         numeroMaxVertices *= 2;
-        int[][] grafo = new int[numeroMaxVertices][numeroMaxVertices];
+        double[][] grafo = new double[numeroMaxVertices][numeroMaxVertices];
         inicializaMatriz(grafo);
         copiarMatriz(this.grafo, grafo);
         this.grafo = grafo;
         System.gc();
     }
 
-    private void copiarMatriz(int[][] origem, int[][] destino) {
+    private void copiarMatriz(double[][] origem, double[][] destino) {
         for (int i = 0; i < origem.length; i++) {
             for (int j = 0; j < origem.length; j++) {
                 destino[i][j] = origem[i][j];
@@ -122,11 +123,16 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
         if (this.arestas.contains(arestaAdicionada)) {//sobrescrever equals
             return;
         }
-        arestas.add(arestaAdicionada);
-        grafo[Integer.valueOf(arestaAdicionada.getVertice1().getId())][Integer.valueOf(arestaAdicionada.getVertice2().getId())] = 1;
-        if (orientacao == Orientacao.NAO_DIRIGIDO) {
-            grafo[Integer.valueOf(arestaAdicionada.getVertice2().getId())][Integer.valueOf(arestaAdicionada.getVertice1().getId())] = 1;
+        double peso = 1;
+        if (arestaAdicionada instanceof ArestaPonderada) {
+            ArestaPonderada arestaPonderada = (ArestaPonderada) arestaAdicionada;
+            peso = arestaPonderada.getPeso();
         }
+        grafo[verticeInteger.get(arestaAdicionada.getVertice1())][verticeInteger.get(arestaAdicionada.getVertice2())] = peso;
+        if (orientacao == Orientacao.NAO_DIRIGIDO) {
+            grafo[verticeInteger.get(arestaAdicionada.getVertice2())][verticeInteger.get(arestaAdicionada.getVertice1())] = peso;
+        }
+        arestas.add(arestaAdicionada);
     }
 
     @Override

@@ -6,6 +6,9 @@
 package br.edu.utfpr.cm.algoritmo;
 
 import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
+import br.edu.utfpr.cm.factory.GrafoFactory;
+import br.edu.utfpr.cm.factory.Orientacao;
+import br.edu.utfpr.cm.factory.Representacao;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import static org.junit.Assert.*;
@@ -17,18 +20,14 @@ import org.junit.Test;
  */
 public class BuscaProfundidadeTest {
 
-    public BuscaProfundidadeTest() {
-    }
-
     /**
      * Test of inicializaGrafo method, of class BuscaProfundidade.
      */
     @Test
     public void testInicializaGrafo() {
-        System.out.println("inicializaGrafo");
-        BuscaProfundidade instance = null;
+        Grafo grafo = GrafoFactory.constroiGrafo(Representacao.LISTA_ADJACENCIA, Orientacao.DIRIGIDO);
+        BuscaProfundidade instance = new BuscaProfundidade(grafo, (VerticeBuscaProfundidade) grafo.getVertices().next());
         instance.inicializaGrafo();
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -36,11 +35,12 @@ public class BuscaProfundidadeTest {
      */
     @Test
     public void testExecutar() {
-        System.out.println("executar");
-        VerticeBuscaProfundidade verticeBuscaProfundidade = new VerticeBuscaProfundidade();
-        BuscaProfundidade instance = null;
+        Grafo grafo = GrafoFactory.constroiGrafo(Representacao.LISTA_ADJACENCIA, Orientacao.DIRIGIDO);
+        VerticeBuscaProfundidade verticeBuscaProfundidade = (VerticeBuscaProfundidade) grafo.getVertices().next();
+        BuscaProfundidade instance = new BuscaProfundidade(grafo, verticeBuscaProfundidade);
+        instance.inicializaGrafo();
+
         instance.executar();
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -48,13 +48,15 @@ public class BuscaProfundidadeTest {
      */
     @Test
     public void testImprimeGrafo() {
-        System.out.println("imprimeGrafo");
-        Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g = null;
-        VerticeBuscaProfundidade s = null;
-        VerticeBuscaProfundidade v = null;
-        BuscaProfundidade instance = null;
+        Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g;
+        g = GrafoFactory.constroiGrafo(Representacao.LISTA_ADJACENCIA, Orientacao.DIRIGIDO);
+
+        VerticeBuscaProfundidade s = g.getVertices().next();
+        BuscaProfundidade instance = new BuscaProfundidade(g, s);
+        instance.inicializaGrafo();
+
+        VerticeBuscaProfundidade v = g.getVertices().next();
         instance.imprimeGrafo(g, s, v);
-        fail("The test case is a prototype.");
     }
 
 }

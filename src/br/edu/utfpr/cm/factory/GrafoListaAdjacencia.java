@@ -47,10 +47,10 @@ public class GrafoListaAdjacencia implements
 
     @Override
     public Iterator<Aresta<Vertice, Vertice>> getArestas() {
-        Set<Aresta<Vertice, Vertice>> i = new HashSet<Aresta<Vertice, Vertice>>();
+        Set<Aresta<Vertice, Vertice>> i = new HashSet<>();
         for (Entry<Vertice, ArrayList<Vertice>> adj : grafo.entrySet()) {
             for (Vertice u : adj.getValue()) {
-                i.add(new Aresta<Vertice, Vertice>(adj.getKey(), u));
+                i.add(new Aresta<>(adj.getKey(), u));
             }
         }
         return i.iterator();
@@ -104,7 +104,7 @@ public class GrafoListaAdjacencia implements
         // se não, adiciona o vértice sem pai
         Vertice v = getVertice(verticeAdicionado.getId());
         if (v == null) {
-            this.grafo.put(verticeAdicionado, new ArrayList<Vertice>());
+            this.grafo.put(verticeAdicionado, new ArrayList<>());
         }
         // se o vértice já está no grafo, troca a referência
         verticeAdicionado = v;
@@ -127,7 +127,7 @@ public class GrafoListaAdjacencia implements
                 // vertice 2 ja esta no grafo ?
                 if (v2 != null) {
                     v = arestaAdicionada.getVertice1();
-                    ArrayList<Vertice> adjV2 = new ArrayList<Vertice>();
+                    ArrayList<Vertice> adjV2 = new ArrayList<>();
                     adjV2.add(v2);
 
                     this.grafo.put(v, adjV2);
@@ -135,12 +135,12 @@ public class GrafoListaAdjacencia implements
                     // vertice 2 nao esta no grafo !
                     v = arestaAdicionada.getVertice1();
                     v2 = arestaAdicionada.getVertice2();
-                    ArrayList<Vertice> adjV2 = new ArrayList<Vertice>();
+                    ArrayList<Vertice> adjV2 = new ArrayList<>();
                     adjV2.add(v2);
 
                     // adiciona listas de adjacencia do vertice 2 e do vertice 1
                     this.grafo.put(v, adjV2);
-                    this.grafo.put(v2, new ArrayList<Vertice>());
+                    this.grafo.put(v2, new ArrayList<>());
                 }
                 // se vertice 1 esta no grafo, adiciona novo elemento na lista
                 // de adjacência
@@ -150,7 +150,7 @@ public class GrafoListaAdjacencia implements
                 if (v2 == null) {
                     v2 = arestaAdicionada.getVertice2();
                     // adiciona vertice 2 ao grafo
-                    this.grafo.put(v2, new ArrayList<Vertice>());
+                    this.grafo.put(v2, new ArrayList<>());
                 }
 
                 // adiciona vertice 2 a lista de adjacencia do vertice 1

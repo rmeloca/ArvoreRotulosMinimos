@@ -21,4 +21,15 @@ public class ArestaPonderada extends Aresta<Vertice, Vertice> {
         return new ArestaPonderada((Vertice) getVertice1().clone(), (Vertice) getVertice2().clone(), peso);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) {
+            return false;
+        }
+        if (obj instanceof ArestaPonderada) {
+            ArestaPonderada arestaPonderada = (ArestaPonderada) obj;
+            return this.peso == arestaPonderada.peso;
+        }
+        return false;
+    }
 }

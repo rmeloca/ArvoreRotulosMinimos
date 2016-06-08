@@ -28,7 +28,7 @@ import org.junit.Test;
  */
 public class AestrelaTest {
 
-    private Aestrela arvoreGeradoraRotulosMinimos;
+    private Aestrela aestrela;
 
     public AestrelaTest() {
     }
@@ -37,7 +37,7 @@ public class AestrelaTest {
         try {
             testFile(getClass().getResourceAsStream("../instancias/group_1/HDGraph20_20.txt"));
         } catch (IOException ex) {
-            Logger.getLogger(ArvoreGeradoraRotulosMinimosTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AestrelaTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -85,7 +85,7 @@ public class AestrelaTest {
                     }
                 }
             }
-            arvoreGeradoraRotulosMinimos.executar();
+            aestrela.executar();
             //calcula
             line = bufferedReader.readLine();
         }
@@ -107,8 +107,15 @@ public class AestrelaTest {
         Grafo g = lista.get(0);
         while (g.getVertices().hasNext()) {
             Object next = g.getVertices().next();
-            System.out.println("Vertice "+next.toString());
+            System.out.println("Vertice " + next.toString());
         }
+    }
+
+    @Test
+    public void testarAEstrela() {
+        Grafo grafo = GrafoFactory.constroiGrafo(Representacao.LISTA_ADJACENCIA, Orientacao.NAO_DIRIGIDO);
+        this.aestrela = new Aestrela(grafo);
+        this.aestrela.executar();
     }
 
 }
