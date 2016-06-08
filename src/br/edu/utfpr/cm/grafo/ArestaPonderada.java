@@ -1,11 +1,12 @@
 package br.edu.utfpr.cm.grafo;
 
-public class ArestaPonderada extends Aresta<Vertice, Vertice> {
+public final class ArestaPonderada extends Aresta<Vertice, Vertice> {
 
     double peso = Double.POSITIVE_INFINITY;
 
     public ArestaPonderada(Vertice v1, Vertice v2, double peso) {
         super(v1, v2);
+        setPeso(peso);
     }
 
     public double getPeso() {
