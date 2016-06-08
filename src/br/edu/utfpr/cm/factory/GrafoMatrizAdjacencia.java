@@ -123,6 +123,16 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
         if (this.arestas.contains(arestaAdicionada)) {//sobrescrever equals
             return;
         }
+        if (arestaAdicionada.getVertice1() == null || arestaAdicionada.getVertice2() == null) {
+            throw new RuntimeException("Não é possível adicionar uma aresta com vértice nulos no grafo");
+        }
+        if (!verticeInteger.containsKey(arestaAdicionada.getVertice1())) {
+            adicionaVertice(arestaAdicionada.getVertice1());
+        }
+        if (!verticeInteger.containsKey(arestaAdicionada.getVertice2())) {
+            adicionaVertice(arestaAdicionada.getVertice2());
+        }
+
         double peso = 1;
         if (arestaAdicionada instanceof ArestaPonderada) {
             ArestaPonderada arestaPonderada = (ArestaPonderada) arestaAdicionada;
