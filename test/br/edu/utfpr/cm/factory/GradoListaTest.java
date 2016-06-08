@@ -13,8 +13,9 @@ import static org.junit.Assert.*;
  * @author marco
  */
 public class GradoListaTest {
-    
-    public GradoListaTest() {
+
+    @Test
+    public void testeLerGrafo() {
+        
     }
-    
 }

@@ -5,6 +5,7 @@
  */
 package br.edu.utfpr.cm.algoritmo;
 
+import br.edu.utfpr.cm.factory.GrafoFactory;
 import static br.edu.utfpr.cm.factory.GrafoFactory.constroiGrafo;
 import br.edu.utfpr.cm.factory.Orientacao;
 import br.edu.utfpr.cm.factory.Representacao;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
@@ -31,10 +33,9 @@ public class ArvoreGeradoraRotulosMinimosTest {
     public ArvoreGeradoraRotulosMinimosTest() {
     }
 
-    @Test
     public void testar() {
         try {
-            testFile(getClass().getResourceAsStream("../instancias/group_1"));
+            testFile(getClass().getResourceAsStream("../instancias/group_1/HDGraph20_20.txt"));
         } catch (IOException ex) {
             Logger.getLogger(ArvoreGeradoraRotulosMinimosTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -100,7 +101,14 @@ public class ArvoreGeradoraRotulosMinimosTest {
     }
 
     @Test
-    public void testSomeMethod() {
+    public void testLerGrafos() throws IOException {
+        InputStream inputStream = (getClass().getResourceAsStream("../instancias/group_1/HDGraph20_20.txt"));
+        List<Grafo> lista = GrafoFactory.lerGrafos(Representacao.LISTA_ADJACENCIA, Orientacao.DIRIGIDO, inputStream);
+        Grafo g = lista.get(0);
+        while (g.getVertices().hasNext()) {
+            Object next = g.getVertices().next();
+            System.out.println("Vertice "+next.toString());
+        }
     }
 
 }
