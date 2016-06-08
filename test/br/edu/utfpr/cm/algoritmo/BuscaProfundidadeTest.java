@@ -11,7 +11,6 @@ import br.edu.utfpr.cm.factory.Orientacao;
 import br.edu.utfpr.cm.factory.Representacao;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
-import br.edu.utfpr.cm.grafo.Vertice;
 import org.junit.Test;
 
 /**
@@ -25,8 +24,21 @@ public class BuscaProfundidadeTest {
      */
     @Test
     public void testInicializaGrafo() {
-        Grafo grafo = GrafoFactory.constroiGrafo(Representacao.LISTA_ADJACENCIA, Orientacao.DIRIGIDO);
-        BuscaProfundidade instance = new BuscaProfundidade(grafo, (VerticeBuscaProfundidade) grafo.getVertices().next());
+        Grafo g = GrafoFactory.constroiGrafo(Representacao.LISTA_ADJACENCIA, Orientacao.DIRIGIDO);
+
+        VerticeBuscaProfundidade s = new VerticeBuscaProfundidade();
+        s.setId("a");
+        g.adicionaVertice(s);
+
+        s = new VerticeBuscaProfundidade();
+        s.setId("b");
+        g.adicionaVertice(s);
+
+        s = new VerticeBuscaProfundidade();
+        s.setId("c");
+        g.adicionaVertice(s);
+        
+        BuscaProfundidade instance = new BuscaProfundidade(g, (VerticeBuscaProfundidade) g.getVertices().next());
         instance.inicializaGrafo();
     }
 
@@ -35,11 +47,25 @@ public class BuscaProfundidadeTest {
      */
     @Test
     public void testExecutar() {
-        Grafo grafo = GrafoFactory.constroiGrafo(Representacao.LISTA_ADJACENCIA, Orientacao.DIRIGIDO);
-        VerticeBuscaProfundidade verticeBuscaProfundidade = (VerticeBuscaProfundidade) grafo.getVertices().next();
-        BuscaProfundidade instance = new BuscaProfundidade(grafo, verticeBuscaProfundidade);
-        instance.inicializaGrafo();
+        Grafo g = GrafoFactory.constroiGrafo(Representacao.LISTA_ADJACENCIA, Orientacao.DIRIGIDO);
 
+        VerticeBuscaProfundidade s = new VerticeBuscaProfundidade();
+        s.setId("a");
+        g.adicionaVertice(s);
+
+        s = new VerticeBuscaProfundidade();
+        s.setId("b");
+        g.adicionaVertice(s);
+
+        s = new VerticeBuscaProfundidade();
+        s.setId("c");
+        g.adicionaVertice(s);
+        
+        VerticeBuscaProfundidade verticeBuscaProfundidade = (VerticeBuscaProfundidade) g.getVertices().next();
+        BuscaProfundidade instance = new BuscaProfundidade(g, verticeBuscaProfundidade);
+        
+        instance.inicializaGrafo();
+        
         instance.executar();
     }
 
