@@ -53,7 +53,7 @@ public class ArvoreGeradoraRotulosMinimos implements Algoritmo {
         List<Label> unusedLabels = getUnusedLabelsList();
 
         //1. Put the root node r on OPEN.
-        generatedNodes.add(new Node(null, unusedLabels));
+        generatedNodes.add(new Node(null, unusedLabels, grafo.getQuantidadeVertices()));
     }
 
     /**

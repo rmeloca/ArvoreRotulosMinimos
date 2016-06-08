@@ -21,12 +21,14 @@ public class Node {
     private final List<Vertice> verticesCovered;
     private final List<ArestaPonderada> edgesCovered;
     private int f;
+    private int n;
 
-    public Node(List<Label> selectedLabels, List<Label> unusedLabels) {
+    public Node(List<Label> selectedLabels, List<Label> unusedLabels, int quantidadeVerticesNoGrafo) {
         this.unusedLabels = new ArrayList<>();
         this.selectedLabels = new ArrayList<>();
         this.verticesCovered = new ArrayList<>();
         this.edgesCovered = new ArrayList<>();
+        this.n = quantidadeVerticesNoGrafo;
         for (Label selectedLabel : selectedLabels) {
             addLabel(selectedLabel);
         }
@@ -77,6 +79,7 @@ public class Node {
     }
 
     private int getH() {
+        int edgeNeeded = this.n - 1 - getAcyclicEdges().size();
         throw new UnsupportedOperationException();
     }
 
@@ -98,6 +101,6 @@ public class Node {
 
     @Override
     public Object clone() {
-        return new Node(this.selectedLabels, this.unusedLabels);
+        return new Node(this.selectedLabels, this.unusedLabels, this.n);
     }
 }
