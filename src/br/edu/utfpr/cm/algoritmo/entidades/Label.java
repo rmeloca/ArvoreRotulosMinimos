@@ -49,12 +49,13 @@ public class Label implements Comparable<Label> {
 
     private void addEdge(ArestaPonderada edge) {
         if (!this.edgesCovered.contains(edge)) {
-            this.edgesCovered.add((ArestaPonderada) edge.clone());
-            if (!verticesCovered.contains(edge.getVertice1())) {
-                verticesCovered.add(edge.getVertice1());
+            ArestaPonderada clone = (ArestaPonderada) edge.clone();
+            this.edgesCovered.add(clone);
+            if (!verticesCovered.contains(clone.getVertice1())) {
+                verticesCovered.add(clone.getVertice1());
             }
-            if (!verticesCovered.contains(edge.getVertice2())) {
-                verticesCovered.add(edge.getVertice2());
+            if (!verticesCovered.contains(clone.getVertice2())) {
+                verticesCovered.add(clone.getVertice2());
             }
         }
     }
