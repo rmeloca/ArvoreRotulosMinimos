@@ -1,5 +1,7 @@
 package br.edu.utfpr.cm.grafo;
 
+import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
+
 public class Vertice {
 
     private String id;
@@ -18,6 +20,13 @@ public class Vertice {
 
     public void setId(String id) {
         this.id = id;
+    }
+    
+    public VerticeBuscaProfundidade toVerticeBuscaProfundidade(){
+        VerticeBuscaProfundidade vBuscaProfundidade = new VerticeBuscaProfundidade();
+        vBuscaProfundidade.setId(id);
+ 
+        return vBuscaProfundidade;
     }
 
     @Override
