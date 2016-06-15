@@ -34,6 +34,13 @@ public class Node {
                 addLabel(selectedLabel);
             }
         }
+        if (unusedLabels != null) {
+            for (Label unusedLabel : unusedLabels) {
+                if (!this.unusedLabels.contains(unusedLabel)) {
+                    this.unusedLabels.add(unusedLabel);
+                }
+            }
+        }
     }
 
     public final void addLabel(Label label) {

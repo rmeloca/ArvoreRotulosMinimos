@@ -111,7 +111,7 @@ public class Aestrela implements Algoritmo {
                 //2. If OPEN is empty, exit with failure.
                 if (generatedNodes.isEmpty()) {
                     //Since a solution always exists, this will never be executed.
-                    throw new Exception("Falha");
+                    throw new Exception("Falha, nenhum nó gerado");
                 }
                 //3. Remove from OPEN and place on CLOSED a node n for which f is minimum.
                 minimumF = getMinimumF();
