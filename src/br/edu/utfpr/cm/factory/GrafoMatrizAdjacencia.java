@@ -1,5 +1,6 @@
 package br.edu.utfpr.cm.factory;
 
+import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
 import br.edu.utfpr.cm.grafo.Aresta;
 import java.util.Iterator;
 
@@ -63,10 +64,10 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     @Override
     public Iterator<Vertice> getVerticesAdjacentes(Vertice u) {
         List<Vertice> verticesAdjacentes = new ArrayList<>();
-        if (u == null || !verticeInteger.containsKey(u)) {
+        if (u == null || !verticeInteger.containsKey(u.toVertice())) {
             return verticesAdjacentes.iterator();
         }
-        int numeroVerticeMatriz = verticeInteger.get(u);
+        int numeroVerticeMatriz = verticeInteger.get(u.toVertice());
         for (int coluna = 0; coluna < grafo[numeroVerticeMatriz].length; coluna++) {
             if (grafo[numeroVerticeMatriz][coluna] > 0) {
                 verticesAdjacentes.add(integerVertice.get(coluna));

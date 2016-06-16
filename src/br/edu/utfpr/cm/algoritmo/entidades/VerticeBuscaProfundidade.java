@@ -16,7 +16,11 @@ public class VerticeBuscaProfundidade extends Vertice {
         setId(id);
     }
 
-    public CorVertice getCor() {
+    public Cor getCor() {
+        return cor.getCor();
+    }
+
+    public CorVertice getCorVertice() {
         return cor;
     }
 

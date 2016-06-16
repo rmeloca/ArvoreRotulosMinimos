@@ -21,12 +21,22 @@ public class Vertice {
     public void setId(String id) {
         this.id = id;
     }
-    
-    public VerticeBuscaProfundidade toVerticeBuscaProfundidade(){
+
+    public VerticeBuscaProfundidade toVerticeBuscaProfundidade() {
         VerticeBuscaProfundidade vBuscaProfundidade = new VerticeBuscaProfundidade();
         vBuscaProfundidade.setId(id);
- 
+
         return vBuscaProfundidade;
+    }
+
+    public Vertice toVertice() {
+        if (this instanceof VerticeBuscaProfundidade) {
+            Vertice v = new Vertice(id);
+            return v;
+        } else {
+            return this;
+
+        }
     }
 
     @Override
@@ -36,7 +46,8 @@ public class Vertice {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj
+    ) {
         if (this == obj) {
             return true;
         }

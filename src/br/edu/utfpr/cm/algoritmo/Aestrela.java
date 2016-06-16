@@ -93,7 +93,7 @@ public class Aestrela implements Algoritmo {
     }
 
     @Override
-    public void executar() {
+    public void dfs_visit() {
         throw new UnsupportedOperationException("Not supported.");
     }
 

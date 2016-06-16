@@ -1,6 +1,7 @@
 package br.edu.utfpr.cm.algoritmo;
 
 import br.edu.utfpr.cm.algoritmo.entidades.Cor;
+import br.edu.utfpr.cm.algoritmo.entidades.CorVertice;
 import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.ArestaPonderada;
@@ -29,13 +30,13 @@ public class BuscaProfundidade implements Algoritmo {
         timestamp = 0;
     }
 
-    public void inicializaGrafo() {
+    public void dfs() {
         Iterator<VerticeBuscaProfundidade> vertices;
         VerticeBuscaProfundidade u;
         vertices = g.getVertices();
         while (vertices.hasNext()) {
             u = ((Vertice) vertices.next()).toVerticeBuscaProfundidade();
-            u.getCor().setCor(Cor.Branco);
+            u.setCor(new CorVertice(Cor.Branco));
             u.setPai(null);
         }
         timestamp = 0;
@@ -43,15 +44,15 @@ public class BuscaProfundidade implements Algoritmo {
         while (vertices.hasNext()) {
             u = ((Vertice) vertices.next()).toVerticeBuscaProfundidade();
             if (u.getCor().equals(Cor.Branco)) {
-                executar(u);
+                BuscaProfundidade.this.dfs_visit(u);
             }
         }
     }
 
-    private void executar(VerticeBuscaProfundidade u) {
+    private void dfs_visit(VerticeBuscaProfundidade u) {
         timestamp++;
         u.setTempoDescoberta(timestamp);
-        u.getCor().setCor(Cor.Cinza);
+        u.setCor(new CorVertice(Cor.Branco));
         Iterator<VerticeBuscaProfundidade> verticesAdjacentes;
         verticesAdjacentes = g.getVerticesAdjacentes(u);
         VerticeBuscaProfundidade verticeAdjacente;
@@ -59,31 +60,34 @@ public class BuscaProfundidade implements Algoritmo {
             verticeAdjacente = ((Vertice) verticesAdjacentes.next()).toVerticeBuscaProfundidade();
             if (verticeAdjacente.getCor().equals(Cor.Branco)) {
                 verticeAdjacente.setPai(u);
-                executar(verticeAdjacente);
+                BuscaProfundidade.this.dfs_visit(verticeAdjacente);
             } else if (verticeAdjacente.getCor().equals(Cor.Cinza)) {
                 arestasRetorno.add(new Aresta(u, verticeAdjacente));
             }
 
         }
-        u.getCor().setCor(Cor.Preto);
+        u.setCor(new CorVertice(Cor.Branco));
         timestamp++;
         u.setTempoFinalizacao(timestamp);
     }
 
     @Override
-    public void executar() {
-        executar(s);
+    public void dfs_visit() {
+        BuscaProfundidade.this.dfs_visit(s);
     }
 
-    public void imprimeGrafo(Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g, VerticeBuscaProfundidade s, VerticeBuscaProfundidade v) {
+    public void imprimeGrafo(Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g) {
         Iterator iterator = g.getVertices();
         System.out.println("Vertices: ");
         Vertice ver;
         while (iterator.hasNext()) {
             ver = (Vertice) iterator.next();
             System.out.print(ver);
-            if(ver instanceof VerticeBuscaProfundidade){
-                System.out.println("  Cor: "+((VerticeBuscaProfundidade) ver).getCor() + "Tempo desc: "+ ((VerticeBuscaProfundidade) ver).getTempoDescoberta());
+            if (ver instanceof VerticeBuscaProfundidade) {
+                System.out.println("  Cor: " + ((VerticeBuscaProfundidade) ver).getCor() + "Tempo desc: " + ((VerticeBuscaProfundidade) ver).getTempoDescoberta());
+                System.out.println(" Timestamp:" + ((VerticeBuscaProfundidade) ver).getTempoDescoberta());
+                System.out.println(" Timestamp:" + ((VerticeBuscaProfundidade) ver).getTempoFinalizacao());
+
             }
         }
         System.out.println("Fim Vertices");
@@ -94,7 +98,7 @@ public class BuscaProfundidade implements Algoritmo {
             a = (Aresta) iterator.next();
             System.out.println("V1: " + a.getVertice1() + "V2:" + a.getVertice2());
             if (a instanceof ArestaPonderada) {
-                System.out.println("Peso: " + ((ArestaPonderada) a).getPeso());
+                System.out.print("Peso: " + ((ArestaPonderada) a).getPeso());
             }
         }
         System.out.println("Fim Arestas");
