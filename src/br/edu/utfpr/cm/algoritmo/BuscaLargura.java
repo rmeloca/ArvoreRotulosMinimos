@@ -46,7 +46,7 @@ public class BuscaLargura implements Algoritmo {
     }
 
     @Override
-    public void executar() {
+    public void dfs_visit() {
         VerticeBuscaLargura u;
         VerticeBuscaLargura v;
         Iterator<VerticeBuscaLargura> verticesAdjacentes;

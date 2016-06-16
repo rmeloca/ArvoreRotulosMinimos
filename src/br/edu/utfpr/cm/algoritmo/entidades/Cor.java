@@ -17,6 +17,5 @@ public enum Cor {
     }
 
     public void setCor(int cor) {
-        this.cor = cor;
     }
 }

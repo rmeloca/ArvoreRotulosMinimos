@@ -1,5 +1,7 @@
 package br.edu.utfpr.cm.grafo;
 
+import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
+
 public class Vertice {
 
     private String id;
@@ -20,6 +22,23 @@ public class Vertice {
         this.id = id;
     }
 
+    public VerticeBuscaProfundidade toVerticeBuscaProfundidade() {
+        VerticeBuscaProfundidade vBuscaProfundidade = new VerticeBuscaProfundidade();
+        vBuscaProfundidade.setId(id);
+
+        return vBuscaProfundidade;
+    }
+
+    public Vertice toVertice() {
+        if (this instanceof VerticeBuscaProfundidade) {
+            Vertice v = new Vertice(id);
+            return v;
+        } else {
+            return this;
+
+        }
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -27,7 +46,8 @@ public class Vertice {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj
+    ) {
         if (this == obj) {
             return true;
         }
