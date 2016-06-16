@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  8 JUN 2016 02:01
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  15 JUN 2016 20:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -242,10 +242,10 @@ LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <10> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 26.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 34.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
  [1
 
-] [2]
+]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: xetex
 * paper: a4paper
@@ -281,31 +281,30 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
 File: ClassDiagram.png Graphic file (type QTm)
 
 <use  "ClassDiagram.png" >
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 66.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 49.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 66.
- [3] [4
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 49.
+ [2] [3
 
 
 
 
-] [5] [6]
-(./aps.aux)
+] (./aps.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 2844 strings out of 495638
- 41187 string characters out of 6187352
- 105966 words of memory out of 5000000
- 6022 multiletter control sequences out of 15000+600000
+ 2837 strings out of 495638
+ 41127 string characters out of 6187352
+ 100966 words of memory out of 5000000
+ 6015 multiletter control sequences out of 15000+600000
  13006 words of font info for 36 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 43i,8n,40p,739b,321s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,8n,40p,333b,321s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on aps.pdf (6 pages).
+Output written on aps.pdf (3 pages).
