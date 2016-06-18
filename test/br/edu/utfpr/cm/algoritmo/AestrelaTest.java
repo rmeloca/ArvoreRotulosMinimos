@@ -39,7 +39,6 @@ public class AestrelaTest {
 
             this.aestrela = new Aestrela(grafo);
             this.aestrela.execute();
-
         } catch (IOException ex) {
             Logger.getLogger(AestrelaTest.class.getName()).log(Level.SEVERE, null, ex);
         }
