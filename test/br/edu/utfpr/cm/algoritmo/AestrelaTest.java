@@ -5,6 +5,7 @@
  */
 package br.edu.utfpr.cm.algoritmo;
 
+import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
 import br.edu.utfpr.cm.factory.GrafoFactory;
 import br.edu.utfpr.cm.factory.Orientacao;
 import br.edu.utfpr.cm.factory.Representacao;
@@ -30,10 +31,10 @@ public class AestrelaTest {
     public void testarAEstrela() {
 
         InputStream inputStream;
-        List<Grafo> lista;
+        List<Grafo<VerticeBuscaProfundidade,ArestaPonderada<VerticeBuscaProfundidade,VerticeBuscaProfundidade>>> lista;
         try {
             inputStream = (getClass().getResourceAsStream("../instancias/group_1/HDGraph20_20.txt"));
-            lista = GrafoFactory.lerGrafos(Representacao.MATRIZ_ADJACENCIA, Orientacao.DIRIGIDO, inputStream);
+            lista = GrafoFactory.lerGrafos(Representacao.MATRIZ_ADJACENCIA, Orientacao.NAO_DIRIGIDO, inputStream);
             Grafo grafo = lista.get(0);
 
             this.aestrela = new Aestrela(grafo);

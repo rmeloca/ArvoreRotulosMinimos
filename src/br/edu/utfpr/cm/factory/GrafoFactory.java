@@ -1,14 +1,14 @@
 package br.edu.utfpr.cm.factory;
 
+import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
+import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.ArestaPonderada;
 import br.edu.utfpr.cm.grafo.Grafo;
-import br.edu.utfpr.cm.grafo.Vertice;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class GrafoFactory implements Factory {
@@ -23,15 +23,15 @@ public class GrafoFactory implements Factory {
         return null;
     }
 
-    public static List<Grafo> lerGrafos(Representacao representacao, Orientacao orientacao, InputStream inputStream) throws IOException {
-        List<Grafo> listaGrafos = new ArrayList<>();
+    public static List<Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>>> lerGrafos(Representacao representacao, Orientacao orientacao, InputStream inputStream) throws IOException {
+        List<Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>>> listaGrafos = new ArrayList<>();
         InputStreamReader inputStreamReader;
         BufferedReader bufferedReader;
         String line;
         String[] split;
-        Grafo grafo = null;
-        Vertice verticeOrigem;
-        Vertice verticeDestino;
+        Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafo;
+        VerticeBuscaProfundidade verticeOrigem;
+        VerticeBuscaProfundidade verticeDestino;
         int valorLabel;
         int quantidadeVertices;
         int quantidadeLabels;
@@ -47,7 +47,7 @@ public class GrafoFactory implements Factory {
         while (line != null) {
             grafo = constroiGrafo(representacao, orientacao);
             for (int i = 0; i <= quantidadeVertices - 1; i++) {
-                grafo.adicionaVertice(new Vertice(String.valueOf(i)));
+                grafo.adicionaVertice(new VerticeBuscaProfundidade(String.valueOf(i)));
             }
             for (int i = quantidadeVertices - 1; i > 0; i--) {
                 line = bufferedReader.readLine();

@@ -13,12 +13,12 @@ import java.util.List;
 
 public class BuscaProfundidade implements Algoritmo {
 
-    private Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g;
+    private Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g;
     private VerticeBuscaProfundidade s;
     private List<Aresta> arestasRetorno;
     private int timestamp;
 
-    public BuscaProfundidade(Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g, VerticeBuscaProfundidade verticeInicial) {
+    public BuscaProfundidade(Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g, VerticeBuscaProfundidade verticeInicial) {
         if (g.getVertice(verticeInicial.getId()) == null) {
             throw new RuntimeException("O vértice de índice " + verticeInicial.getId() + " não pertence ao grafo " + g.toString() + ". "
                     + "Utilize um vértice válido como argumento do construtor da classe " + this.getClass().getName());
@@ -35,32 +35,41 @@ public class BuscaProfundidade implements Algoritmo {
         VerticeBuscaProfundidade u;
         vertices = g.getVertices();
         while (vertices.hasNext()) {
-            u = ((Vertice) vertices.next()).toVerticeBuscaProfundidade();
+            u = vertices.next();
+//            u = ((Vertice) vertices.next()).toVerticeBuscaProfundidade();
             u.setCor(new CorVertice(Cor.Branco));
             u.setPai(null);
         }
         timestamp = 0;
         vertices = g.getVertices();
         while (vertices.hasNext()) {
-            u = ((Vertice) vertices.next()).toVerticeBuscaProfundidade();
+//            u = ((Vertice) vertices.next()).toVerticeBuscaProfundidade();
+            u = vertices.next();
             if (u.getCor().equals(Cor.Branco)) {
-                BuscaProfundidade.this.dfs_visit(u);
+                dfsVisit(u.getId());
             }
         }
     }
 
-    private void dfs_visit(VerticeBuscaProfundidade u) {
+    private void dfsVisit(String idVertice) {
+        VerticeBuscaProfundidade u;
+        Iterator<VerticeBuscaProfundidade> verticesAdjacentes;
+        VerticeBuscaProfundidade verticeAdjacente;
+//        VerticeBuscaProfundidade v;
+
+//        v = g.getVertice(idVertice);
+//        u = v.toVerticeBuscaProfundidade();
+        u = g.getVertice(idVertice);
         timestamp++;
         u.setTempoDescoberta(timestamp);
-        u.setCor(new CorVertice(Cor.Branco));
-        Iterator<VerticeBuscaProfundidade> verticesAdjacentes;
+        u.setCor(new CorVertice(Cor.Cinza));
         verticesAdjacentes = g.getVerticesAdjacentes(u);
-        VerticeBuscaProfundidade verticeAdjacente;
         while (verticesAdjacentes.hasNext()) {
-            verticeAdjacente = ((Vertice) verticesAdjacentes.next()).toVerticeBuscaProfundidade();
+//            verticeAdjacente = ((Vertice) verticesAdjacentes.next()).toVerticeBuscaProfundidade();
+            verticeAdjacente = verticesAdjacentes.next();
             if (verticeAdjacente.getCor().equals(Cor.Branco)) {
                 verticeAdjacente.setPai(u);
-                BuscaProfundidade.this.dfs_visit(verticeAdjacente);
+                dfsVisit(verticeAdjacente.getId());
             } else if (verticeAdjacente.getCor().equals(Cor.Cinza)) {
                 arestasRetorno.add(new Aresta(u, verticeAdjacente));
             }
@@ -73,10 +82,10 @@ public class BuscaProfundidade implements Algoritmo {
 
     @Override
     public void dfs_visit() {
-        BuscaProfundidade.this.dfs_visit(s);
+        BuscaProfundidade.this.dfsVisit(s.getId());
     }
 
-    public void imprimeGrafo(Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g) {
+    public void imprimeGrafo(Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g) {
         Iterator iterator = g.getVertices();
         System.out.println("Vertices: ");
         Vertice ver;
