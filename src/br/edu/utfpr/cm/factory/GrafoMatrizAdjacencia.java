@@ -68,7 +68,7 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
         }
         int numeroVerticeMatriz = verticeInteger.get(u);
         for (int coluna = 0; coluna < grafo[numeroVerticeMatriz].length; coluna++) {
-            if (grafo[numeroVerticeMatriz][coluna] > 0) {
+            if (grafo[numeroVerticeMatriz][coluna] >= 0) {
                 verticesAdjacentes.add(integerVertice.get(coluna));
             }
         }
@@ -147,7 +147,8 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
 
     @Override
     public void removerAresta(Aresta<Vertice, Vertice> arestaRemovida) {
-        if (!this.arestas.contains(arestaRemovida)) {//sobrescrever equals
+   
+        if (!this.arestas.contains(arestaRemovida)) {
             return;
         }
         if (arestaRemovida.getVertice1() == null || arestaRemovida.getVertice2() == null) {
@@ -176,5 +177,5 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     public int getQuantidadeVertices() {
         return this.numeroVertices;
     }
-
+    
 }

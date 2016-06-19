@@ -1,7 +1,6 @@
 package br.edu.utfpr.cm.factory;
 
 import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
-import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.ArestaPonderada;
 import br.edu.utfpr.cm.grafo.Grafo;
 import java.io.BufferedReader;

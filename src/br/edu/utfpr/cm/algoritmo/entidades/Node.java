@@ -5,7 +5,10 @@
  */
 package br.edu.utfpr.cm.algoritmo.entidades;
 
+import br.edu.utfpr.cm.algoritmo.BuscaProfundidade;
+import br.edu.utfpr.cm.algoritmo.BuscaProfundidadeNode;
 import br.edu.utfpr.cm.grafo.ArestaPonderada;
+import br.edu.utfpr.cm.grafo.Grafo;
 import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +21,7 @@ public class Node {
 
     private final List<Label> selectedLabels;
     private final List<Label> unusedLabels;
-    private final List<Vertice> verticesCovered;
+    private final List<VerticeBuscaProfundidade> verticesCovered;
     private final List<ArestaPonderada> edgesCovered;
     private int f;
     private int n;
@@ -74,8 +77,8 @@ public class Node {
         return unusedLabels;
     }
 
-    public void calculateF() {
-        this.f = getG() + getH();
+    public void calculateF(Grafo g) {
+        this.f = getG() + getH(g);
     }
 
     public int getF() {
@@ -86,8 +89,10 @@ public class Node {
         return this.selectedLabels.size();
     }
 
-    private int getH() {
-        int edgeNeeded = this.n - 1 - getAcyclicEdges().size();
+    
+    
+    private int getH(Grafo g) {
+        int edgeNeeded = this.n - 1 - getAcyclicEdges(g,g.getVertice("0")).size();
         int sum = 0;
         int size = this.unusedLabels.size();
         int estimativa;
@@ -109,8 +114,12 @@ public class Node {
         return vertices;
     }
 
-    public List<ArestaPonderada> getAcyclicEdges() {
-        throw new UnsupportedOperationException();
+    public List<ArestaPonderada> getAcyclicEdges(Grafo g, Vertice v) {
+        VerticeBuscaProfundidade s = (VerticeBuscaProfundidade) v;
+        BuscaProfundidadeNode bpn = new BuscaProfundidadeNode(verticesCovered,edgesCovered);
+        bpn.dfs();
+        bpn.removeArestasRetorno();
+        return  (List<ArestaPonderada>) bpn.getG().getArestas();
     }
 
     @Override

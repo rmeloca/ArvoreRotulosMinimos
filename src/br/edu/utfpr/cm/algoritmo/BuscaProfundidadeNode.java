@@ -11,25 +11,38 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class BuscaProfundidade implements Algoritmo {
+public class BuscaProfundidadeNode implements Algoritmo {
 
+    private final List<VerticeBuscaProfundidade> listVertices;
+    private final List<ArestaPonderada> listArestas;
     private Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g;
     private VerticeBuscaProfundidade s;
     private List<ArestaPonderada> arestasRetorno;
     private int timestamp;
 
-    public BuscaProfundidade(Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g, VerticeBuscaProfundidade verticeInicial) {
+    public BuscaProfundidadeNode(List<VerticeBuscaProfundidade> listVertices, List<ArestaPonderada> listaArestas) {
+        this.listVertices = listVertices;
+        this.listArestas = listaArestas;
+        populaGrafo();
+        VerticeBuscaProfundidade verticeInicial = g.getVertice("0");
         if (g.getVertice(verticeInicial.getId()) == null) {
             throw new RuntimeException("O vértice de índice " + verticeInicial.getId() + " não pertence ao grafo " + g.toString() + ". "
                     + "Utilize um vértice válido como argumento do construtor da classe " + this.getClass().getName());
         } else {
-            this.g = g;
             this.s = verticeInicial;
             arestasRetorno = new ArrayList<>();
         }
         timestamp = 0;
     }
-
+    public void populaGrafo(){
+        for (VerticeBuscaProfundidade next : listVertices) {
+            g.adicionaVertice(next);
+        }
+        for (ArestaPonderada next : listArestas) {
+            g.adicionaAresta(next);
+        }
+    
+    }
     public void dfs() {
         Iterator<VerticeBuscaProfundidade> vertices;
         VerticeBuscaProfundidade u;
@@ -82,7 +95,7 @@ public class BuscaProfundidade implements Algoritmo {
 
     @Override
     public void dfs_visit() {
-        BuscaProfundidade.this.dfsVisit(s.getId());
+        BuscaProfundidadeNode.this.dfsVisit(s.getId());
     }
 
     public void imprimeGrafo(Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g) {
@@ -116,7 +129,8 @@ public class BuscaProfundidade implements Algoritmo {
     public List<ArestaPonderada> getArestasRetorno() {
         return arestasRetorno;
     }
-    public void removeArestasRetorno(){
+
+    public void removeArestasRetorno() {
         for (ArestaPonderada aresta : arestasRetorno) {
             g.removerAresta(aresta);
         }

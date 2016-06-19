@@ -53,12 +53,13 @@ public class BuscaProfundidadeTest {
 
         BuscaProfundidade instance = new BuscaProfundidade(g, ((Vertice) g.getVertices().next()).toVerticeBuscaProfundidade());
         instance.dfs();
+        instance.removeArestasRetorno();
         System.out.println("Busca Profundidade: ");
-        for (Iterator<Aresta> iterator = instance.getArestasRetorno().iterator(); iterator.hasNext();) {
+        for (Iterator<ArestaPonderada> iterator = instance.getArestasRetorno().iterator(); iterator.hasNext();) {
             Aresta next = iterator.next();
             System.out.println("v1:" + next.getVertice1().toString() + "V2: " + next.getVertice2().toString());
         }
-        System.out.println("Fim");
+
     }
 
     /**
@@ -77,15 +78,27 @@ public class BuscaProfundidadeTest {
         s = g.getVertices().next();
         BuscaProfundidade instance = new BuscaProfundidade(g, s);
         instance.dfs();
+        instance.removeArestasRetorno();
         System.out.println("Imprime Exec");
         instance.imprimeGrafo(g);
         System.out.println("Fim - Imprime Exec");
+
+        int i = 1;
+        for (Iterator<ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> iterator = g.getArestas(); iterator.hasNext();) {
+            Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade> next = iterator.next();
+            if (next instanceof ArestaPonderada) {
+                ArestaPonderada nextPonderada = (ArestaPonderada) next;
+                System.out.println("CREATE (v" + nextPonderada.getVertice1() + ")-[l" + i + ":Aresta]->(v" + nextPonderada.getVertice2() + ")");;
+                i++;
+            }
+        }
+
     }
 
     /**
      * Test of imprimeGrafo method, of class BuscaProfundidade.
      */
-//    @Test
+    //    @Test
     public void testImprimeGrafo() throws IOException {
         InputStream inputStream = (getClass().getResourceAsStream("../instancias/group_1/HDGraph20_20.txt"));
         List<Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>>> lista = GrafoFactory.lerGrafos(Representacao.MATRIZ_ADJACENCIA, Orientacao.NAO_DIRIGIDO, inputStream);

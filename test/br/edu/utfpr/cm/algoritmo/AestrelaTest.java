@@ -11,7 +11,6 @@ import br.edu.utfpr.cm.factory.Orientacao;
 import br.edu.utfpr.cm.factory.Representacao;
 import br.edu.utfpr.cm.grafo.ArestaPonderada;
 import br.edu.utfpr.cm.grafo.Grafo;
-import br.edu.utfpr.cm.grafo.Vertice;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;

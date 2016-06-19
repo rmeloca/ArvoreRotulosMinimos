@@ -10,7 +10,7 @@ public final class ArestaPonderada<U extends Vertice, V extends Vertice> extends
     }
 
     public ArestaPonderada(U v1, V v2) {
-        super(v1,v2);
+        super(v1, v2);
     }
 
     public double getPeso() {
@@ -31,10 +31,6 @@ public final class ArestaPonderada<U extends Vertice, V extends Vertice> extends
         if (!super.equals(obj)) {
             return false;
         }
-        if (obj instanceof ArestaPonderada) {
-            ArestaPonderada arestaPonderada = (ArestaPonderada) obj;
-            return this.peso == arestaPonderada.peso;
-        }
-        return false;
+        return true;
     }
 }
