@@ -70,7 +70,7 @@
 
 	Para solucionar o PAGPM é preciso obter a melhor árvore dentre todo o conjunto de árvores geradas $C = \{E'_1, E'_2, \dots, E'_n \mid n = C_{|E|,|V|-1}\}$ a qual possua o menor peso total. Obviamente o conjunto de árvores geradas para o PAGPM é grande o suficiente para que não seja viável computar todo o conjunto e buscar nele uma solução exata (em tese), ou seja, muitas soluções são até mesmo NP-Completas! O que demanda uma solução de busca inteligente. Deste modo, é possível utilizarmos busca cega, heurística ou local.
 
-	Utilizar um algoritmo de busca implica em obter um ótimo local ao invés da solução exata, entretanto, alguns problemas são.
+	Utilizar um algoritmo de busca implica em obter um ótimo local ao invés da solução exata, entretanto, alguns problemas de busca operam sobre um conjunto cujos elementos são linearmente independentes, de modo que o conjunto é um matroide.
 	
 	Análogo ao PAGPM, há ainda o Problema da Árvore Geradora de Rótulos Mínimos (PAGRM), do inglês \textit{Minimum Labelling Spanning Tree}, o que lhe difere do PAGPM é que neste, cada aresta possui um rótulo e o objetivo é encontrar um árvore geradora utilizando o menor número de rótulos possíveis. Neste caso, a combinação matemática é feita a partir do número de rótulos e não a partir do número de arestas, de modo que a computação da solução exata (não fosse a propriedade matemática explorada), levaria muito tempo para ser feita, uma vez que não sabe-se de antemão quantos rótulos distintos serão necessários para conectar todo o grafo
 
@@ -94,7 +94,9 @@
 
 	Evidentemente, não seria necessário percorrer todos os elementos do conjunto $C$ uma vez que, sendo este gerado de maneira ordenada progressivamente pelo número de rótulos utilizados, o algoritmo chegaria em seu objetivo na primeira ocorrência de uma árvora geradora que satisfaça os critérios de saída do algoritmo.
 
-	Contudo, lançando mão da propriedade matemática XXXX, pode-se utilizar um algoritmo de busca (cega, heurística ou local) que não expanda todos os nós e caminhe de acordo o objetivo de maneira a reduzir o número de nós expandidos e, por consequência, o tempo de computação.
+	Contudo, lançando mão da propriedade matemática de matroides e independência linear, pode-se utilizar um algoritmo de busca (cega, heurística ou local), que não expanda todos os nós e caminhe de acordo o objetivo de maneira a reduzir o número de nós expandidos e, por consequência, o tempo de computação.
+
+	Na seção a seguir são tratados os trabalhos relacionados ao tema.
 
 \section{Trabalhos Relacionados}\label{sec:trabalhosRelacionados}
 
@@ -102,7 +104,15 @@
 
 \section{Solução Proposta}\label{sec:solucao}
 
-	Evidentemente é possível fazer uma espessa camada de abstrações que permite modelar um grafo por meio de uma matriz, uma lista, vetores, objetos conectados ou qualquer outro tipo abstrato de dados (TAD), armazenando mais informações ou menos informações conforme a necessidade e devida observação ao \textit{trade-off} consumo de RAM vs. consumo de CPU.
+	\subsection{Busca A*}\label{sec:aestrela}
+
+		Uma vez que o conjunto onde buscar a solução para o PAGRM é muito grande e este seja um matroide, isto é, o conjunto de florestas, é possível buscar a solução exata para o 
+
+	\subsection{Implementação}\label{sec:implementacao}
+
+	Evidentemente é possível fazer uma espessa camada de abstrações que permite modelar um grafo por meio de uma matriz, uma lista, vetores, objetos recursivamente encadeados ou qualquer outro tipo abstrato de dados (TAD), armazenando mais informações ou menos informações conforme a necessidade e devida observação ao \textit{trade-off} consumo de RAM vs. consumo de CPU.
+
+	Para este trabalho, optou-se por consumir mais RAM do que CPU, de modo que armazena-se tanto as listas de vértices e arestas como a lista de rótulos com seus respectivos.
 
 	Implementou-se a solução na linguagem de programação Java, aproveitando códigos previamente implementados.
 	respaldado pelo algoritmo proposto por [x], implementou-se este cuja ideia central é.
@@ -123,10 +133,6 @@
 		}
 		\caption{Busca A* para resolver 8-Puzzle}
 	\end{algorithm}
-
-	\subsection{Busca A*}\label{sec:aestrela}
-
-		Sendo o PAGRM um problema NP-Completo pelo menos NP-difícil em sua solução ótima 
 
 	\subsection{Diagramação}\label{sec:diagramacao}
 
@@ -156,5 +162,7 @@
 \section{Considerações Finais}\label{sec:conclusao}
 
 \section{Referências}\label{sec:referencia}
+
+https://www.ime.usp.br/~cris/aulas/12_1_6711/slides/aula13.pdf
 
 \end{document}
