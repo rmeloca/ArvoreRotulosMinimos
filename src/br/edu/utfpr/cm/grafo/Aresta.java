@@ -2,12 +2,28 @@ package br.edu.utfpr.cm.grafo;
 
 public class Aresta<U extends Vertice, V extends Vertice> {
 
-    private Vertice v1 = null;
-    private Vertice v2 = null;
+    private Vertice v1;
+    private Vertice v2;
+    double peso;
 
     public Aresta(U v1, V v2) {
         this.v1 = v1;
         this.v2 = v2;
+        this.peso = 1;
+    }
+
+    public Aresta(U v1, V v2, double peso) {
+        this.v1 = v1;
+        this.v2 = v2;
+        this.peso = peso;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
     }
 
     public Vertice getVertice1() {
@@ -39,6 +55,11 @@ public class Aresta<U extends Vertice, V extends Vertice> {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public Object clone() {
+        return new Aresta((U) getVertice1().clone(), (V) getVertice2().clone(), peso);
     }
 
 }

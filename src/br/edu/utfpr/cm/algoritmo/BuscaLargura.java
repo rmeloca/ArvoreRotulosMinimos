@@ -1,7 +1,6 @@
 package br.edu.utfpr.cm.algoritmo;
 
 import br.edu.utfpr.cm.algoritmo.entidades.Cor;
-import br.edu.utfpr.cm.algoritmo.entidades.CorVertice;
 import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaLargura;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
@@ -33,20 +32,20 @@ public class BuscaLargura implements Algoritmo {
         while (this.g.getVertices().hasNext()) {
             u = this.g.getVertices().next();
             if (u != this.s) {
-                u.setCor(new CorVertice(Cor.Branco));
+                u.setCor(Cor.Branco);
                 u.setDistancia((int) Float.POSITIVE_INFINITY);
                 u.setPai(null);
             }
         }
         s.setDistancia(0);
         s.setPai(null);
-        s.setCor(new CorVertice(Cor.Cinza));
+        s.setCor(Cor.Cinza);
         queue.add(s);
 
     }
 
     @Override
-    public void dfs_visit() {
+    public void executar() {
         VerticeBuscaLargura u;
         VerticeBuscaLargura v;
         Iterator<VerticeBuscaLargura> verticesAdjacentes;
@@ -55,14 +54,14 @@ public class BuscaLargura implements Algoritmo {
             verticesAdjacentes = g.getVerticesAdjacentes(u);
             while (verticesAdjacentes.hasNext()) {
                 v = verticesAdjacentes.next();
-                if (v.getCor().getCor().equals(Cor.Branco)) {
-                    v.getCor().setCor(Cor.Cinza);
+                if (v.getCor().equals(Cor.Branco)) {
+                    v.setCor(Cor.Cinza);
                     v.setDistancia(u.getDistancia() + 1);
                     v.setPai(u);
                     queue.add(v);
                 }
             }
-            u.getCor().setCor(Cor.Preto);
+            u.setCor(Cor.Preto);
         }
     }
 
@@ -76,14 +75,14 @@ public class BuscaLargura implements Algoritmo {
             verticesAdjacentes = g.getVerticesAdjacentes(u);
             while (verticesAdjacentes.hasNext()) {
                 v = verticesAdjacentes.next();
-                if (v.getCor().getCor().equals(Cor.Branco)) {
-                    v.getCor().setCor(Cor.Cinza);
+                if (v.getCor().equals(Cor.Branco)) {
+                    v.setCor(Cor.Cinza);
                     v.setDistancia(u.getDistancia() + 1);
                     v.setPai(u);
                     queue.add(v);
                 }
             }
-            u.getCor().setCor(Cor.Preto);
+            u.setCor(Cor.Preto);
             listaFilas.add(queue.toArray(new VerticeBuscaLargura[queue.size()]));
         }
         return listaFilas;

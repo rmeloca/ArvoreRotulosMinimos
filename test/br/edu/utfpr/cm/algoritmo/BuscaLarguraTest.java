@@ -53,7 +53,7 @@ public class BuscaLarguraTest {
         g.adicionaVertice(u, y); //u-y
 
         BuscaLargura bl = new BuscaLargura(g, s);
-        bl.dfs_visit();
+        bl.executar();
     }
 
     @Test

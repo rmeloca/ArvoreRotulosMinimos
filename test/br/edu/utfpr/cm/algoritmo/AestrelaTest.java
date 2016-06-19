@@ -9,7 +9,7 @@ import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
 import br.edu.utfpr.cm.factory.GrafoFactory;
 import br.edu.utfpr.cm.factory.Orientacao;
 import br.edu.utfpr.cm.factory.Representacao;
-import br.edu.utfpr.cm.grafo.ArestaPonderada;
+import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +30,7 @@ public class AestrelaTest {
     public void testarAEstrela() {
 
         InputStream inputStream;
-        List<Grafo<VerticeBuscaProfundidade,ArestaPonderada<VerticeBuscaProfundidade,VerticeBuscaProfundidade>>> lista;
+        List<Grafo<VerticeBuscaProfundidade,Aresta<VerticeBuscaProfundidade,VerticeBuscaProfundidade>>> lista;
         try {
             inputStream = (getClass().getResourceAsStream("../instancias/group_1/HDGraph20_20.txt"));
             lista = GrafoFactory.lerGrafos(Representacao.MATRIZ_ADJACENCIA, Orientacao.NAO_DIRIGIDO, inputStream);

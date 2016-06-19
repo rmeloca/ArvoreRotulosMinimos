@@ -4,7 +4,7 @@ import br.edu.utfpr.cm.grafo.Vertice;
 
 public class VerticeBuscaProfundidade extends Vertice {
 
-    private CorVertice cor = new CorVertice(Cor.Branco);
+    private Cor cor = Cor.Branco;
     private int tempoDescoberta = (int) Float.POSITIVE_INFINITY;
     private int tempoFinalizacao = (int) Float.POSITIVE_INFINITY;
     private VerticeBuscaProfundidade pai = null;
@@ -17,14 +17,10 @@ public class VerticeBuscaProfundidade extends Vertice {
     }
 
     public Cor getCor() {
-        return cor.getCor();
-    }
-
-    public CorVertice getCorVertice() {
         return cor;
     }
 
-    public void setCor(CorVertice cor) {
+    public void setCor(Cor cor) {
         this.cor = cor;
     }
 

@@ -6,8 +6,10 @@
 package br.edu.utfpr.cm.algoritmo.entidades;
 
 import br.edu.utfpr.cm.algoritmo.BuscaProfundidade;
-import br.edu.utfpr.cm.algoritmo.BuscaProfundidadeNode;
-import br.edu.utfpr.cm.grafo.ArestaPonderada;
+import br.edu.utfpr.cm.factory.GrafoFactory;
+import br.edu.utfpr.cm.factory.Orientacao;
+import br.edu.utfpr.cm.factory.Representacao;
+import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
@@ -21,8 +23,8 @@ public class Node {
 
     private final List<Label> selectedLabels;
     private final List<Label> unusedLabels;
-    private final List<VerticeBuscaProfundidade> verticesCovered;
-    private final List<ArestaPonderada> edgesCovered;
+    private final List<Vertice> verticesCovered;
+    private final List<Aresta> edgesCovered;
     private int f;
     private int n;
 
@@ -50,15 +52,15 @@ public class Node {
         if (!this.selectedLabels.contains(label)) {
             this.selectedLabels.add((Label) label.clone());
             this.unusedLabels.remove(label);
-            for (ArestaPonderada arestaPonderada : label.getEdgesCovered()) {
+            for (Aresta arestaPonderada : label.getEdgesCovered()) {
                 addEdge(arestaPonderada);
             }
         }
     }
 
-    private void addEdge(ArestaPonderada edge) {
+    private void addEdge(Aresta edge) {
         if (!this.edgesCovered.contains(edge)) {
-            ArestaPonderada clone = (ArestaPonderada) edge.clone();
+            Aresta clone = (Aresta) edge.clone();
             this.edgesCovered.add(clone);
             if (!verticesCovered.contains(clone.getVertice1())) {
                 verticesCovered.add(clone.getVertice1());
@@ -77,8 +79,8 @@ public class Node {
         return unusedLabels;
     }
 
-    public void calculateF(Grafo g) {
-        this.f = getG() + getH(g);
+    public void calculateF() {
+        this.f = getG() + getH();
     }
 
     public int getF() {
@@ -89,10 +91,8 @@ public class Node {
         return this.selectedLabels.size();
     }
 
-    
-    
-    private int getH(Grafo g) {
-        int edgeNeeded = this.n - 1 - getAcyclicEdges(g,g.getVertice("0")).size();
+    private int getH() {
+        int edgeNeeded = this.n - 1 - getAcyclicEdges().size();
         int sum = 0;
         int size = this.unusedLabels.size();
         int estimativa;
@@ -114,12 +114,25 @@ public class Node {
         return vertices;
     }
 
-    public List<ArestaPonderada> getAcyclicEdges(Grafo g, Vertice v) {
-        VerticeBuscaProfundidade s = (VerticeBuscaProfundidade) v;
-        BuscaProfundidadeNode bpn = new BuscaProfundidadeNode(verticesCovered,edgesCovered);
-        bpn.dfs();
-        bpn.removeArestasRetorno();
-        return  (List<ArestaPonderada>) bpn.getG().getArestas();
+    private Grafo getGrafoInduzido() {
+        Grafo grafo = GrafoFactory.constroiGrafo(Representacao.MATRIZ_ADJACENCIA, Orientacao.NAO_DIRIGIDO);
+        for (Aresta aresta : edgesCovered) {
+            grafo.adicionaAresta(aresta);
+        }
+        return grafo;
+    }
+
+    public List<Aresta> getAcyclicEdges() {
+        Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafoInduzido;
+        BuscaProfundidade buscaProfundidade;
+        
+        grafoInduzido = getGrafoInduzido();
+        buscaProfundidade = new BuscaProfundidade(grafoInduzido, grafoInduzido.getVertice("0"));
+        
+        buscaProfundidade.dfs();
+        buscaProfundidade.removeArestasRetorno();
+        
+        return (List<Aresta>) buscaProfundidade.getG().getArestas();
     }
 
     @Override

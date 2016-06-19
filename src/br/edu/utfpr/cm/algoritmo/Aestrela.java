@@ -7,7 +7,7 @@ package br.edu.utfpr.cm.algoritmo;
 
 import br.edu.utfpr.cm.algoritmo.entidades.Node;
 import br.edu.utfpr.cm.algoritmo.entidades.Label;
-import br.edu.utfpr.cm.grafo.ArestaPonderada;
+import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -68,9 +68,9 @@ public class Aestrela implements Algoritmo {
      */
     private List<Label> getUnusedLabelsList() {
         List<Label> unusedLabels;
-        HashMap<String, List<ArestaPonderada>> labelHasEdgesCovered;
-        ArestaPonderada next;
-        Iterator<ArestaPonderada> arestas;
+        HashMap<String, List<Aresta>> labelHasEdgesCovered;
+        Aresta next;
+        Iterator<Aresta> arestas;
 
         unusedLabels = new ArrayList<>();
         labelHasEdgesCovered = new HashMap<>();
@@ -84,7 +84,7 @@ public class Aestrela implements Algoritmo {
             labelHasEdgesCovered.get(String.valueOf(next.getPeso())).add(next);
         }
 
-        for (Map.Entry<String, List<ArestaPonderada>> entry : labelHasEdgesCovered.entrySet()) {
+        for (Map.Entry<String, List<Aresta>> entry : labelHasEdgesCovered.entrySet()) {
             unusedLabels.add(new Label(entry.getKey(), entry.getValue()));
         }
 
@@ -93,7 +93,7 @@ public class Aestrela implements Algoritmo {
     }
 
     @Override
-    public void dfs_visit() {
+    public void executar() {
         throw new UnsupportedOperationException("Not supported.");
     }
 
@@ -104,7 +104,7 @@ public class Aestrela implements Algoritmo {
      *
      * @return
      */
-    public List<ArestaPonderada> execute() {
+    public List<Aresta> execute() {
         Node minimumF;
         try {
             while (true) {

@@ -47,13 +47,13 @@ public class GrafoListaAdjacencia implements
 
     @Override
     public Iterator<Aresta<Vertice, Vertice>> getArestas() {
-        Set<Aresta<Vertice, Vertice>> i = new HashSet<>();
+        Set<Aresta<Vertice, Vertice>> arestas = new HashSet<>();
         for (Entry<Vertice, ArrayList<Vertice>> adj : grafo.entrySet()) {
             for (Vertice u : adj.getValue()) {
-                i.add(new Aresta<>(adj.getKey(), u));
+                arestas.add(new Aresta<>(adj.getKey(), u));
             }
         }
-        return i.iterator();
+        return arestas.iterator();
     }
 
     @Override
@@ -164,18 +164,18 @@ public class GrafoListaAdjacencia implements
     public void removerAresta(Aresta<Vertice, Vertice> aresta) {
         Vertice verticeOrigem = aresta.getVertice1();
         Vertice verticeDestino = aresta.getVertice2();
-        if(grafo.containsKey(verticeOrigem)){
+        if (grafo.containsKey(verticeOrigem)) {
             return;
         }
         ArrayList<Vertice> listaVerticesDestino = grafo.remove(verticeOrigem);
-        if(listaVerticesDestino == null){
+        if (listaVerticesDestino == null) {
             return;
         }
-        if(!listaVerticesDestino.contains(verticeDestino)){
+        if (!listaVerticesDestino.contains(verticeDestino)) {
             return;
         }
         listaVerticesDestino.remove(verticeDestino);
-        if(listaVerticesDestino.isEmpty()){
+        if (listaVerticesDestino.isEmpty()) {
             return;
         }
         grafo.put(verticeOrigem, listaVerticesDestino);

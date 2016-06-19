@@ -1,7 +1,7 @@
 package br.edu.utfpr.cm.factory;
 
 import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
-import br.edu.utfpr.cm.grafo.ArestaPonderada;
+import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,13 +22,13 @@ public class GrafoFactory implements Factory {
         return null;
     }
 
-    public static List<Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>>> lerGrafos(Representacao representacao, Orientacao orientacao, InputStream inputStream) throws IOException {
-        List<Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>>> listaGrafos = new ArrayList<>();
+    public static List<Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>>> lerGrafos(Representacao representacao, Orientacao orientacao, InputStream inputStream) throws IOException {
+        List<Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>>> listaGrafos = new ArrayList<>();
         InputStreamReader inputStreamReader;
         BufferedReader bufferedReader;
         String line;
         String[] split;
-        Grafo<VerticeBuscaProfundidade, ArestaPonderada<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafo;
+        Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafo;
         VerticeBuscaProfundidade verticeOrigem;
         VerticeBuscaProfundidade verticeDestino;
         int valorLabel;
@@ -59,8 +59,8 @@ public class GrafoFactory implements Factory {
                     verticeDestino = grafo.getVertice(String.valueOf(j));
                     valorLabel = Integer.valueOf(split[j]);
                     if (valorLabel != quantidadeLabels) {
-                        grafo.adicionaAresta(new ArestaPonderada(verticeOrigem, verticeDestino, valorLabel));
-//                        grafo.adicionaAresta(new ArestaPonderada(verticeDestino, verticeOrigem, valorLabel));
+                        grafo.adicionaAresta(new Aresta(verticeOrigem, verticeDestino, valorLabel));
+//                        grafo.adicionaAresta(new Aresta(verticeDestino, verticeOrigem, valorLabel));
                     }
                 }
             }

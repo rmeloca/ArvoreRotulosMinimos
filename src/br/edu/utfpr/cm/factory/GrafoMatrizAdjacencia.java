@@ -3,7 +3,6 @@ package br.edu.utfpr.cm.factory;
 import br.edu.utfpr.cm.grafo.Aresta;
 import java.util.Iterator;
 
-import br.edu.utfpr.cm.grafo.ArestaPonderada;
 import br.edu.utfpr.cm.grafo.Grafo;
 import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
@@ -120,7 +119,7 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
 
     @Override
     public void adicionaAresta(Aresta<Vertice, Vertice> arestaAdicionada) {
-        if (this.arestas.contains(arestaAdicionada)) {//sobrescrever equals
+        if (this.arestas.contains(arestaAdicionada)) {
             return;
         }
         if (arestaAdicionada.getVertice1() == null || arestaAdicionada.getVertice2() == null) {
@@ -133,21 +132,16 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
             adicionaVertice(arestaAdicionada.getVertice2());
         }
 
-        double peso = 1;
-        if (arestaAdicionada instanceof ArestaPonderada) {
-            ArestaPonderada arestaPonderada = (ArestaPonderada) arestaAdicionada;
-            peso = arestaPonderada.getPeso();
-        }
-        grafo[verticeInteger.get(arestaAdicionada.getVertice1())][verticeInteger.get(arestaAdicionada.getVertice2())] = peso;
+        grafo[verticeInteger.get(arestaAdicionada.getVertice1())][verticeInteger.get(arestaAdicionada.getVertice2())] = arestaAdicionada.getPeso();
         if (orientacao == Orientacao.NAO_DIRIGIDO) {
-            grafo[verticeInteger.get(arestaAdicionada.getVertice2())][verticeInteger.get(arestaAdicionada.getVertice1())] = peso;
+            grafo[verticeInteger.get(arestaAdicionada.getVertice2())][verticeInteger.get(arestaAdicionada.getVertice1())] = arestaAdicionada.getPeso();
         }
         arestas.add(arestaAdicionada);
     }
 
     @Override
     public void removerAresta(Aresta<Vertice, Vertice> arestaRemovida) {
-   
+
         if (!this.arestas.contains(arestaRemovida)) {
             return;
         }
@@ -177,5 +171,5 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     public int getQuantidadeVertices() {
         return this.numeroVertices;
     }
-    
+
 }

@@ -4,7 +4,7 @@ import br.edu.utfpr.cm.grafo.Vertice;
 
 public class VerticeBuscaLargura extends Vertice {
 
-    private CorVertice cor = new CorVertice(Cor.Branco);
+    private Cor cor = Cor.Branco;
     private int distancia = (int) Float.POSITIVE_INFINITY;
     private VerticeBuscaLargura pai = null;
 
@@ -16,11 +16,11 @@ public class VerticeBuscaLargura extends Vertice {
         super();
     }
 
-    public CorVertice getCor() {
+    public Cor getCor() {
         return cor;
     }
 
-    public void setCor(CorVertice cor) {
+    public void setCor(Cor cor) {
         this.cor = cor;
     }
 
