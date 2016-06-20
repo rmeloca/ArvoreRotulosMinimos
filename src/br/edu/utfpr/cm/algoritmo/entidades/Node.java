@@ -6,10 +6,8 @@
 package br.edu.utfpr.cm.algoritmo.entidades;
 
 import br.edu.utfpr.cm.algoritmo.BuscaProfundidade;
-import br.edu.utfpr.cm.factory.GrafoFactory;
 import br.edu.utfpr.cm.factory.GrafoMatrizAdjacencia;
 import br.edu.utfpr.cm.factory.Orientacao;
-import br.edu.utfpr.cm.factory.Representacao;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import br.edu.utfpr.cm.grafo.Vertice;
@@ -116,10 +114,13 @@ public class Node {
         return vertices;
     }
 
-    private Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> getGrafoInduzido() {
+    public List<Aresta> getEdgesCovered() {
+        return edgesCovered;
+    }
+
+    public Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> getGrafoInduzido() {
         Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafo;
-        grafo = new GrafoMatrizAdjacencia<VerticeBuscaProfundidade>(Orientacao.NAO_DIRIGIDO);
-//        grafo = GrafoFactory.constroiGrafo(Representacao.MATRIZ_ADJACENCIA, Orientacao.NAO_DIRIGIDO);
+        grafo = new GrafoMatrizAdjacencia<>(Orientacao.NAO_DIRIGIDO);
         for (Aresta aresta : edgesCovered) {
             grafo.adicionaAresta(aresta);
         }

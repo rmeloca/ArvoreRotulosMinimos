@@ -50,6 +50,9 @@ public class GrafoFactory implements Factory {
             }
             for (int i = quantidadeVertices - 1; i > 0; i--) {
                 line = bufferedReader.readLine();
+                if (line == null) {
+                    break;
+                }
                 if (line.isEmpty()) {
                     break;
                 }
@@ -60,7 +63,6 @@ public class GrafoFactory implements Factory {
                     valorLabel = Integer.valueOf(split[j]);
                     if (valorLabel != quantidadeLabels) {
                         grafo.adicionaAresta(new Aresta(verticeOrigem, verticeDestino, valorLabel));
-//                        grafo.adicionaAresta(new Aresta(verticeDestino, verticeOrigem, valorLabel));
                     }
                 }
             }

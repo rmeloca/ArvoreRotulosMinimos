@@ -105,7 +105,7 @@ public class Aestrela implements Algoritmo {
      *
      * @return
      */
-    public List<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> execute() {
+    public List<Aresta> execute() {
         Node minimumF;
         try {
             while (true) {
@@ -137,7 +137,7 @@ public class Aestrela implements Algoritmo {
                 }
             }
             //8. Find a spanning tree of the subgraph.
-            return minimumF.getAcyclicEdges();
+            return minimumF.getEdgesCovered();
         } catch (Exception ex) {
             Logger.getLogger(Aestrela.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -193,7 +193,7 @@ public class Aestrela implements Algoritmo {
      * @return
      */
     private boolean isGoalNode(Node minimumF) {
-        return minimumF.getAcyclicEdges().size() == grafo.getQuantidadeVertices();
+        return minimumF.getGrafoInduzido().getQuantidadeVertices() == grafo.getQuantidadeVertices();
     }
 
 }

@@ -13,6 +13,7 @@ import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,17 +31,20 @@ public class AestrelaTest {
     public void testarAEstrela() {
 
         InputStream inputStream;
-        List<Grafo<VerticeBuscaProfundidade,Aresta<VerticeBuscaProfundidade,VerticeBuscaProfundidade>>> lista;
+        List<Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>>> lista;
         try {
-            inputStream = (getClass().getResourceAsStream("../instancias/group_1/HDGraph20_20.txt"));
+//            inputStream = (getClass().getResourceAsStream("../instancias/group_2_with_n=500/LDGraph500_625.txt"));
+            inputStream = (getClass().getResourceAsStream("../instancias/group_1/LDGraph20_20.txt"));
             lista = GrafoFactory.lerGrafos(Representacao.MATRIZ_ADJACENCIA, Orientacao.NAO_DIRIGIDO, inputStream);
-            Grafo grafo = lista.get(0);
+            Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafo;
+            grafo = lista.get(0);
 
             this.aestrela = new Aestrela(grafo);
-            List<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> resultado;
+            List<Aresta> resultado;
             resultado = this.aestrela.execute();
-            
-            System.out.println("aa");
+            for (Aresta aresta : resultado) {
+                System.out.println(aresta.getVertice1() + " --" + aresta.getPeso() + "-- " + aresta.getVertice2());
+            }
         } catch (IOException ex) {
             Logger.getLogger(AestrelaTest.class.getName()).log(Level.SEVERE, null, ex);
         }

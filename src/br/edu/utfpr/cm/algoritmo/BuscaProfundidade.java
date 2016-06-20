@@ -76,32 +76,26 @@ public class BuscaProfundidade implements Algoritmo {
         BuscaProfundidade.this.dfsVisit(s.getId());
     }
 
-    public void imprimeGrafo(Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> g) {
-        Iterator iterator = g.getVertices();
-        System.out.println("Vertices: ");
-        Vertice ver;
-        while (iterator.hasNext()) {
-            ver = (Vertice) iterator.next();
-            System.out.print(ver);
-            if (ver instanceof VerticeBuscaProfundidade) {
-                System.out.println("  Cor: " + ((VerticeBuscaProfundidade) ver).getCor() + "Tempo desc: " + ((VerticeBuscaProfundidade) ver).getTempoDescoberta());
-                System.out.println(" Timestamp:" + ((VerticeBuscaProfundidade) ver).getTempoDescoberta());
-                System.out.println(" Timestamp:" + ((VerticeBuscaProfundidade) ver).getTempoFinalizacao());
+    public void imprimeGrafo() {
+        Iterator<VerticeBuscaProfundidade> iteratorVertice;
+        VerticeBuscaProfundidade verticeBuscaProfundidade;
+        Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade> aresta;
+        Iterator<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> iteratorAresta;
 
-            }
+        iteratorVertice = g.getVertices();
+        while (iteratorVertice.hasNext()) {
+            verticeBuscaProfundidade = iteratorVertice.next();
+            System.out.print(verticeBuscaProfundidade);
+            System.out.println("  Cor: " + verticeBuscaProfundidade.getCor());
+            System.out.println(" Descoberta:" + verticeBuscaProfundidade.getTempoDescoberta());
+            System.out.println(" Finalizacao:" + verticeBuscaProfundidade.getTempoFinalizacao());
         }
-        System.out.println("Fim Vertices");
-        iterator = g.getArestas();
-        System.out.println("Arestas: ");
-        Aresta a;
-        while (iterator.hasNext()) {
-            a = (Aresta) iterator.next();
-            System.out.println("V1: " + a.getVertice1() + "V2:" + a.getVertice2());
-            if (a instanceof Aresta) {
-                System.out.print("Peso: " + ((Aresta) a).getPeso());
-            }
+        iteratorAresta = g.getArestas();
+        while (iteratorAresta.hasNext()) {
+            aresta = iteratorAresta.next();
+            System.out.println(aresta.getVertice1() + " --" + aresta.getPeso() + "-- " + aresta.getVertice2());
         }
-        System.out.println("Fim Arestas");
+
     }
 
     public List<Aresta> getArestasRetorno() {
