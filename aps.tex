@@ -92,7 +92,11 @@
 
 	Nota-se que ao combinar determinados rótulos o subgrafo obtido pode admitir ciclos, e portanto não configura-se como árvore, todavia, diferente do PAGPM esta pode ser a solução desde que conecte todo o grafo e utilize o menor número possível de rótulos. Neste caso, para tornar o subgrafo uma árvore geradora, basta remover uma aresta qualquer de cada ciclo, uma vez que o objetivo é atingir o menor número de rótulos; Remover uma aresta em nada impacta o número de rótulos utilizados, pois se o fizesse então o subconjunto $L'$ de rótulos em questão não seria a solução uma vez que ao remover uma aresta que forme ciclo obteria-se um número menor de rótulos utilizados e, portanto, esta seria a solução.
 
-	Evidentemente, não seria necessário percorrer todos os elementos do conjunto $C$ uma vez que, sendo este gerado de maneira ordenada progressivamente pelo número de rótulos utilizados, o algoritmo chegaria em seu objetivo na primeira ocorrência de uma árvora geradora que satisfaça os critérios de saída do algoritmo.
+	Evidentemente, não seria necessário percorrer todos os elementos do conjunto $C$ uma vez que, sendo este gerado de maneira ordenada progressivamente pelo número de rótulos utilizados, o algoritmo chegaria em seu objetivo na primeira ocorrência de uma árvora geradora que satisfaça os critérios de saída do algoritmo. Nestas circunstâncias, para obter-se a solução haveria-se necessário buscar linearmente em no máximo todas as combinações de todos os rótulos possíveis com o número de rótulos variando de $1 \dots |V| - 1$, uma vez que o número máximo de arestas necessárias para conectar um grafo é $|V| - 1$ arestas e que cada uma pode assumir um rótulo diferente. Caso o número de rótulos seja menor que $|V| - 1$, então este é o máximo a ser buscado.
+
+	\begin{center}
+	$\displaystyle{\sum_{i = 1}^{\min (|L|, |V| - 1)}{|L| \choose i}}$
+	\end{center}
 
 	Contudo, lançando mão da propriedade matemática de matroides e independência linear, pode-se utilizar um algoritmo de busca (cega, heurística ou local), que não expanda todos os nós e caminhe de acordo o objetivo de maneira a reduzir o número de nós expandidos e, por consequência, o tempo de computação.
 
@@ -163,6 +167,6 @@
 
 \section{Referências}\label{sec:referencia}
 
-https://www.ime.usp.br/~cris/aulas/12_1_6711/slides/aula13.pdf
+%https://www.ime.usp.br/~cris/aulas/12_1_6711/slides/aula13.pdf
 
 \end{document}

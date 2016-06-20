@@ -7,7 +7,6 @@ package br.edu.utfpr.cm.factory;
 
 import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
 import br.edu.utfpr.cm.grafo.Aresta;
-import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import br.edu.utfpr.cm.grafo.Vertice;
 import java.io.IOException;
@@ -46,7 +45,7 @@ public class GrafoFactoryTest {
         }
 
         System.out.println("----------------------------------------");
-        g.removerAresta(new Aresta(new Vertice("19"), new Vertice("0")));
+        g.removerAresta(new Aresta(new VerticeBuscaProfundidade("19"), new VerticeBuscaProfundidade("0")));
         System.out.println("----------------------------------------");
 
         for (Iterator<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> iterator = g.getArestas(); iterator.hasNext();) {

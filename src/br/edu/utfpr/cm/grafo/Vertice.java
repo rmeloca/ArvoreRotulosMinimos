@@ -2,9 +2,9 @@ package br.edu.utfpr.cm.grafo;
 
 import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
 
-public class Vertice {
+public abstract class Vertice {
 
-    private String id;
+    public String id;
 
     public Vertice() {
         this.id = String.valueOf(getClass().hashCode());
@@ -22,6 +22,7 @@ public class Vertice {
         this.id = id;
     }
 
+    @Deprecated
     public VerticeBuscaProfundidade toVerticeBuscaProfundidade() {
         VerticeBuscaProfundidade vBuscaProfundidade = new VerticeBuscaProfundidade();
         vBuscaProfundidade.setId(id);
@@ -29,9 +30,10 @@ public class Vertice {
         return vBuscaProfundidade;
     }
 
+    @Deprecated
     public Vertice toVertice() {
         if (this instanceof VerticeBuscaProfundidade) {
-            Vertice v = new Vertice(id);
+            Vertice v = null;
             return v;
         } else {
             return this;
@@ -69,8 +71,6 @@ public class Vertice {
     }
 
     @Override
-    protected Object clone() {
-        return new Vertice(this.id);
-    }
+    public abstract Object clone();
 
 }

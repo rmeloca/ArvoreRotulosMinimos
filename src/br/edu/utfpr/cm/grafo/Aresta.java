@@ -2,11 +2,14 @@ package br.edu.utfpr.cm.grafo;
 
 public class Aresta<U extends Vertice, V extends Vertice> {
 
-    private Vertice v1;
-    private Vertice v2;
+    private U v1;
+    private V v2;
     double peso;
 
     public Aresta(U v1, V v2) {
+        if (!v1.getClass().equals(v2.getClass())) {
+            throw new RuntimeException("Vértices precisam ser iguais");
+        }
         this.v1 = v1;
         this.v2 = v2;
         this.peso = 1;
@@ -26,19 +29,19 @@ public class Aresta<U extends Vertice, V extends Vertice> {
         this.peso = peso;
     }
 
-    public Vertice getVertice1() {
+    public U getVertice1() {
         return v1;
     }
 
-    public void setVertice1(Vertice v1) {
+    public void setVertice1(U v1) {
         this.v1 = v1;
     }
 
-    public Vertice getVertice2() {
+    public V getVertice2() {
         return v2;
     }
 
-    public void setVertice2(Vertice v2) {
+    public void setVertice2(V v2) {
         this.v2 = v2;
     }
 

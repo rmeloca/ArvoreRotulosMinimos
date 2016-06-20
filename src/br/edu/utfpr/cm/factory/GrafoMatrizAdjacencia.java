@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Vertice>> {
+public class GrafoMatrizAdjacencia<V extends Vertice> implements Grafo<V, Aresta<V, V>> {
 
     private double[][] grafo;
     private int numeroMaxVertices;
     private int numeroVertices;
     private final Orientacao orientacao;
-    private final List<Aresta<Vertice, Vertice>> arestas;
-    private final HashMap<Vertice, Integer> verticeInteger;
-    private final HashMap<Integer, Vertice> integerVertice;
+    private final List<Aresta<V, V>> arestas;
+    private final HashMap<V, Integer> verticeInteger;
+    private final HashMap<Integer, V> integerVertice;
 
     public GrafoMatrizAdjacencia(Orientacao orientacao) {
         this.orientacao = orientacao;
@@ -60,8 +60,8 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     }
 
     @Override
-    public Iterator<Vertice> getVerticesAdjacentes(Vertice u) {
-        List<Vertice> verticesAdjacentes = new ArrayList<>();
+    public Iterator<V> getVerticesAdjacentes(Vertice u) {
+        List<V> verticesAdjacentes = new ArrayList<>();
         if (u == null || !verticeInteger.containsKey(u)) {
             return verticesAdjacentes.iterator();
         }
@@ -75,18 +75,18 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     }
 
     @Override
-    public Iterator<Vertice> getVertices() {
+    public Iterator<V> getVertices() {
         return verticeInteger.keySet().iterator();
     }
 
     @Override
-    public Iterator<Aresta<Vertice, Vertice>> getArestas() {
+    public Iterator<Aresta<V, V>> getArestas() {
         return arestas.iterator();
     }
 
     @Override
-    public Vertice getVertice(String idVertice) {
-        for (Vertice vertice : verticeInteger.keySet()) {
+    public V getVertice(String idVertice) {
+        for (V vertice : verticeInteger.keySet()) {
             if (vertice.getId().equals(idVertice)) {
                 return vertice;
             }
@@ -95,7 +95,7 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     }
 
     @Override
-    public void adicionaVertice(Vertice verticeNoGrafo, Vertice verticeAdicionado) {
+    public void adicionaVertice(V verticeNoGrafo, V verticeAdicionado) {
         if (!this.verticeInteger.containsKey(verticeNoGrafo)) {
             return;
         }
@@ -105,7 +105,7 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     }
 
     @Override
-    public void adicionaVertice(Vertice verticeAdicionado) {
+    public void adicionaVertice(V verticeAdicionado) {
         if (this.verticeInteger.containsKey(verticeAdicionado)) {
             return;
         }
@@ -118,7 +118,7 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     }
 
     @Override
-    public void adicionaAresta(Aresta<Vertice, Vertice> arestaAdicionada) {
+    public void adicionaAresta(Aresta<V, V> arestaAdicionada) {
         if (this.arestas.contains(arestaAdicionada)) {
             return;
         }
@@ -140,7 +140,7 @@ public class GrafoMatrizAdjacencia implements Grafo<Vertice, Aresta<Vertice, Ver
     }
 
     @Override
-    public void removerAresta(Aresta<Vertice, Vertice> arestaRemovida) {
+    public void removerAresta(Aresta<V, V> arestaRemovida) {
 
         if (!this.arestas.contains(arestaRemovida)) {
             return;

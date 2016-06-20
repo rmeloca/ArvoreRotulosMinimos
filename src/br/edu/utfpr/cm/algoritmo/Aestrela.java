@@ -7,6 +7,7 @@ package br.edu.utfpr.cm.algoritmo;
 
 import br.edu.utfpr.cm.algoritmo.entidades.Node;
 import br.edu.utfpr.cm.algoritmo.entidades.Label;
+import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import java.util.ArrayList;
@@ -104,7 +105,7 @@ public class Aestrela implements Algoritmo {
      *
      * @return
      */
-    public List<Aresta> execute() {
+    public List<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> execute() {
         Node minimumF;
         try {
             while (true) {
@@ -192,7 +193,7 @@ public class Aestrela implements Algoritmo {
      * @return
      */
     private boolean isGoalNode(Node minimumF) {
-        return minimumF.getVerticesCovered().size() == grafo.getQuantidadeVertices();
+        return minimumF.getAcyclicEdges().size() == grafo.getQuantidadeVertices();
     }
 
 }

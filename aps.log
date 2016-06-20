@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  18 JUN 2016 19:44
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  19 JUN 2016 23:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -652,7 +652,7 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 61.
 
-[2] [3] [4]
+[2] [3] [4] [5]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: xetex
 * paper: a4paper
@@ -687,12 +687,12 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 
 File: ClassDiagram.png Graphic file (type QTm)
  <use  "ClassDiagram.png" >
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 140
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 150
 .
 
 (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [5] [6
+) [6] [7
 
 
 
@@ -701,21 +701,18 @@ File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 7535 strings out of 495638
- 103832 string characters out of 6187352
- 220462 words of memory out of 5000000
- 10556 multiletter control sequences out of 15000+600000
+ 7536 strings out of 495638
+ 103851 string characters out of 6187352
+ 220482 words of memory out of 5000000
+ 10557 multiletter control sequences out of 15000+600000
  53073 words of font info for 58 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 43i,10n,43p,908b,3440s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,10n,43p,908b,3450s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on aps.pdf (6 pages).
+Output written on aps.pdf (7 pages).

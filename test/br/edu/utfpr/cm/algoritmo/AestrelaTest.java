@@ -37,7 +37,10 @@ public class AestrelaTest {
             Grafo grafo = lista.get(0);
 
             this.aestrela = new Aestrela(grafo);
-            this.aestrela.execute();
+            List<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> resultado;
+            resultado = this.aestrela.execute();
+            
+            System.out.println("aa");
         } catch (IOException ex) {
             Logger.getLogger(AestrelaTest.class.getName()).log(Level.SEVERE, null, ex);
         }

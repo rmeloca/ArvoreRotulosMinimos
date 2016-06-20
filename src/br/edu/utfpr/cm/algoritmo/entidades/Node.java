@@ -7,12 +7,14 @@ package br.edu.utfpr.cm.algoritmo.entidades;
 
 import br.edu.utfpr.cm.algoritmo.BuscaProfundidade;
 import br.edu.utfpr.cm.factory.GrafoFactory;
+import br.edu.utfpr.cm.factory.GrafoMatrizAdjacencia;
 import br.edu.utfpr.cm.factory.Orientacao;
 import br.edu.utfpr.cm.factory.Representacao;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -114,25 +116,38 @@ public class Node {
         return vertices;
     }
 
-    private Grafo getGrafoInduzido() {
-        Grafo grafo = GrafoFactory.constroiGrafo(Representacao.MATRIZ_ADJACENCIA, Orientacao.NAO_DIRIGIDO);
+    private Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> getGrafoInduzido() {
+        Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafo;
+        grafo = new GrafoMatrizAdjacencia<VerticeBuscaProfundidade>(Orientacao.NAO_DIRIGIDO);
+//        grafo = GrafoFactory.constroiGrafo(Representacao.MATRIZ_ADJACENCIA, Orientacao.NAO_DIRIGIDO);
         for (Aresta aresta : edgesCovered) {
             grafo.adicionaAresta(aresta);
         }
         return grafo;
     }
 
-    public List<Aresta> getAcyclicEdges() {
+    public List<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> getAcyclicEdges() {
         Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafoInduzido;
         BuscaProfundidade buscaProfundidade;
-        
+        List<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> listaArestas;
+
+        listaArestas = new ArrayList<>();
         grafoInduzido = getGrafoInduzido();
-        buscaProfundidade = new BuscaProfundidade(grafoInduzido, grafoInduzido.getVertice("0"));
-        
+        if (grafoInduzido.getQuantidadeVertices() == 0) {
+            return listaArestas;
+        }
+        buscaProfundidade = new BuscaProfundidade(grafoInduzido, grafoInduzido.getVertices().next());
+
         buscaProfundidade.dfs();
         buscaProfundidade.removeArestasRetorno();
-        
-        return (List<Aresta>) buscaProfundidade.getG().getArestas();
+
+        Iterator<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> arestas;
+        arestas = buscaProfundidade.getG().getArestas();
+        while (arestas.hasNext()) {
+            Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade> next = arestas.next();
+            listaArestas.add(next);
+        }
+        return listaArestas;
     }
 
     @Override

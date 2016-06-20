@@ -52,4 +52,17 @@ public class VerticeBuscaProfundidade extends Vertice {
     public String toString() {
         return this.getId();
     }
+
+    @Override
+    public Object clone() {
+        VerticeBuscaProfundidade verticeBuscaProfundidade = new VerticeBuscaProfundidade();
+        verticeBuscaProfundidade.setCor(this.cor);
+        verticeBuscaProfundidade.setId(this.id);
+        if (this.pai != null) {
+            verticeBuscaProfundidade.setPai((VerticeBuscaProfundidade) this.pai.clone());
+        }
+        verticeBuscaProfundidade.setTempoDescoberta(this.tempoDescoberta);
+        verticeBuscaProfundidade.setTempoFinalizacao(this.tempoFinalizacao);
+        return verticeBuscaProfundidade;
+    }
 }

@@ -3,7 +3,6 @@ package br.edu.utfpr.cm.algoritmo;
 import br.edu.utfpr.cm.algoritmo.entidades.Cor;
 import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
 import br.edu.utfpr.cm.grafo.Aresta;
-import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
@@ -35,14 +34,12 @@ public class BuscaProfundidade implements Algoritmo {
         vertices = g.getVertices();
         while (vertices.hasNext()) {
             u = vertices.next();
-//            u = ((Vertice) vertices.next()).toVerticeBuscaProfundidade();
             u.setCor(Cor.Branco);
             u.setPai(null);
         }
         timestamp = 0;
         vertices = g.getVertices();
         while (vertices.hasNext()) {
-//            u = ((Vertice) vertices.next()).toVerticeBuscaProfundidade();
             u = vertices.next();
             if (u.getCor().equals(Cor.Branco)) {
                 dfsVisit(u.getId());
@@ -54,17 +51,12 @@ public class BuscaProfundidade implements Algoritmo {
         VerticeBuscaProfundidade u;
         Iterator<VerticeBuscaProfundidade> verticesAdjacentes;
         VerticeBuscaProfundidade verticeAdjacente;
-//        VerticeBuscaProfundidade v;
-
-//        v = g.getVertice(idVertice);
-//        u = v.toVerticeBuscaProfundidade();
         u = g.getVertice(idVertice);
         timestamp++;
         u.setTempoDescoberta(timestamp);
         u.setCor(Cor.Cinza);
         verticesAdjacentes = g.getVerticesAdjacentes(u);
         while (verticesAdjacentes.hasNext()) {
-//            verticeAdjacente = ((Vertice) verticesAdjacentes.next()).toVerticeBuscaProfundidade();
             verticeAdjacente = verticesAdjacentes.next();
             if (verticeAdjacente.getCor().equals(Cor.Branco)) {
                 verticeAdjacente.setPai(u);
@@ -115,7 +107,8 @@ public class BuscaProfundidade implements Algoritmo {
     public List<Aresta> getArestasRetorno() {
         return arestasRetorno;
     }
-    public void removeArestasRetorno(){
+
+    public void removeArestasRetorno() {
         for (Aresta aresta : arestasRetorno) {
             g.removerAresta(aresta);
         }
