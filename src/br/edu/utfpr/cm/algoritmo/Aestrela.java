@@ -7,7 +7,6 @@ package br.edu.utfpr.cm.algoritmo;
 
 import br.edu.utfpr.cm.algoritmo.entidades.Node;
 import br.edu.utfpr.cm.algoritmo.entidades.Label;
-import br.edu.utfpr.cm.algoritmo.entidades.VerticeBuscaProfundidade;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
 import java.util.ArrayList;
@@ -121,23 +120,22 @@ public class Aestrela implements Algoritmo {
                 //4. If n is a goal node (a spanning subgraph is formed), goto Step 8.
                 if (isGoalNode(minimumF)) {
                     break;
-                } else {
-                    //5. Otherwise expand n
-                    for (Node son : expandNode(minimumF)) {
-                        //6. For each child son of n
-                        //If n1 is not already on OPEN or CLOSE
-                        if (!generatedNodes.contains(son) && !tracePath.contains(son)) {
-                            //calculate f(son) = g(son) + h(son)
-                            //where g(son) = g(n) + 1 and g(r) = 0.
-                            son.calculateF();
-                            //Put son into OPEN.
-                            generatedNodes.add(son);
-                        }
+                }
+                //5. Otherwise expand n
+                for (Node son : expandNode(minimumF)) {
+                    //6. For each child son of n
+                    //If n1 is not already on OPEN or CLOSE
+                    if (!generatedNodes.contains(son) && !tracePath.contains(son)) {
+                        //calculate f(son) = g(son) + h(son)
+                        //where g(son) = g(n) + 1 and g(r) = 0.
+                        son.calculateF();
+                        //Put son into OPEN.
+                        generatedNodes.add(son);
                     }
                 }
             }
             //8. Find a spanning tree of the subgraph.
-            return minimumF.getEdgesCovered();
+            return minimumF.getAcyclicEdges();
         } catch (Exception ex) {
             Logger.getLogger(Aestrela.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -193,7 +191,7 @@ public class Aestrela implements Algoritmo {
      * @return
      */
     private boolean isGoalNode(Node minimumF) {
-        return minimumF.getGrafoInduzido().getQuantidadeVertices() == grafo.getQuantidadeVertices();
+        return minimumF.getAcyclicEdges().size() == grafo.getQuantidadeVertices() - 1;
     }
 
 }

@@ -6,6 +6,7 @@
 package br.edu.utfpr.cm.algoritmo.entidades;
 
 import br.edu.utfpr.cm.algoritmo.BuscaProfundidade;
+import br.edu.utfpr.cm.algoritmo.Romulo;
 import br.edu.utfpr.cm.factory.GrafoMatrizAdjacencia;
 import br.edu.utfpr.cm.factory.Orientacao;
 import br.edu.utfpr.cm.grafo.Aresta;
@@ -127,7 +128,13 @@ public class Node {
         return grafo;
     }
 
-    public List<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> getAcyclicEdges() {
+    public List<Aresta> getAcyclicEdges() {
+        Romulo romulo = new Romulo(edgesCovered);
+        romulo.executar();
+        return romulo.getSelectedEdges();
+    }
+
+    public List<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> getAcyclicEdgesDFS() {
         Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafoInduzido;
         BuscaProfundidade buscaProfundidade;
         List<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> listaArestas;

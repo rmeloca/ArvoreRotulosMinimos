@@ -14,10 +14,12 @@ public class GrafoMatrizAdjacencia<V extends Vertice> implements Grafo<V, Aresta
     private double[][] grafo;
     private int numeroMaxVertices;
     private int numeroVertices;
+    private int id;
     private final Orientacao orientacao;
     private final List<Aresta<V, V>> arestas;
     private final HashMap<V, Integer> verticeInteger;
     private final HashMap<Integer, V> integerVertice;
+
 
     public GrafoMatrizAdjacencia(Orientacao orientacao) {
         this.orientacao = orientacao;
@@ -172,4 +174,11 @@ public class GrafoMatrizAdjacencia<V extends Vertice> implements Grafo<V, Aresta
         return this.numeroVertices;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

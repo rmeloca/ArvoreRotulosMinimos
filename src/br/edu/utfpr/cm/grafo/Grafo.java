@@ -48,4 +48,7 @@ public interface Grafo<V extends Vertice, A extends Aresta<V, V>> {
     public void removerAresta(A aresta);
 
     public void removerVertice(V vertice);
+    
+    public void setId(int i);
+    public int getId();
 }
