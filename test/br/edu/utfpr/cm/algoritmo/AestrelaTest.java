@@ -11,16 +11,12 @@ import br.edu.utfpr.cm.factory.Orientacao;
 import br.edu.utfpr.cm.factory.Representacao;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 import org.junit.Test;
 
 /**
@@ -40,30 +36,31 @@ public class AestrelaTest {
         List<String> arquivosTeste;
         arquivosTeste = new ArrayList<>();
         try {
-            arquivosTeste.add("../instancias/group_1/LDGraph20_20.txt");
-            arquivosTeste.add("../instancias/group_1/MDGraph20_20.txt");
-            arquivosTeste.add("../instancias/group_1/HDGraph20_20.txt");
-            arquivosTeste.add("../instancias/group_1/LDGraph30_30.txt");
-            arquivosTeste.add("../instancias/group_1/MDGraph30_30.txt");
-            arquivosTeste.add("../instancias/group_1/HDGraph30_30.txt");
-            arquivosTeste.add("../instancias/group_1/LDGraph40_40.txt");
-            arquivosTeste.add("../instancias/group_1/MDGraph40_40.txt");
-            arquivosTeste.add("../instancias/group_1/HDGraph40_40.txt");
+//            arquivosTeste.add("../instancias/group_1/LDGraph20_20.txt");
+//            arquivosTeste.add("../instancias/group_1/MDGraph20_20.txt");
+//            arquivosTeste.add("../instancias/group_1/HDGraph20_20.txt");
+//            arquivosTeste.add("../instancias/group_1/LDGraph30_30.txt");
+//            arquivosTeste.add("../instancias/group_1/MDGraph30_30.txt");
+//            arquivosTeste.add("../instancias/group_1/HDGraph30_30.txt");
+//            arquivosTeste.add("../instancias/group_1/LDGraph40_40.txt");
+//            arquivosTeste.add("../instancias/group_1/MDGraph40_40.txt");
+//            arquivosTeste.add("../instancias/group_1/HDGraph40_40.txt");
             arquivosTeste.add("../instancias/group_1/LDGraph50_50.txt");
             arquivosTeste.add("../instancias/group_1/MDGraph50_50.txt");
             arquivosTeste.add("../instancias/group_1/HDGraph50_50.txt");
             for (String arquivoNome : arquivosTeste) {
+                System.out.println("@@@ " + arquivoNome + " @@@");
                 arquivoStream = (getClass().getResourceAsStream(arquivoNome));
                 lista = GrafoFactory.lerGrafos(Representacao.MATRIZ_ADJACENCIA, Orientacao.NAO_DIRIGIDO, arquivoStream);
 
                 for (Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafo : lista) {
                     this.aestrela = new Aestrela(grafo);
-                    resultado = this.aestrela.execute();
+                    this.aestrela.executar();
+                    resultado = this.aestrela.getSpanningTree();
                     System.out.println("*** Grafo: " + grafo.getId() + " ***");
                     for (Aresta aresta : resultado) {
                         System.out.println(aresta.getVertice1() + " --" + aresta.getPeso() + "-- " + aresta.getVertice2());
                     }
-                    System.out.println("******");
                 }
             }
         } catch (IOException ex) {

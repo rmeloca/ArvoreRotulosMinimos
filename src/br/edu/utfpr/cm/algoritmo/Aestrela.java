@@ -38,6 +38,7 @@ public class Aestrela implements Algoritmo {
      * Grafo sobre o qual opera-se o algoritmo.
      */
     private final Grafo grafo;
+    private List<Aresta> spanningTree;
 
     /**
      * Construtor.
@@ -58,6 +59,7 @@ public class Aestrela implements Algoritmo {
 
         //1. Put the root node r on OPEN.
         generatedNodes.add(new Node(null, unusedLabels, grafo.getQuantidadeVertices()));
+        this.spanningTree = new ArrayList<>();
     }
 
     /**
@@ -92,19 +94,14 @@ public class Aestrela implements Algoritmo {
         return unusedLabels;
     }
 
-    @Override
-    public void executar() {
-        throw new UnsupportedOperationException("Not supported.");
-    }
-
     /**
      * Input: A graph G = (V, E) where each edge has a label in L and |V| = n,
      * |E| = m, and |L| = l. Output: A spanning tree with minimum number of tree
      * edge labels.
      *
-     * @return
      */
-    public List<Aresta> execute() {
+    @Override
+    public void executar() {
         Node minimumF;
         try {
             while (true) {
@@ -119,6 +116,8 @@ public class Aestrela implements Algoritmo {
                 tracePath.add(minimumF);
                 //4. If n is a goal node (a spanning subgraph is formed), goto Step 8.
                 if (isGoalNode(minimumF)) {
+                    //8. Find a spanning tree of the subgraph.
+                    this.spanningTree = minimumF.getAcyclicEdges();
                     break;
                 }
                 //5. Otherwise expand n
@@ -134,12 +133,13 @@ public class Aestrela implements Algoritmo {
                     }
                 }
             }
-            //8. Find a spanning tree of the subgraph.
-            return minimumF.getAcyclicEdges();
         } catch (Exception ex) {
             Logger.getLogger(Aestrela.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+    }
+
+    public List<Aresta> getSpanningTree() {
+        return spanningTree;
     }
 
     /**
