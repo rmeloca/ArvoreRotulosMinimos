@@ -134,10 +134,11 @@ public class Node {
         return romulo.getSelectedEdges();
     }
 
-    public List<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> getAcyclicEdgesDFS() {
+    @Deprecated
+    public List<Aresta> getAcyclicEdgesDFS() {
         Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafoInduzido;
         BuscaProfundidade buscaProfundidade;
-        List<Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> listaArestas;
+        List<Aresta> listaArestas;
 
         listaArestas = new ArrayList<>();
         grafoInduzido = getGrafoInduzido();

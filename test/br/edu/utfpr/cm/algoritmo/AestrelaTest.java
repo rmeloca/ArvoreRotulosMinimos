@@ -38,16 +38,16 @@ public class AestrelaTest {
         try {
 //            arquivosTeste.add("../instancias/group_1/LDGraph20_20.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph20_20.txt");
-//            arquivosTeste.add("../instancias/group_1/HDGraph20_20.txt");
+            arquivosTeste.add("../instancias/group_1/HDGraph20_20.txt");
 //            arquivosTeste.add("../instancias/group_1/LDGraph30_30.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph30_30.txt");
 //            arquivosTeste.add("../instancias/group_1/HDGraph30_30.txt");
 //            arquivosTeste.add("../instancias/group_1/LDGraph40_40.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph40_40.txt");
 //            arquivosTeste.add("../instancias/group_1/HDGraph40_40.txt");
-            arquivosTeste.add("../instancias/group_1/LDGraph50_50.txt");
-            arquivosTeste.add("../instancias/group_1/MDGraph50_50.txt");
-            arquivosTeste.add("../instancias/group_1/HDGraph50_50.txt");
+//            arquivosTeste.add("../instancias/group_1/LDGraph50_50.txt");
+//            arquivosTeste.add("../instancias/group_1/MDGraph50_50.txt");
+//            arquivosTeste.add("../instancias/group_1/HDGraph50_50.txt");
             for (String arquivoNome : arquivosTeste) {
                 System.out.println("@@@ " + arquivoNome + " @@@");
                 arquivoStream = (getClass().getResourceAsStream(arquivoNome));
