@@ -23,7 +23,8 @@ import java.util.logging.Logger;
  * @author romulo
  */
 public class Aestrela implements Algoritmo {
-
+    
+    private Node goal;
     /**
      * OPEN is the storage place for all generated but unexpanded nodes.
      */
@@ -38,6 +39,10 @@ public class Aestrela implements Algoritmo {
      * Grafo sobre o qual opera-se o algoritmo.
      */
     private final Grafo grafo;
+
+    /**
+     * Árvore de ŕótulos mínimos
+     */
     private List<Aresta> spanningTree;
 
     /**
@@ -118,6 +123,7 @@ public class Aestrela implements Algoritmo {
                 if (isGoalNode(minimumF)) {
                     //8. Find a spanning tree of the subgraph.
                     this.spanningTree = minimumF.getAcyclicEdges();
+                    goal = minimumF;
                     break;
                 }
                 //5. Otherwise expand n
@@ -187,11 +193,15 @@ public class Aestrela implements Algoritmo {
     /**
      * Apenas uma componente é formada.
      *
-     * @param minimumF
+     * @param node
      * @return
      */
-    private boolean isGoalNode(Node minimumF) {
-        return minimumF.getAcyclicEdges().size() == grafo.getQuantidadeVertices() - 1;
+    private boolean isGoalNode(Node node) {
+        return node.getAcyclicEdges().size() == grafo.getQuantidadeVertices() - 1;
+    }
+
+    public Node getGoal() {
+        return goal;
     }
 
 }
