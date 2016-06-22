@@ -45,7 +45,7 @@ public class AestrelaTest {
 //            arquivosTeste.add("../instancias/group_1/LDGraph20_20.txt");
 //            arquivosTeste.add("../instancias/group_1/HDGraph30_30.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph30_30.txt");
-//            arquivosTeste.add("../instancias/group_1/LDGraph30_30.txt");
+            arquivosTeste.add("../instancias/group_1/LDGraph30_30.txt");
 //            arquivosTeste.add("../instancias/group_1/HDGraph40_40.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph40_40.txt");
             arquivosTeste.add("../instancias/group_1/LDGraph40_40.txt");
