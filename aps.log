@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  19 JUN 2016 23:25
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  22 JUN 2016 02:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -652,7 +652,18 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 61.
 
-[2] [3] [4] [5]
+[2] [3]
+File: aestrela.png Graphic file (type QTm)
+ <use  "aestrela.png" >
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 122
+.
+ (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
+File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+[5] [6]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: xetex
 * paper: a4paper
@@ -686,13 +697,19 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 File: ClassDiagram.png Graphic file (type QTm)
- <use  "ClassDiagram.png" >
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 150
-.
+ <use  "ClassDiagram.png" > [7]
+Underfull \hbox (badness 2538) in paragraph at lines 182--183
+\OT1/lmr/m/n/12 Bibliographic re-fe-ren-ces must be unam-bi-guous and uni-form.
+ We re-com-
+ []
 
-(/usr/share/texmf/tex/latex/lm/ot1lmss.fd
-File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [6] [7
+
+Underfull \hbox (badness 1622) in paragraph at lines 182--183
+\OT1/lmr/m/n/12 mend gi-ving the author na-mes re-fe-ren-ces in brac-kets, e.g.
+ [[]],
+ []
+
+(./aps.bbl) [8
 
 
 
@@ -707,12 +724,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 7536 strings out of 495638
- 103851 string characters out of 6187352
- 220482 words of memory out of 5000000
- 10557 multiletter control sequences out of 15000+600000
+ 7549 strings out of 495638
+ 103988 string characters out of 6187352
+ 220498 words of memory out of 5000000
+ 10566 multiletter control sequences out of 15000+600000
  53073 words of font info for 58 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 43i,10n,43p,908b,3450s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,10n,43p,1229b,3450s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on aps.pdf (7 pages).
+Output written on aps.pdf (8 pages).

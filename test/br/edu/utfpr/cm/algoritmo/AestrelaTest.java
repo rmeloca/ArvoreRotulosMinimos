@@ -36,9 +36,9 @@ public class AestrelaTest {
         List<String> arquivosTeste;
         arquivosTeste = new ArrayList<>();
         try {
-//            arquivosTeste.add("../instancias/group_1/LDGraph20_20.txt");
+            arquivosTeste.add("../instancias/group_1/LDGraph20_20.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph20_20.txt");
-            arquivosTeste.add("../instancias/group_1/HDGraph20_20.txt");
+//            arquivosTeste.add("../instancias/group_1/HDGraph20_20.txt");
 //            arquivosTeste.add("../instancias/group_1/LDGraph30_30.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph30_30.txt");
 //            arquivosTeste.add("../instancias/group_1/HDGraph30_30.txt");

@@ -38,6 +38,10 @@ public class Aestrela implements Algoritmo {
      * Grafo sobre o qual opera-se o algoritmo.
      */
     private final Grafo grafo;
+
+    /**
+     * Árvore de ŕótulos mínimos
+     */
     private List<Aresta> spanningTree;
 
     /**
@@ -187,11 +191,11 @@ public class Aestrela implements Algoritmo {
     /**
      * Apenas uma componente é formada.
      *
-     * @param minimumF
+     * @param node
      * @return
      */
-    private boolean isGoalNode(Node minimumF) {
-        return minimumF.getAcyclicEdges().size() == grafo.getQuantidadeVertices() - 1;
+    private boolean isGoalNode(Node node) {
+        return node.getAcyclicEdges().size() == grafo.getQuantidadeVertices() - 1;
     }
 
 }
