@@ -34,7 +34,7 @@ public class RomuloTest {
         InputStream inputStream;
         List<Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>>> lista;
         try {
-            inputStream = (getClass().getResourceAsStream("../instancias/group_2_with_n=500/HDGraph500_625.txt"));
+            inputStream = (getClass().getResourceAsStream("../instancias/group_2_with_n=200/HDGraph200_100.txt"));
 //            inputStream = (getClass().getResourceAsStream("../instancias/group_2_with_n=500/HDGraph100_25.txt"));
             lista = GrafoFactory.lerGrafos(Representacao.MATRIZ_ADJACENCIA, Orientacao.NAO_DIRIGIDO, inputStream);
             Grafo<VerticeBuscaProfundidade, Aresta<VerticeBuscaProfundidade, VerticeBuscaProfundidade>> grafo;

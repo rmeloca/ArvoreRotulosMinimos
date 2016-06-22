@@ -28,13 +28,13 @@ public class Romulo implements Algoritmo {//extends prim e kruskal. Arestas segu
         verticesCovered = new ArrayList<>();
         verticesUncovered = new ArrayList<>();
         selectedEdges = new ArrayList<>();
-        HashMap<Vertice, Boolean> vertices = new HashMap<>();
         for (Aresta edge : edges) {
-            vertices.put(edge.getVertice1(), Boolean.TRUE);
-            vertices.put(edge.getVertice2(), Boolean.TRUE);
-        }
-        for (Map.Entry<Vertice, Boolean> entry : vertices.entrySet()) {
-            verticesUncovered.add(entry.getKey());
+            if (!verticesUncovered.contains(edge.getVertice1())) {
+                verticesUncovered.add(edge.getVertice1());
+            }
+            if (!verticesUncovered.contains(edge.getVertice2())) {
+                verticesUncovered.add(edge.getVertice2());
+            }
         }
     }
 
