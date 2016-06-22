@@ -112,13 +112,15 @@
 
 		Uma vez que o conjunto onde buscar a solução para o PAGRM é muito grande e este seja um matroide, isto é, o conjunto de florestas, é possível buscar a solução exata para o problema com um algoritmo de busca gulosa, como é o A*, que sempre escolhe para expandir o nó que estiver mais próximo do objetivo, segundo uma função heurística que estima a distância a ser percorrida.
 
-		Para adequar o algoritmo A* ao PAGRM, de acordo com a literatura, definiu-se o que são os nós e como é dada a função heurística que mede a distância já percorrida e a distância a ser percorrida. Para o problema definiu-se que os nós são os subgrafos induzidos pelo conjunto $L'$, tal que o conjunto $L' = \{l'_1, l'_2 \dots l'_n \mid n = |L'|\} \wedge L' \subseteq L$ são os rótulos utilizados no subgrafo. A função heurística $f(node) = g(node) + h(node)$ têm seus valores calculados por meio de $g(node) = |L'|$ tal que $L'$ são os rótulos utilizados no nó e $h(node)$ é uma estimativa dos nós a serem usados, que é computado por meio do menor número de rótulos que cobrem o número de arestas que ainda faltam ser cobertas.
+		Para adequar o algoritmo A* ao PAGRM, de acordo com a literatura, definiu-se o que são os nós e como é dada a função heurística que mede a distância já percorrida e a distância a ser percorrida. Para o problema definiu-se que os nós são os subgrafos induzidos pelo conjunto $L'$, tal que o conjunto $L' = \{l'_1, l'_2 \dots l'_n \mid n = |L'|\} \wedge L' \subseteq L$ são os rótulos utilizados no subgrafo. A função heurística $f(node) = g(node) + h(node)$ têm seus valores calculados tal que $g(node)$ meça os rótulos utilizados no nó e $h(node)$ é estime os nós a serem utilizados, computado por meio do menor número de rótulos que cobrem o número de arestas que ainda faltam ser cobertas.
 
-		Deste modo, para um subgrafo $G' = \{V', E', L'\}$ de um grafo $G = \{V, E, L\}$ e $E = \{e_1, e_2 \dots e_n \mid e_1 \geq e_2 \geq \dots \geq e_n \wedge n = |L'|\}$.
+		Deste modo, para um subgrafo $G' = \{V', E', L'\}$ de um grafo $G = \{V, E, L\}$, seja $E = \{e_1, e_2 \dots e_n \mid e_1 \geq e_2 \geq \dots \geq e_n \wedge n = |L'| \wedge e = |E(l)|\}$. Cada elemento $e$ corresponde ao número de arestas que o rótulo cobre no grafo.
 
-		$g(node) = |L'|$ e $h(node) = \displaystyle{\sum_{i = 1}^{j}{e_i}}$. Cada elemento $e$ corresponde ao número de arestas que o rótulo cobre. Na prática a lista de rótulos não utilizados é ordenada pelo número de arestas que cobre. Para os cálculos com o número de arestas que um rótulo cobre, são removidos os ciclos.
+		$g(node) = |L'|$
 
-		Abaixo ilustra-se a busca A* entre todas as combinações possíveis de rótulos, como já discutido. Seu funcionamento orientado ao objetivo pode ser observado.
+		$h(node) = \displaystyle{\min j \sum_{i = 1}^{j}{e_i} \geq (|V| - 1) - |E'| \mid E' \in T'}$
+
+		Na prática a lista de rótulos não utilizados é ordenada pelo número de arestas que cobre. Para os cálculos com o número de arestas que um rótulo cobre, são removidos os ciclos. Abaixo ilustra-se a busca A* entre todas as combinações possíveis de rótulos, como já discutido. Seu funcionamento orientado ao objetivo pode ser observado.
 
 		\begin{center}
 		\begin{figure}[H]
