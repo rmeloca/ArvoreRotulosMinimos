@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.5.2)  22 JUN 2016 20:06
+=======
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  22 JUN 2016 19:59
+>>>>>>> b5a91b4a57583596dc7267bb89cd09b3d86a91d7
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -616,6 +620,7 @@ n[]ao-dirigido e co-nexo, tal que $\OML/cmm/m/it/12 V \OT1/cmr/m/n/12 =
 [3]
 File: aestrela.png Graphic file (type QTm)
  <use  "aestrela.png" >
+<<<<<<< HEAD
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 128.
 
 
@@ -629,6 +634,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4]
 [5] [6]
+=======
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 130
+.
+ (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
+File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+[4] [5] [6]
+>>>>>>> b5a91b4a57583596dc7267bb89cd09b3d86a91d7
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: xetex
 * paper: a4paper
@@ -662,7 +675,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 File: ClassDiagram.png Graphic file (type QTm)
+<<<<<<< HEAD
  <use  "ClassDiagram.png" > [7] (./aps.bbl [8
+=======
+ <use  "ClassDiagram.png" > [7] (./aps.bbl) [8
+
+
+>>>>>>> b5a91b4a57583596dc7267bb89cd09b3d86a91d7
 
 
 
@@ -679,6 +698,10 @@ Here is how much of TeX's memory you used:
  10577 multiletter control sequences out of 15000+600000
  17176 words of font info for 60 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
+<<<<<<< HEAD
  43i,13n,43p,908b,3427s stack positions out of 5000i,500n,10000p,200000b,80000s
+=======
+ 43i,13n,43p,908b,3457s stack positions out of 5000i,500n,10000p,200000b,80000s
+>>>>>>> b5a91b4a57583596dc7267bb89cd09b3d86a91d7
 
 Output written on aps.pdf (9 pages).
