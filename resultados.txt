@@ -1,0 +1,32 @@
+20 20
+.8- Total: 187ms Grafos: 10 Média: 18ms Labels: 2.8
+.5- Total: 42ms Grafos: 10 Média: 4ms Labels: 3.6
+.2- Total: 41ms Grafos: 5 Média: 8ms Labels: 7.8
+30 30
+.8- Total: 1045ms Grafos: 10 Média: 104ms Labels: 2.9
+.5- Total: 1367ms Grafos: 10 Média: 136ms Labels: 4.1
+.2- Total: 8653ms Grafos: 10 Média: 865ms Labels: 8.7
+40 40
+.8- Total: 4908ms Grafos: 10 Média: 490ms Labels: 2.7
+.5- Total: 3230ms Grafos: 10 Média: 323ms Labels: 4.1
+.2- Total: 1444ms Grafos: 10 Média: 144ms Labels: 8.9
+50 50
+.8- Total: 21553ms Grafos: 10 Média: 2155ms Labels: 3.0
+.5- Total: 198664ms Grafos: 10 Média: 19866ms Labels: 4.5
+.2- Total: 169555ms grafos: 9 media: 18839ms Labels: 10.55
+100 25
+.8- Total: 21019ms Grafos: 10 Média: 2101ms Labels: 1.8
+.5- Total: 23032ms Grafos: 10 Média: 2303ms Labels: 2.0
+.2- Total: NF grafos:NF media: NF Labels: NF
+100 50 10
+.8- Total: 193847ms Grafos: 10 Média: 19384ms Labels: 2.0
+.5- Total: ms Grafos:  Média: ms Labels: 
+.2- Total: ms grafos:  media: ms Labels: 
+100 100
+.8- Total: ms Grafos:  Média: ms Labels: 
+.5- Total: ms Grafos:  Média: ms Labels: 
+.2- Total: ms grafos:  media: ms Labels: 
+100 125
+.8- Total: ms Grafos:  Média: ms Labels: 
+.5- Total: ms Grafos:  Média: ms Labels: 
+.2- Total: ms grafos:  media: ms Labels: 
