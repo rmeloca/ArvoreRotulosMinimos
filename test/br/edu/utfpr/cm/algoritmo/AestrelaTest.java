@@ -45,25 +45,29 @@ public class AestrelaTest {
 //            arquivosTeste.add("../instancias/group_1/LDGraph20_20.txt");
 //            arquivosTeste.add("../instancias/group_1/HDGraph30_30.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph30_30.txt");
-            arquivosTeste.add("../instancias/group_1/LDGraph30_30.txt");
+//            arquivosTeste.add("../instancias/group_1/LDGraph30_30.txt");
 //            arquivosTeste.add("../instancias/group_1/HDGraph40_40.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph40_40.txt");
 //            arquivosTeste.add("../instancias/group_1/LDGraph40_40.txt");
-//            arquivosTeste.add("../instancias/group_1/HDGraph50_50.txt");
+            arquivosTeste.add("../instancias/group_1/HDGraph50_50.txt");
 //            arquivosTeste.add("../instancias/group_1/LDGraph50_50.txt");
 //            
-//            arquivosTeste.add("../instancias/group_2_with_n=100/HDGraph100_25.txt");
-//            arquivosTeste.add("../instancias/group_2_with_n=100/MDGraph100_25.txt");
 //            arquivosTeste.add("../instancias/group_2_with_n=100/LDGraph100_25.txt");
-//            arquivosTeste.add("../instancias/group_2_with_n=100/HDGraph100_50.txt");
-//            arquivosTeste.add("../instancias/group_2_with_n=100/MDGraph100_50.txt");
+//            arquivosTeste.add("../instancias/group_2_with_n=100/MDGraph100_25.txt");
+//            arquivosTeste.add("../instancias/group_2_with_n=100/HDGraph100_25.txt");
+//
 //            arquivosTeste.add("../instancias/group_2_with_n=100/LDGraph100_50.txt");
-//            arquivosTeste.add("../instancias/group_2_with_n=100/HDGraph100_100.txt");
-//            arquivosTeste.add("../instancias/group_2_with_n=100/MDGraph100_100.txt");
+//            arquivosTeste.add("../instancias/group_2_with_n=100/MDGraph100_50.txt");
+//            arquivosTeste.add("../instancias/group_2_with_n=100/HDGraph100_50.txt");
+//
 //            arquivosTeste.add("../instancias/group_2_with_n=100/LDGraph100_100.txt");
-//            arquivosTeste.add("../instancias/group_2_with_n=100/HDGraph100_125.txt");
-//            arquivosTeste.add("../instancias/group_2_with_n=100/MDGraph100_125.txt");
+//            arquivosTeste.add("../instancias/group_2_with_n=100/MDGraph100_100.txt");
+//            arquivosTeste.add("../instancias/group_2_with_n=100/HDGraph100_100.txt");
+//
 //            arquivosTeste.add("../instancias/group_2_with_n=100/LDGraph100_125.txt");
+//            arquivosTeste.add("../instancias/group_2_with_n=100/MDGraph100_125.txt");
+//            arquivosTeste.add("../instancias/group_2_with_n=100/HDGraph100_125.txt");
+
 //            arquivosTeste.add("../instancias/group_2_with_n=500/HDGraph500_625.txt");
             for (String arquivoNome : arquivosTeste) {
                 System.out.println("@@@ " + arquivoNome + " @@@");
