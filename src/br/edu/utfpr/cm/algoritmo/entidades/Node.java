@@ -11,6 +11,7 @@ import br.edu.utfpr.cm.factory.GrafoMatrizAdjacencia;
 import br.edu.utfpr.cm.factory.Orientacao;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Grafo;
+import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,6 +24,7 @@ public class Node {
 
     private final List<Label> selectedLabels;
     private final List<Label> unusedLabels;
+    private final List<Vertice> verticesCovered;
     private final List<Aresta> edgesCovered;
     private int f;
     private int n;
@@ -30,6 +32,7 @@ public class Node {
     public Node(List<Label> selectedLabels, List<Label> unusedLabels, int quantidadeVerticesNoGrafo) {
         this.unusedLabels = new ArrayList<>();
         this.selectedLabels = new ArrayList<>();
+        this.verticesCovered = new ArrayList<>();
         this.edgesCovered = new ArrayList<>();
         this.n = quantidadeVerticesNoGrafo;
         if (selectedLabels != null) {
@@ -39,22 +42,33 @@ public class Node {
         }
         if (unusedLabels != null) {
             for (Label unusedLabel : unusedLabels) {
-                this.unusedLabels.add(unusedLabel);
+                if (!this.unusedLabels.contains(unusedLabel)) {
+                    this.unusedLabels.add(unusedLabel);
+                }
             }
         }
     }
 
-    private Node() {
-        this.unusedLabels = new ArrayList<>();
-        this.selectedLabels = new ArrayList<>();
-        this.edgesCovered = new ArrayList<>();
+    public final void addLabel(Label label) {
+        if (!this.selectedLabels.contains(label)) {
+            this.selectedLabels.add((Label) label.clone());
+            this.unusedLabels.remove(label);
+            for (Aresta arestaPonderada : label.getEdgesCovered()) {
+                addEdge(arestaPonderada);
+            }
+        }
     }
 
-    public final void addLabel(Label label) {
-        this.selectedLabels.add(label);
-        this.unusedLabels.remove(label);
-        for (Aresta aresta : label.getEdgesCovered()) {
-            this.edgesCovered.add(aresta);
+    private void addEdge(Aresta edge) {
+        if (!this.edgesCovered.contains(edge)) {
+            Aresta clone = (Aresta) edge.clone();
+            this.edgesCovered.add(clone);
+            if (!verticesCovered.contains(clone.getVertice1())) {
+                verticesCovered.add(clone.getVertice1());
+            }
+            if (!verticesCovered.contains(clone.getVertice2())) {
+                verticesCovered.add(clone.getVertice2());
+            }
         }
     }
 
@@ -87,6 +101,18 @@ public class Node {
             sum += this.unusedLabels.get(estimativa).getEdgesCovered().size();
         }
         return estimativa;
+    }
+
+    public List<Vertice> getVerticesCovered() {
+        List<Vertice> vertices = new ArrayList<>();
+        for (Label selectedLabel : selectedLabels) {
+            for (Vertice vertice : selectedLabel.getVerticesCovered()) {
+                if (!vertices.contains(vertice)) {
+                    vertices.add(vertice);
+                }
+            }
+        }
+        return vertices;
     }
 
     public List<Aresta> getEdgesCovered() {
@@ -135,12 +161,6 @@ public class Node {
 
     @Override
     public Object clone() {
-        Node node = new Node();
-        node.edgesCovered.addAll(this.edgesCovered);
-        node.selectedLabels.addAll(selectedLabels);
-        node.unusedLabels.addAll(unusedLabels);
-        node.f = this.f;
-        node.n = this.n;
-        return node;
+        return new Node(this.selectedLabels, this.unusedLabels, this.n);
     }
 }
