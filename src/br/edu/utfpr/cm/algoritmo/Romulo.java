@@ -8,7 +8,9 @@ package br.edu.utfpr.cm.algoritmo;
 import br.edu.utfpr.cm.grafo.Aresta;
 import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -22,21 +24,17 @@ public class Romulo implements Algoritmo {//extends prim e kruskal. Arestas segu
     private final List<Vertice> verticesUncovered;
 
     public Romulo(List<Aresta> edges) {
-//        this.edges = new ArrayList<>();
-//        for (Aresta edge : edges) {
-//            this.edges.add((Aresta) edge.clone());
-//        }
         this.edges = edges;
         verticesCovered = new ArrayList<>();
         verticesUncovered = new ArrayList<>();
         selectedEdges = new ArrayList<>();
+        HashMap<Vertice, Boolean> vertices = new HashMap<>();
         for (Aresta edge : edges) {
-            if (!verticesUncovered.contains(edge.getVertice1())) {
-                verticesUncovered.add(edge.getVertice1());
-            }
-            if (!verticesUncovered.contains(edge.getVertice2())) {
-                verticesUncovered.add(edge.getVertice2());
-            }
+            vertices.put(edge.getVertice1(), Boolean.TRUE);
+            vertices.put(edge.getVertice2(), Boolean.TRUE);
+        }
+        for (Map.Entry<Vertice, Boolean> entry : vertices.entrySet()) {
+            verticesUncovered.add(entry.getKey());
         }
     }
 
