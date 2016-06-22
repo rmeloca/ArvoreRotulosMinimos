@@ -134,30 +134,29 @@
 
 	\subsection{Implementação}\label{sec:implementacao}
 
-	Evidentemente é possível fazer uma espessa camada de abstrações que permite modelar um grafo por meio de uma matriz, uma lista, vetores, objetos recursivamente encadeados ou qualquer outro tipo abstrato de dados (TAD), armazenando mais informações ou menos informações conforme a necessidade e devida observação ao \textit{trade-off} consumo de RAM vs. consumo de CPU.
+		Evidentemente é possível fazer uma espessa camada de abstrações que permite modelar um grafo por meio de uma matriz, uma lista, vetores, objetos recursivamente encadeados ou qualquer outro tipo abstrato de dados (TAD), armazenando mais informações ou menos informações conforme a necessidade e devida observação ao \textit{trade-off} consumo de RAM vs. consumo de CPU.
 
-	Para este trabalho, optou-se por consumir mais RAM que CPU, de modo que para cada nó (conjunto de rótulos sobre os quais induz-se uma floresta, isto é, um subgrafo do grafo original) armazena-se também a lista de arestas cobertas pelos rótulos. Armazena-se ainda, para cada rótulo, as arestas que cada qual cobre. Além das arestas cobertas e rótulos utilizados, armazena-se a lista de rótulos não selecionados. Por motivos óbvios, as todas as listas lidam com referências e não clones dos objetos, uma vez que as arestas, vértices e rótulos não têm seus valores alterados em nenhum ponto da execução do programa.
+		Para este trabalho, optou-se por consumir mais RAM que CPU, de modo que para cada nó (conjunto de rótulos sobre os quais induz-se uma floresta, isto é, um subgrafo do grafo original) armazena-se também a lista de arestas cobertas pelos rótulos. Armazena-se ainda, para cada rótulo, as arestas que cada qual cobre. Além das arestas cobertas e rótulos utilizados, armazena-se a lista de rótulos não selecionados. Por motivos óbvios, as todas as listas lidam com referências e não clones dos objetos, uma vez que as arestas, vértices e rótulos não têm seus valores alterados em nenhum ponto da execução do programa.
 
-	Implementou-se a solução na linguagem de programação Java, lançando mão do arcabouço de métodos, interfaces e classes previamente implementadas pelo tutor da disciplina.
-	
-	respaldado pelo algoritmo proposto por [x], implementou-se este cuja ideia central é.
-	Em altíssimo nível,
+		Implementou-se a solução na linguagem de programação Java, lançando mão do arcabouço de métodos, interfaces e classes previamente implementadas pelo tutor da disciplina.
 
-	Deste modo, tenta-se escolher o rótulo que mais abranja o grafo. Sendo a lista de rótulos ordenada pelo número de vértices que este abrange, escolhe-se o primeiro rótulo.
+		Respaldado pelo algoritmo proposto por [x], implementou-se este cuja ideia central em altíssimo nível é:
 
-	\begin{algorithm}[H]
-		\KwData{Instância de um Puzzle a ser resolvida.}
-		\KwResult{Lista do caminho percorrido para solucionar o puzzle.}
-		Insere a primeira instância na lista do caminho percorrido\;
-		\While{Puzzle não está resolvido}{
-			Obtém o última instância do caminho\;
-			Obtém os possíveis movimentos da instância\;
-			Calcula a heurística para cada possível movimento\;
-			Escolhe a instância que possui melhor heurística\;
-			Adiciona a instância ao caminho percorrido\;
-		}
-		\caption{Busca A* para resolver 8-Puzzle}
-	\end{algorithm}
+		\begin{algorithm}[H]
+			\SetAlgoLined
+			\KwData{Grafo rotulado e conexo.}
+			\KwResult{Árvore geradora de rótulos mínimos.}
+			Ordene a lista de rótulos pelo número de arestas que cada rótulo cobre\;
+			Gere o primeiro nó\;
+			\While{Não for obtida uma árvore geradora de rótulos mínimos}{
+				Obtenha o nó mais próximo do objetivo\;
+				\ForAll{filhos do nó objetivo}{
+					Calcule o custo de cada filho do nó mais próximo do objetivo\;
+				}
+			}
+			Retorne a árvore geradora de rótulos mínimos\;
+			\caption{Busca A* para resolver 8-Puzzle}
+		\end{algorithm}
 
 	\subsection{Diagramação}\label{sec:diagramacao}
 

@@ -41,7 +41,7 @@ public class Aestrela implements Algoritmo {
     private final Grafo grafo;
 
     /**
-     * Árvore de ŕótulos mínimos
+     * Árvore de rótulos mínimos
      */
     private List<Aresta> spanningTree;
 
