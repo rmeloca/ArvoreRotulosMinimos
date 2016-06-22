@@ -22,10 +22,11 @@ public class Romulo implements Algoritmo {//extends prim e kruskal. Arestas segu
     private final List<Vertice> verticesUncovered;
 
     public Romulo(List<Aresta> edges) {
-        this.edges = new ArrayList<>();
-        for (Aresta edge : edges) {
-            this.edges.add((Aresta) edge.clone());
-        }
+//        this.edges = new ArrayList<>();
+//        for (Aresta edge : edges) {
+//            this.edges.add((Aresta) edge.clone());
+//        }
+        this.edges = edges;
         verticesCovered = new ArrayList<>();
         verticesUncovered = new ArrayList<>();
         selectedEdges = new ArrayList<>();

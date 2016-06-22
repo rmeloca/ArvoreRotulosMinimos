@@ -27,7 +27,7 @@ public class Aestrela implements Algoritmo {
     /**
      * OPEN is the storage place for all generated but unexpanded nodes.
      */
-    private final List<Node> generatedNodes;
+    private List<Node> generatedNodes;
 
     /**
      * CLOSED is the storage place for the expanded nodes.
@@ -124,6 +124,7 @@ public class Aestrela implements Algoritmo {
                     this.spanningTree = minimumF.getAcyclicEdges();
                     break;
                 }
+                generatedNodes = new ArrayList<>();
                 //5. Otherwise expand n
                 for (Node son : expandNode(minimumF)) {
                     //6. For each child son of n
