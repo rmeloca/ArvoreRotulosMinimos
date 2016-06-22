@@ -49,12 +49,8 @@ public class AestrelaTest {
 //            arquivosTeste.add("../instancias/group_1/HDGraph40_40.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph40_40.txt");
 //            arquivosTeste.add("../instancias/group_1/LDGraph40_40.txt");
-<<<<<<< HEAD
 //            arquivosTeste.add("../instancias/group_1/HDGraph50_50.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph50_50.txt");
-=======
-            arquivosTeste.add("../instancias/group_1/HDGraph50_50.txt");
->>>>>>> e8dcd6087ed7a13e179d4710473ef118516eb1b1
 //            arquivosTeste.add("../instancias/group_1/LDGraph50_50.txt");
 //            
 //            arquivosTeste.add("../instancias/group_2_with_n=100/LDGraph100_25.txt");
@@ -70,10 +66,9 @@ public class AestrelaTest {
 //            arquivosTeste.add("../instancias/group_2_with_n=100/HDGraph100_100.txt");
 //
 //            arquivosTeste.add("../instancias/group_2_with_n=100/LDGraph100_125.txt");
-<<<<<<< HEAD
 
-            arquivosTeste.add("../instancias/group_2_with_n=200/HDGraph200_50.txt");
-            arquivosTeste.add("../instancias/group_2_with_n=200/MDGraph200_50.txt");
+//            arquivosTeste.add("../instancias/group_2_with_n=200/HDGraph200_50.txt");
+//            arquivosTeste.add("../instancias/group_2_with_n=200/MDGraph200_50.txt");
 //            arquivosTeste.add("../instancias/group_2_with_n=200/LDGraph200_50.txt");
 //            arquivosTeste.add("../instancias/group_2_with_n=200/HDGraph200_100.txt");
 //            arquivosTeste.add("../instancias/group_2_with_n=200/MDGraph200_100.txt");
@@ -84,11 +79,7 @@ public class AestrelaTest {
 //            arquivosTeste.add("../instancias/group_2_with_n=200/HDGraph200_250.txt");
 //            arquivosTeste.add("../instancias/group_2_with_n=200/MDGraph200_250.txt");
 //            arquivosTeste.add("../instancias/group_2_with_n=200/LDGraph200_250.txt");
-=======
-//            arquivosTeste.add("../instancias/group_2_with_n=100/MDGraph100_125.txt");
-//            arquivosTeste.add("../instancias/group_2_with_n=100/HDGraph100_125.txt");
 
->>>>>>> e8dcd6087ed7a13e179d4710473ef118516eb1b1
 //            arquivosTeste.add("../instancias/group_2_with_n=500/HDGraph500_625.txt");
             for (String arquivoNome : arquivosTeste) {
                 System.out.println("@@@ " + arquivoNome + " @@@");
