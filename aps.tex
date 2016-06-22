@@ -136,9 +136,10 @@
 
 	Evidentemente é possível fazer uma espessa camada de abstrações que permite modelar um grafo por meio de uma matriz, uma lista, vetores, objetos recursivamente encadeados ou qualquer outro tipo abstrato de dados (TAD), armazenando mais informações ou menos informações conforme a necessidade e devida observação ao \textit{trade-off} consumo de RAM vs. consumo de CPU.
 
-	Para este trabalho, optou-se por consumir mais RAM do que CPU, de modo que armazena-se tanto as listas de vértices e arestas como a lista de rótulos com seus respectivos.
+	Para este trabalho, optou-se por consumir mais RAM que CPU, de modo que para cada nó (conjunto de rótulos sobre os quais induz-se uma floresta, isto é, um subgrafo do grafo original) armazena-se também a lista de arestas cobertas pelos rótulos. Armazena-se ainda, para cada rótulo, as arestas que cada qual cobre. Além das arestas cobertas e rótulos utilizados, armazena-se a lista de rótulos não selecionados. Por motivos óbvios, as todas as listas lidam com referências e não clones dos objetos, uma vez que as arestas, vértices e rótulos não têm seus valores alterados em nenhum ponto da execução do programa.
 
-	Implementou-se a solução na linguagem de programação Java, aproveitando códigos previamente implementados.
+	Implementou-se a solução na linguagem de programação Java, lançando mão do arcabouço de métodos, interfaces e classes previamente implementadas pelo tutor da disciplina.
+	
 	respaldado pelo algoritmo proposto por [x], implementou-se este cuja ideia central é.
 	Em altíssimo nível,
 
@@ -180,6 +181,13 @@
 	\subsection{Resultados}\label{sec:resultados}
 		
 		Os resultados obtidos 
+
+		\begin{tabular}{l|r|c|r} \hline
+			Esquerda & Direita & Centrado & Direita \\ \hline
+			Um & Dois & Tres & Quatro \\
+			1 & 2 & 3 & 4 \\
+			i & ii & iii & iv \\ \hline
+		\end{tabular}
 		
 	\subsection{Análise}\label{sec:analise}
 

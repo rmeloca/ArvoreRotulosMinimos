@@ -6,7 +6,6 @@
 package br.edu.utfpr.cm.algoritmo.entidades;
 
 import br.edu.utfpr.cm.grafo.Aresta;
-import br.edu.utfpr.cm.grafo.Vertice;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,46 +17,26 @@ public class Label implements Comparable<Label> {
 
     private final String value;
     private final List<Aresta> edgesCovered;
-    private final List<Vertice> verticesCovered;
 
     public Label(String value, List<Aresta> edgesCovered) {
         this.edgesCovered = new ArrayList<>();
-        this.verticesCovered = new ArrayList<>();
         this.value = value;
-        for (Aresta arestaPonderada : edgesCovered) {
-            addEdge(arestaPonderada);
+        for (Aresta edge : edgesCovered) {
+            this.edgesCovered.add(edge);
         }
     }
 
     public Label(String value) {
         this.value = value;
         this.edgesCovered = new ArrayList<>();
-        this.verticesCovered = new ArrayList<>();
     }
 
     public List<Aresta> getEdgesCovered() {
         return edgesCovered;
     }
 
-    public List<Vertice> getVerticesCovered() {
-        return verticesCovered;
-    }
-
     public String getValue() {
         return value;
-    }
-
-    private void addEdge(Aresta edge) {
-        if (!this.edgesCovered.contains(edge)) {
-            Aresta clone = (Aresta) edge.clone();
-            this.edgesCovered.add(clone);
-            if (!verticesCovered.contains(clone.getVertice1())) {
-                verticesCovered.add(clone.getVertice1());
-            }
-            if (!verticesCovered.contains(clone.getVertice2())) {
-                verticesCovered.add(clone.getVertice2());
-            }
-        }
     }
 
     @Override
@@ -75,7 +54,9 @@ public class Label implements Comparable<Label> {
 
     @Override
     protected Object clone() {
-        return new Label(this.value, this.edgesCovered);
+        Label label = new Label(this.value);
+        label.edgesCovered.addAll(this.edgesCovered);
+        return label;
     }
 
 }

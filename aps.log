@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  22 JUN 2016 03:20
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  22 JUN 2016 17:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -698,16 +698,14 @@ Underfull \vbox (badness 1454) has occurred while \output is active []
 
 File: ClassDiagram.png Graphic file (type QTm)
  <use  "ClassDiagram.png" > [7]
-Underfull \hbox (badness 2538) in paragraph at lines 188--189
-\OT1/lmr/m/n/12 Bibliographic re-fe-ren-ces must be unam-bi-guous and uni-form.
- We re-com-
- []
+
+LaTeX Warning: Citation `knuth:84' on page 8 undefined on input line 195.
 
 
-Underfull \hbox (badness 1622) in paragraph at lines 188--189
-\OT1/lmr/m/n/12 mend gi-ving the author na-mes re-fe-ren-ces in brac-kets, e.g.
- [[]],
- []
+LaTeX Warning: Citation `boulic:91' on page 8 undefined on input line 195.
+
+
+LaTeX Warning: Citation `smith:99' on page 8 undefined on input line 195.
 
 (./aps.bbl) [8
 
@@ -718,6 +716,12 @@ Underfull \hbox (badness 1622) in paragraph at lines 188--189
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  )
 (\end occurred inside a group at level 1)
 
@@ -726,7 +730,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  7549 strings out of 495638
  103988 string characters out of 6187352
- 220498 words of memory out of 5000000
+ 220446 words of memory out of 5000000
  10566 multiletter control sequences out of 15000+600000
  53073 words of font info for 58 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
