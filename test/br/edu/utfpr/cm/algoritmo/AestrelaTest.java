@@ -49,9 +49,9 @@ public class AestrelaTest {
 //            arquivosTeste.add("../instancias/group_1/HDGraph40_40.txt");
 //            arquivosTeste.add("../instancias/group_1/MDGraph40_40.txt");
 //            arquivosTeste.add("../instancias/group_1/LDGraph40_40.txt");
-//            arquivosTeste.add("../instancias/group_1/HDGraph50_50.txt");
-//            arquivosTeste.add("../instancias/group_1/MDGraph50_50.txt");
-//            arquivosTeste.add("../instancias/group_1/LDGraph50_50.txt");
+            arquivosTeste.add("../instancias/group_1/HDGraph50_50.txt");
+            arquivosTeste.add("../instancias/group_1/MDGraph50_50.txt");
+            arquivosTeste.add("../instancias/group_1/LDGraph50_50.txt");
 //            
 //            arquivosTeste.add("../instancias/group_2_with_n=100/LDGraph100_25.txt");
 //            arquivosTeste.add("../instancias/group_2_with_n=100/MDGraph100_25.txt");
