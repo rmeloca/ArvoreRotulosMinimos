@@ -1,7 +1,7 @@
 20 20
-.8- Total: 187ms Grafos: 10 Média: 18ms Labels: 2.8
-.5- Total: 42ms Grafos: 10 Média: 4ms Labels: 3.6
-.2- Total: 41ms Grafos: 5 Média: 8ms Labels: 7.8
+.8- Total: 117ms Grafos: 10 Média: 11ms Labels: 2.8
+.5- Total: 24ms Grafos: 10 Média: 2ms Labels: 3.6
+.2- Total: 20ms Grafos: 5 Média: 4ms Labels: 7.8
 30 30
 .8- Total: 1045ms Grafos: 10 Média: 104ms Labels: 2.9
 .5- Total: 1367ms Grafos: 10 Média: 136ms Labels: 4.1
