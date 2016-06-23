@@ -27,7 +27,6 @@
 \usepackage{fancyhdr}
 \usepackage{boxedminipage}
 \usepackage{enumitem}
-\usepackage{hyperref}
 
 
 \sloppy
@@ -107,9 +106,7 @@
 
 \section{Trabalhos Relacionados}\label{sec:trabalhosRelacionados}
 
-	Revisando a literatura, verificam-se várias tentativas de otimização para o problema, combinando variadas formas de algoritmos de busca que venham a fornecer melhores resultados.
-
-	Vários testes são executados em [x].
+	Revisando a literatura, verifica-se que.
 
 	\cite{knuth:84}, \cite{boulic:91}, and \cite{smith:99}.
 
@@ -165,7 +162,7 @@
 			\caption{Busca A* para resolver 8-Puzzle}
 		\end{algorithm}
 
-		Cabe comentar que apropriou-se da ideia do algoritmo de Prim para resolução da árvore geradora de pesos mínimos. Neste caso, utilizou-se da ideia de englobar sempre ao conjunto de vértices pertencentes ao corte $S$ aquele vértice pertencente à $V - S$ ao qual houver uma aresta segura incindindo nele. No escopo deste problema não há a necessidade de comparar os pesos das arestas, uma vez que são apenas rótulos. Ao final da execução do algoritmo de Prim, obtém-se uma árvore, isto é, os ciclos são removidos. Conforme discutido a respeito da remoção de uma aresta qualquer que forme um ciclo, aplicou-se uma adaptação do algoritmo de Prim que escolha quaisquer arestas seguras para $T'$.
+		Cabe discutir que
 
 	\subsection{Diagramação}\label{sec:diagramacao}
 
@@ -336,9 +333,6 @@ Observou-se uma excelente qualidade da solução, sendo todos os casos a soluç�
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
 
-\href{https://www.ime.usp.br/~cris/aulas/12_1_6711/slides/aula13.pdf}{texto}
-
-[2] Chang, R., Leu, S. The minimum labeling spanning trees. Information Processing Letters, 63(5), 277–282, 1997.
-[5] Consoli, S., Darby-Dowman, K., Mladenovic, N., Moreno-P`erez, J.A. Greedy randomized adaptive search and variable neighbourhood search for the minimum labelling spanning tree problem. European Journal of Operational Research 196(2), 440-449, 2009.
+%https://www.ime.usp.br/~cris/aulas/12_1_6711/slides/aula13.pdf
 
 \end{document}
