@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.5.2)  23 JUN 2016 03:08
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  23 JUN 2016 03:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -675,12 +675,9 @@ LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 44.
-LaTeX Font Info:    No file OT1lmr.fd. on input line 44.
-
-
-LaTeX Font Warning: Font shape `OT1/lmr/m/n' undefined
-(Font)              using `OT1/cmr/m/n' instead on input line 44.
-
+ (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -735,36 +732,30 @@ LaTeX Info: Redefining \nameref on input line 44.
 \@outlinefile=\write4
 \openout4 = `aps.out'.
 
-
-
-LaTeX Font Warning: Font shape `OT1/lmr/m/n' in size <16> not available
-(Font)              size <17.28> substituted on input line 47.
-
-
-LaTeX Font Warning: Font shape `OT1/lmr/bx/n' undefined
-(Font)              using `OT1/lmr/m/n' instead on input line 47.
-
 LaTeX Font Info:    Try loading font information for OML+lmm on input line 47.
-LaTeX Font Info:    No file OMLlmm.fd. on input line 47.
-
-LaTeX Font Warning: Font shape `OML/lmm/m/it' undefined
-(Font)              using `OML/cmm/m/it' instead on input line 47.
-
+ (/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
 LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 47.
 
-LaTeX Font Info:    No file OMSlmsy.fd. on input line 47.
 
-LaTeX Font Warning: Font shape `OMS/lmsy/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead on input line 47.
-
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
 LaTeX Font Info:    Try loading font information for OMX+lmex on input line 47.
 
-LaTeX Font Info:    No file OMXlmex.fd. on input line 47.
 
-LaTeX Font Warning: Font shape `OMX/lmex/m/n' undefined
-(Font)              using `OMX/cmex/m/n' instead on input line 47.
-
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 47.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 47.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 47.
 LaTeX Font Info:    Try loading font information for U+msa on input line 47.
+
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -785,35 +776,18 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 47.
 
-LaTeX Font Info:    No file OT1lmtt.fd. on input line 47.
 
-
-LaTeX Font Warning: Font shape `OT1/lmtt/m/n' undefined
-(Font)              using `OT1/cmr/m/n' instead on input line 47.
-
+(/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
 LaTeX Font Info:    Try loading font information for OMS+lmtt on input line 47.
 
 LaTeX Font Info:    No file OMSlmtt.fd. on input line 47.
 
+
 LaTeX Font Warning: Font shape `OMS/lmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbraceleft' on input line 47.
-
-
-LaTeX Font Warning: Font shape `OT1/lmr/bx/it' undefined
-(Font)              using `OT1/lmr/bx/n' instead on input line 48.
-
-
-LaTeX Font Warning: Font shape `OT1/lmr/m/it' undefined
-(Font)              using `OT1/lmr/m/n' instead on input line 48.
-
-
-LaTeX Font Warning: Font shape `OT1/lmr/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 52.
-
-
-LaTeX Font Warning: Font shape `OT1/lmr/bx/n' in size <13> not available
-(Font)              size <12> substituted on input line 52.
 
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 52.
@@ -848,56 +822,42 @@ Package babel Info: Redefining portuges shorthand "|
  [3]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 108.
-
-
-LaTeX Warning: Citation `krumke:1998' on page 4 undefined on input line 112.
-
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 118.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 120.
+(babel)             in language  on input line 122.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 127.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 126.
-[4]
+(babel)             in language  on input line 127.
+ [4]
 File: aestrela.png Graphic file (type QTm)
  <use  "aestrela.png" >
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 137
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 139
 .
-LaTeX Font Info:    No file OT1lmss.fd. on input line 137.
-
-
-LaTeX Font Warning: Font shape `OT1/lmss/m/n' undefined
-(Font)              using `OT1/cmr/m/n' instead on input line 137.
-
-
-LaTeX Font Warning: Font shape `OT1/lmss/bx/n' undefined
-(Font)              using `OT1/lmss/m/n' instead on input line 137.
-
+ (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
+File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 143.
+(babel)             in language  on input line 142.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 143.
+(babel)             in language  on input line 142.
+
 [5]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 144.
+(babel)             in language  on input line 146.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 172.
-
-Underfull \vbox (badness 2980) has occurred while \output is active []
-
+(babel)             in language  on input line 174.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 178.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 178.
  [6]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 178.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 176.
-
-[7]
+(babel)             in language  on input line 178.
+ [7]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: xetex
 * paper: a4paper
@@ -933,86 +893,77 @@ Package babel Info: Redefining portuges shorthand "|
 File: ClassDiagram.png Graphic file (type QTm)
  <use  "ClassDiagram.png" >
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 184.
+(babel)             in language  on input line 186.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 184.
+(babel)             in language  on input line 186.
  [8]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 187.
+(babel)             in language  on input line 189.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 195.
+(babel)             in language  on input line 197.
 
-Overfull \hbox (11.59572pt too wide) in paragraph at lines 225--241
+Overfull \hbox (11.59589pt too wide) in paragraph at lines 227--243
 [][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 264.
+(babel)             in language  on input line 266.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 264.
+(babel)             in language  on input line 266.
 [9
 
 
 
 
 ]
-Overfull \hbox (23.3456pt too wide) in paragraph at lines 287--303
+Overfull \hbox (23.34586pt too wide) in paragraph at lines 289--305
 [][] 
  []
 
 
-Overfull \hbox (23.3456pt too wide) in paragraph at lines 307--323
+Overfull \hbox (23.34586pt too wide) in paragraph at lines 309--325
 [][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 326.
+(babel)             in language  on input line 328.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 330.
+(babel)             in language  on input line 332.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 335.
+(babel)             in language  on input line 337.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 335.
+(babel)             in language  on input line 337.
 [10]
 No file aps.bbl.
-Missing character: There is no – in font cmr12!
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 361.
+Missing character: There is no – in font rm-lmr12!
+Missing character: There is no – in font rm-lmr12!
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 368.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 361.
+(babel)             in language  on input line 368.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 361.
+(babel)             in language  on input line 368.
 [11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 361.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 368.
  (./aps.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 361.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 361.
-
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 1.28pt have occurred.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 368.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 368.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 361.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 368.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 14690 strings out of 495638
- 204101 string characters out of 6187353
- 371467 words of memory out of 5000000
- 17677 multiletter control sequences out of 15000+600000
- 11205 words of font info for 49 fonts, out of 8000000 for 9000
+ 14790 strings out of 495638
+ 206516 string characters out of 6187352
+ 371525 words of memory out of 5000000
+ 17761 multiletter control sequences out of 15000+600000
+ 53433 words of font info for 59 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 43i,13n,48p,908b,10427s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,13n,48p,908b,10429s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on aps.pdf (11 pages).
