@@ -107,9 +107,7 @@
 
 	Revisando a literatura, verificam-se várias tentativas de otimização para o problema, combinando variadas formas de algoritmos de busca que venham a fornecer melhores resultados.
 
-	Vários testes são executados em [x].
-
-	\cite{knuth:84}, \cite{boulic:91}, and \cite{smith:99}.
+	Vários testes são executados em \cite{consoli:2009}
 
 \section{Solução Proposta}\label{sec:solucao}
 
@@ -145,7 +143,7 @@
 
 		Implementou-se a solução na linguagem de programação Java, lançando mão do arcabouço de métodos, interfaces e classes previamente implementadas pelo tutor da disciplina.
 
-		Respaldado pelo algoritmo proposto por [x], implementou-se este cuja ideia central em altíssimo nível é:
+		Respaldado pelo algoritmo proposto por \cite{chang:1996}, implementou-se este cuja ideia central em altíssimo nível é:
 
 		\begin{algorithm}[H]
 			\SetAlgoLined
@@ -182,7 +180,7 @@
 
 \section{Testes}\label{sec:testes}
 	
-	Para testar o algoritmo usou-se as mesmas intâncias usadas pelo \cite{Consoli:2009}, 
+	Para testar o algoritmo usou-se as mesmas intâncias usadas pelo \cite{consoli:2009}, 
 
 	\subsection{Resultados}\label{sec:resultados}
 		
@@ -310,9 +308,9 @@
 	
 	Considera-se acerca deste trabalho três aspectos, a saber: Sua concepção, seu desenvolvimento e sua execução.
 
-	Concebeu-se
+	Concebeu-se este trabalho como um problema cujo espaço de soluções é grande o suficiente para que seja necessário o maior número possível de otimizações, deste modo, 
 
-	Desenvolveu-se.
+	Desenvolveu-se todo o trabalho, desde a elaboração da solução até a fase de implementação pensando em todas as melhorias possíveis para que o algoritmo pudesse ser executado em menor tempo possível. Conforme discutido, optou-se por consumir mais RAM que processamento, contudo as 
 
 	Testou-se.
 
@@ -321,9 +319,18 @@
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
 
-\href{https://www.ime.usp.br/~cris/aulas/12_1_6711/slides/aula13.pdf}{texto}
+\begin{thebibliography}{}
 
-[2] Chang, R., Leu, S. The minimum labeling spanning trees. Information Processing Letters, 63(5), 277–282, 1997.
-[5] Consoli, S., Darby-Dowman, K., Mladenovic, N., Moreno-P`erez, J.A. Greedy randomized adaptive search and variable neighbourhood search for the minimum labelling spanning tree problem. European Journal of Operational Research 196(2), 440-449, 2009.
+	\bibitem[1]{chang:1996}
+	Chang, R., Leu, S.
+	\newblock \textit{The minimum labeling spanning trees.}
+	\newblock Information Processing Letters, 63(5), 277–282, 1997.
+	
+	\bibitem[2]{consoli:2009}
+	Consoli, S., Darby-Dowman, K., Mladenovic, N., Moreno-P`erez, J.A.
+	\newblock \textit{Greedy randomized adaptive search and variable neighbourhood search for the minimum labelling spanning tree problem.}
+	\newblock European Journal of Operational Research 196(2), 440-449, 2009.
+
+\end{thebibliography}
 
 \end{document}
