@@ -181,14 +181,18 @@
 		\restoregeometry
 
 \section{Testes}\label{sec:testes}
+	
+	Para testar o comportamento dos algoritmos que solucionam o PAGRM são necessários testes que abranjam todas as possibilidades de grafos, ou seja, é necessário variar o número de vértices, arestas e rótulos. Nessas condições a literatura é muito generosa com essas combinações. Portanto, a fim de testar a solução implementada, utilizou-se a mesma base de dados encontrada em \cite{cerulli:2005}, que proporciona o resultado da aplicação dos testes em vários algoritmos de busca.
 
-	Nesta seção comparou-se o tempo computacional e qualidade da solução do algoritmo A* proposto pelo \cite{chang:1996}. E executou-se a implementação deste algoritmo para uma base de dados quem contém 10(dez) grafos cada arquivo, e os arquivos variavam a quantidade de labels, vértices e a densidade.
+	No conjunto de testes utilizado haviam vários arquivos, cada um pertencente a uma categoria. Cada arquivo possui um total de 10 grafos da mesma categoria (no qual alguns não eram conexos, e portanto foram desconsiderados). As categorias eram, por sua vez, combinação dos grupos de vértices e rótulos, totalizando 16 grupos. Cada conjunto (de vértices e rótulos), possui uma quantidade diferente de elentos, tal que $|V| = \{20, 30, 40, 50, 100, 200, 500\}$, $|L| = \{20, 25, 30, 40, 50, 100, 125, 200, 250, 500, 625\}$. Para cada grupo encontram-se 3 (três) densidades diferentes de grafos, sendo elas $d = \{0.2, 0.5, 0.8\}$.
 
-	A base de dados proposta pelo \cite{consoli:2009} foi executada em um computador Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz com 16GB de RAM. E obteu-se os seguintes resultados da seguinte seção.
+	Na subseção que segue são discutidos os resultados dos testes aplicados em comparação com a literatura.
 
 	\subsection{Resultados}\label{sec:resultados}
 		
-		Utilizou-se 16 grupos, variando a quantidade de vértices de 20 até 500, a quantidade de labels de 20 até 625. Para cada grupo, existem 3(três) densidades diferentes, sendo elas 0.2, 0.5 e 0.8. As tabelas a baixo, mostram, de par em par, a qualidade da solução e o tempo computacional.
+		Comparou-se o tempo computacional levado pelo algoritmo e qualidade da solução do algoritmo A* proposto por \cite{chang:1996}. A fim de comparações, utilizou-se o tempo reportado por \cite{consoli:2009}, que executou os testes em uma máquina cujo processador Pentium Centrino e \textit{clock} 2.0 GHz com 512 MB RAM. A mesma base foi executada em um computador cujo processador Intel(R) Core(TM) i7-5500U CPU e \textit{clock} 2.40GHz com 16GB de RAM.
+
+		Assim, obteve-se os seguintes resultados da seguinte seção. As tabelas abaixo, mostram, de par em par, a qualidade da solução e o tempo computacional.
 
 		\begin{multicols}{2}
 			\begin {table}[H]
@@ -317,19 +321,15 @@
 		\end{multicols}
 	\subsection{Análise}\label{sec:analise}
 
-	Observou-se uma excelente qualidade da solução, sendo todos os casos a solução ideal. Porém o custo computacional foi muito elevado, impossibilitando a execução do algoritmo para instâncias com muitos vértices e/ou muitas labels.
+	Observou-se excelente qualidade da solução, sendo todos os casos a solução ideal. Porém o custo computacional observou-se muito elevado, impossibilitando a execução do algoritmo para instâncias com muitos vértices e/ou muitos rótulos.
 
 \section{Considerações Finais}\label{sec:conclusao}
 	
-	Considera-se acerca deste trabalho três aspectos, a saber: Sua concepção, seu desenvolvimento e sua execução.
+	Concebeu-se este trabalho como um problema matroide, portanto buscou-se implementar o algoritmo de busca A* a fim de obter a solução exata. Contudo, conclui-se que à medida em que aumenta-se o número de vértices, rótulos e/ou arestas, o algoritmo torna-se impraticável em termos do que este consome de computação.
 
-	Concebeu-se este trabalho como um problema cujo espaço de soluções é grande o suficiente para que seja necessário o maior número possível de otimizações, deste modo, 
+	Desenvolveu-se todo o trabalho, desde a elaboração da solução até a fase de implementação pensando em todas as melhorias possíveis para que o algoritmo pudesse ser executado em menor tempo possível. Conforme discutido, optou-se por consumir mais RAM que processamento, contudo tal melhoria não impactou drásticamente no resultado, uma vez que algumas instâncias não puderam ser calculadas, mesmo dispondo de mais recursos computacionais que a literatura.
 
-	Desenvolveu-se todo o trabalho, desde a elaboração da solução até a fase de implementação pensando em todas as melhorias possíveis para que o algoritmo pudesse ser executado em menor tempo possível. Conforme discutido, optou-se por consumir mais RAM que processamento, contudo as 
-
-	Testou-se.
-
-	Deste modo, pôde-se,.
+	Deste modo, pôde-se, compreender que para problemas como este, deve-se admitir soluções inexatas, uma vez que a solução exata demanda muitos recursos computacionais para ser resolvido.
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
@@ -345,6 +345,12 @@
 	Consoli, S., Darby-Dowman, K., Mladenovic, N., Moreno-P`erez, J.A.
 	\newblock \textit{Greedy randomized adaptive search and variable neighbourhood search for the minimum labelling spanning tree problem.}
 	\newblock European Journal of Operational Research 196(2), 440-449, 2009.
+
+	\bibitem[3]{cerulli:2005}
+	Cerulli, R., Fink, A., Gentili, M., Voß, S., 2005.
+	\newblock \textit{Metaheuristics comparison for the minimum labelling spanning tree problem.}
+	\newblock In: Golden, B., Raghavan, S., Wasil, E. (Eds.), The Next Wave in Computing, Optimization, and Decision Technologies.
+	\newblock Springer-Verlag, Berlin, pp. 93-106.
 
 \end{thebibliography}
 
