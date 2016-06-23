@@ -27,7 +27,6 @@
 \usepackage{fancyhdr}
 \usepackage{boxedminipage}
 \usepackage{enumitem}
-\usepackage{hyperref}
 
 
 \sloppy
@@ -107,17 +106,11 @@
 
 \section{Trabalhos Relacionados}\label{sec:trabalhosRelacionados}
 
-	O problema de rótulos mínimos surgiu com um problema de design de telecomunicações de redes. \cite{chang:1996} propôs uma heurística para solucionar o problema em tempo polinomial. O algoritmo consiste em obter consecutivamente os rótulos que abrangem mais arestas até conseguir gerar uma árvore geradora. Contudo, em grafos que não são fortemente conexos o algoritmo não consegue resolver o problema, pois não consegue construir a árvore geradora do grafo. A lacuna deixada por \cite{chang:1996}, possibilitou novas pesquisas para resolver o problema.
+	Revisando a literatura, verifica-se que.
 
-	Com esta lacuna, \cite{krumke:1998} propôs um aperfeiçoamento no algoritmo de \cite{chang:1996} melhorando o tempo de execução em alguns casos. O algoritmo, principalmente, funcionava em grafos não conexos, obviamente não retorna uma árvore geradora mínima de todo o grafo, mas retorna todas as árvores geradoras mínimas para o grafo dado. O novo algoritmo funcionava de forma muito semelhante, a única diferença é que os rótulos são escolhidos pelo maior número de componentes que ele conecta e não pelo maior número de arestas.
-	
-	Por ser um problema utilizado em algumas áreas, como a de telecomunicações, vários autores desenvolveram propostas com melhores tempos de execução para encontrar a árvore geradora mínima.
-
-	Uma das implementação para resolver o problema da árvore geradora de rótulos mínimos baseada em \cite{chang:1996} está disposto nas seções que seguem.
+	\cite{knuth:84}, \cite{boulic:91}, and \cite{smith:99}.
 
 \section{Solução Proposta}\label{sec:solucao}
-
-	Constrói-se esta seção a partir da explanação acerca do algoritmo de busca A*, que fundamenta a ideia do algoritmo proposto por \cite{chang:1996} para solucionar o PAGRM e implementado neste trabalho, cuja exaplanação é apresentada na subseção seguinte além de uma subseção para a organização da solução.
 
 	\subsection{Busca A*}\label{sec:aestrela}
 
@@ -151,7 +144,7 @@
 
 		Implementou-se a solução na linguagem de programação Java, lançando mão do arcabouço de métodos, interfaces e classes previamente implementadas pelo tutor da disciplina.
 
-		Respaldado pelo algoritmo proposto por \cite{chang:1996}, implementou-se este cuja ideia central em altíssimo nível é:
+		Respaldado pelo algoritmo proposto por [x], implementou-se este cuja ideia central em altíssimo nível é:
 
 		\begin{algorithm}[H]
 			\SetAlgoLined
@@ -169,7 +162,7 @@
 			\caption{Busca A* para resolver 8-Puzzle}
 		\end{algorithm}
 
-		Cabe comentar que apropriou-se da ideia do algoritmo de Prim para resolução da árvore geradora de pesos mínimos. Neste caso, utilizou-se da ideia de englobar sempre ao conjunto de vértices pertencentes ao corte $S$ aquele vértice pertencente à $V - S$ ao qual houver uma aresta segura incindindo nele. No escopo deste problema não há a necessidade de comparar os pesos das arestas, uma vez que são apenas rótulos. Ao final da execução do algoritmo de Prim, obtém-se uma árvore, isto é, os ciclos são removidos. Conforme discutido a respeito da remoção de uma aresta qualquer que forme um ciclo, aplicou-se uma adaptação do algoritmo de Prim que escolha quaisquer arestas seguras para $T'$.
+		Cabe discutir que
 
 	\subsection{Diagramação}\label{sec:diagramacao}
 
@@ -188,17 +181,13 @@
 
 \section{Testes}\label{sec:testes}
 	
-	Para testar o comportamento dos algoritmos que solucionam o PAGRM são necessários testes que abranjam todas as possibilidades de grafos, ou seja, é necessário variar o número de vértices, arestas e rótulos. Nessas condições a literatura é muito generosa com essas combinações. Portanto, a fim de testar a solução implementada, utilizou-se a mesma base de dados encontrada em \cite{cerulli:2005}, que proporciona o resultado da aplicação dos testes em vários algoritmos de busca.
+	Nesta seção comparou-se o tempo computacional e qualidade da solução do algoritmo A* proposto pelo \cite{chang:1996}. E executou-se a implementação deste algoritmo para uma base de dados quem contém 10(dez) grafos cada arquivo, e os arquivos variavam a quantidade de labels, vértices e a densidade.
 
-	No conjunto de testes utilizado haviam vários arquivos, cada um pertencente a uma categoria. Cada arquivo possui um total de 10 grafos da mesma categoria (no qual alguns não eram conexos, e portanto foram desconsiderados). As categorias eram, por sua vez, combinação dos grupos de vértices e rótulos, totalizando 16 grupos. Cada conjunto (de vértices e rótulos), possui uma quantidade diferente de elentos, tal que $|V| = \{20, 30, 40, 50, 100, 200, 500\}$, $|L| = \{20, 25, 30, 40, 50, 100, 125, 200, 250, 500, 625\}$. Para cada grupo encontram-se 3 (três) densidades diferentes de grafos, sendo elas $d = \{0.2, 0.5, 0.8\}$.
-
-	Na subseção que segue são discutidos os resultados dos testes aplicados em comparação com a literatura.
+	A base de dados proposta pelo \cite{consoli:2009} foi executada em um computador Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz com 16GB de RAM. E obteu-se os seguintes resultados da seguinte seção.
 
 	\subsection{Resultados}\label{sec:resultados}
 		
-		Comparou-se o tempo computacional levado pelo algoritmo e qualidade da solução do algoritmo A* proposto por \cite{chang:1996}. A fim de comparações, utilizou-se o tempo reportado por \cite{consoli:2009}, que executou os testes em uma máquina cujo processador Pentium Centrino e \textit{clock} 2.0 GHz com 512 MB RAM. A mesma base foi executada em um computador cujo processador Intel(R) Core(TM) i7-5500U CPU e \textit{clock} 2.40GHz com 16GB de RAM.
-
-		Assim, obteve-se os seguintes resultados da seguinte seção. As tabelas abaixo, mostram, de par em par, a qualidade da solução e o tempo computacional.
+		Utilizou-se 16 grupos, variando a quantidade de vértices de 20 até 500, a quantidade de labels de 20 até 625. Para cada grupo, existem 3(três) densidades diferentes, sendo elas 0.2, 0.5 e 0.8. As tabelas a baixo, mostram, de par em par, a qualidade da solução e o tempo computacional.
 
 		\begin{multicols}{2}
 			\begin {table}[H]
@@ -327,42 +316,23 @@
 		\end{multicols}
 	\subsection{Análise}\label{sec:analise}
 
-	Observou-se excelente qualidade da solução, sendo todos os casos a solução ideal. Porém o custo computacional observou-se muito elevado, impossibilitando a execução do algoritmo para instâncias com muitos vértices e/ou muitos rótulos.
+Observou-se uma excelente qualidade da solução, sendo todos os casos a solução ideal. Porém o custo computacional foi muito elevado, impossibilitando a execução do algoritmo para instâncias com muitos vértices e/ou muitas labels.
 
 \section{Considerações Finais}\label{sec:conclusao}
 	
-	Concebeu-se este trabalho como um problema matroide, portanto buscou-se implementar o algoritmo de busca A* a fim de obter a solução exata. Contudo, conclui-se que à medida em que aumenta-se o número de vértices, rótulos e/ou arestas, o algoritmo torna-se impraticável em termos do que este consome de computação.
+	Considera-se acerca deste trabalho três aspectos, a saber: Sua concepção, seu desenvolvimento e sua execução.
 
-	Desenvolveu-se todo o trabalho, desde a elaboração da solução até a fase de implementação pensando em todas as melhorias possíveis para que o algoritmo pudesse ser executado em menor tempo possível. Conforme discutido, optou-se por consumir mais RAM que processamento, contudo tal melhoria não impactou drásticamente no resultado, uma vez que algumas instâncias não puderam ser calculadas, mesmo dispondo de mais recursos computacionais que a literatura.
+	Concebeu-se
 
-	Deste modo, pôde-se, compreender que para problemas como este, deve-se admitir soluções inexatas, uma vez que a solução exata demanda muitos recursos computacionais para ser resolvido.
+	Desenvolveu-se.
+
+	Testou-se.
+
+	Deste modo, pôde-se,.
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
 
-\begin{thebibliography}{}
-
-	\bibitem[1]{chang:1996}
-	Chang, R., Leu, S.
-	\newblock \textit{The minimum labeling spanning trees.}
-	\newblock Information Processing Letters, 63(5), 277–282, 1997.
-	
-	\bibitem[2]{consoli:2009}
-	Consoli, S., Darby-Dowman, K., Mladenovic, N., Moreno-P`erez, J.A.
-	\newblock \textit{Greedy randomized adaptive search and variable neighbourhood search for the minimum labelling spanning tree problem.}
-	\newblock European Journal of Operational Research 196(2), 440-449, 2009.
-
-	\bibitem[3]{cerulli:2005}
-	Cerulli, R., Fink, A., Gentili, M., Voß, S., 2005.
-	\newblock \textit{Metaheuristics comparison for the minimum labelling spanning tree problem.}
-	\newblock In: Golden, B., Raghavan, S., Wasil, E. (Eds.), The Next Wave in Computing, Optimization, and Decision Technologies.
-	\newblock Springer-Verlag, Berlin, pp. 93-106.
-
-	\bibitem[3]{krumke:1998}
-	\newblock Krumke, S. O. e Wirth, H.-C. (1998).
-	\newblock \textit{On the minimum label spanning tree problem.}
-	\newblock Inf. Process. Lett., v. 66, n. 2, p. 81–85.
-
-\end{thebibliography}
+%https://www.ime.usp.br/~cris/aulas/12_1_6711/slides/aula13.pdf
 
 \end{document}
