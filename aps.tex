@@ -1,5 +1,7 @@
 \documentclass[12pt]{article}
 
+\usepackage{longtable}
+\usepackage{multicol}
 \usepackage{sbc-template}
 \usepackage{graphicx,url}
 \usepackage[brazil]{babel}
@@ -187,122 +189,131 @@
 		
 		Utilizou-se 16 grupos, variando a quantidade de vértices de 20 até 500, a quantidade de labels de 20 até 625. Para cada grupo, existem 3(três) densidades diferentes, sendo elas 0.2, 0.5 e 0.8. As tabelas a baixo, mostram, de par em par, a qualidade da solução e o tempo computacional.
 
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
-			20 & 20 & 0.8 & 2.4 & 2.8\\
-			 &  & 0.5 & 3.1 & 3.6\\
-			 &  & 0.2 & 6.7 & 7.8\\ \hline
-			30 & 30 & 0.8 & 2.8 & 2.9 \\
-			 &  & 0.5 & 3.7 & 4.1\\
-			 &  & 0.2 & 7.4 & 8.7\\ \hline
-			40 & 40 & 0.8 & 2.9 & 2.7\\
-			 &  & 0.5 & 3.7 & 4.1\\
-			 &  & 0.2 & 7.4 & 8.9\\ \hline
-			50 & 50 & 0.8 & 3 & 3.0\\
-			 &  & 0.5 & 4 & 4.5\\
-			 &  & 0.2 & 8.6 & 10.5\\ \hline
-		\end{tabular}
-
-		\vspace{2cm}
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
-			20 & 20 & 0.8 &  0 & 11\\
-			   &    & 0.5 &  0 & 2\\
-			   &    & 0.2 & 11 & 4\\ \hline
-			30 & 30 & 0.8 &  0 & 88 \\
-			   &    & 0.5 &  0 & 103\\
-			   &    & 0.2 & 138 & 719\\ \hline
-			40 & 40 & 0.8 &  2 & 490\\
-			   &    & 0.5 & 3.2 & 323\\
-			   &    & 0.2 & 100200 & 144\\ \hline
-			50 & 50 & 0.8 & 3.1 & 2155\\
-			   &    & 0.5 & 21.9 & 19866\\
-			   &    & 0.2 & 66300 & 18839\\ \hline
-		\end{tabular}
-		
-		\vspace{2cm}
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
-			100 & 25  & 0.8 & 1.8 & 1.8\\
-			   &      & 0.5 &  2 & 2\\
-			   &      & 0.2 & 4.5 & NF\\ \hline
-			100 & 50  & 0.8 &  2 & 2 \\
-			   &      & 0.5 &  3 & NF\\
-			   &      & 0.5 & 6.7 & NF\\ \hline
-			100 & 100 & 0.8 &  3 & NF\\
-			   &      & 0.5 & 4.7 & NF\\
-			   &      & 0.2 & NF & NF\\ \hline
-			100 & 125 & 0.8 & 4 & NF\\
-			   &      & 0.5 & 5.2 & NF\\
-			   &      & 0.2 & NF & NF\\ \hline
-		\end{tabular}
+		\begin{multicols}{2}
+			\begin {table}[H]
+				\begin{tabular}{c|c|c|c|c} \hline
+					n & l & d & Exact & A* \\ \hline
+					& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
+					20 & 20 & 0.8 & 2.4 & 2.8\\
+					 &  & 0.5 & 3.1 & 3.6\\
+					 &  & 0.2 & 6.7 & 7.8\\ \hline
+					30 & 30 & 0.8 & 2.8 & 2.9 \\
+					 &  & 0.5 & 3.7 & 4.1\\
+					 &  & 0.2 & 7.4 & 8.7\\ \hline
+					40 & 40 & 0.8 & 2.9 & 2.7\\
+					 &  & 0.5 & 3.7 & 4.1\\
+					 &  & 0.2 & 7.4 & 8.9\\ \hline
+					50 & 50 & 0.8 & 3 & 3.0\\
+					 &  & 0.5 & 4 & 4.5\\
+					 &  & 0.2 & 8.6 & 10.5\\ \hline
+				
+				\end{tabular}
+				\caption {Qualidade da solução}
+			\end {table}
+			
+			\begin {table}[H]
+	
+				\begin{tabular}{c|c|c|c|c} \hline
+					n & l & d & Exact & A* \\ \hline
+					& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
+					20 & 20 & 0.8 &  0 & 11\\
+					   &    & 0.5 &  0 & 2\\
+					   &    & 0.2 & 11 & 4\\ \hline
+					30 & 30 & 0.8 &  0 & 88 \\
+					   &    & 0.5 &  0 & 103\\
+					   &    & 0.2 & 138 & 719\\ \hline
+					40 & 40 & 0.8 &  2 & 490\\
+					   &    & 0.5 & 3.2 & 323\\
+					   &    & 0.2 & 100200 & 144\\ \hline
+					50 & 50 & 0.8 & 3.1 & 2155\\
+					   &    & 0.5 & 21.9 & 19866\\
+					   &    & 0.2 & 66300 & 18839\\ \hline
+				\end{tabular}
+				\caption {Tempo computacional}
+			\end {table}
 
 
-		\vspace{2cm}
+			\begin {table}[H]
+				\begin{tabular}{c|c|c|c|c} \hline
+					n & l & d & Exact & A* \\ \hline
+					& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
+					100 & 25  & 0.8 & 1.8 & 1.8\\
+					   &      & 0.5 &  2 & 2\\
+					   &      & 0.2 & 4.5 & NF\\ \hline
+					100 & 50  & 0.8 &  2 & 2 \\
+					   &      & 0.5 &  3 & NF\\
+					   &      & 0.5 & 6.7 & NF\\ \hline
+					100 & 100 & 0.8 &  3 & NF\\
+					   &      & 0.5 & 4.7 & NF\\
+					   &      & 0.2 & NF & NF\\ \hline
+					100 & 125 & 0.8 & 4 & NF\\
+					   &      & 0.5 & 5.2 & NF\\
+					   &      & 0.2 & NF & NF\\ \hline
+				\end{tabular}
+				\caption {Qualidade da solução}
+			\end {table}
+			
 
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
-			100 & 25  & 0.8 &  0 & 2101\\
-			   &      & 0.5 &  0 & 2303\\
-			   &      & 0.2 & 11 & NF\\ \hline
-			100 & 50  & 0.8 &  0 & 19384 \\
-			   &      & 0.5 &  0 & NF\\
-			   &      & 0.2 & 138 & NF\\ \hline
-			100 & 100 & 0.8 &  2 & NF\\
-			   &      & 0.5 & 3.2 & NF\\
-			   &      & 0.2 & 100200 & NF\\ \hline
-			100 & 125 & 0.8 & 3.1 & NF\\
-			   &      & 0.5 & 21.9 & NF\\
-			   &      & 0.2 & 66300 & NF\\ \hline
-		\end{tabular}
+			\begin {table}[H]
+				\begin{tabular}{c|c|c|c|c} \hline
+					n & l & d & Exact & A* \\ \hline
+					& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
+					200 & 50  & 0.8 & 2 & 2\\
+					   &      & 0.5 & 2.2 & NF\\
+					   &      & 0.2 & 5.2 & NF\\ \hline
+					200 & 100  & 0.8 & 2.6 & NF \\
+					   &      & 0.5 & 3.4 & NF\\
+					   &      & 0.5 & NF & NF\\ \hline
+					200 & 200 & 0.8 &  4 & NF\\
+					   &      & 0.5 & NF & NF\\
+					   &      & 0.2 & NF & NF\\ \hline
+					200 & 250 & 0.8 & 4 & NF\\
+					   &      & 0.5 & NF & NF\\
+					   &      & 0.2 & NF & NF\\ \hline
+				\end{tabular}
+				\caption {Qualidade da solução}
+			\end {table}
 
+			\begin {table}[H]
+				\begin{tabular}{c|c|c|c|c} \hline
+					n & l & d & Exact & A* \\ \hline
+					& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
+					100 & 25  & 0.8 &  0 & 2101\\
+					   &      & 0.5 &  0 & 2303\\
+					   &      & 0.2 & 11 & NF\\ \hline
+					100 & 50  & 0.8 &  0 & 19384 \\
+					   &      & 0.5 &  0 & NF\\
+					   &      & 0.2 & 138 & NF\\ \hline
+					100 & 100 & 0.8 &  2 & NF\\
+					   &      & 0.5 & 3.2 & NF\\
+					   &      & 0.2 & 100200 & NF\\ \hline
+					100 & 125 & 0.8 & 3.1 & NF\\
+					   &      & 0.5 & 21.9 & NF\\
+					   &      & 0.2 & 66300 & NF\\ \hline
+				\end{tabular}
+				\caption {Tempo computacional}
+			\end {table}
 
-		
-		\vspace{2cm}
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
-			200 & 50  & 0.8 & 2 & 2\\
-			   &      & 0.5 & 2.2 & NF\\
-			   &      & 0.2 & 5.2 & NF\\ \hline
-			200 & 100  & 0.8 & 2.6 & NF \\
-			   &      & 0.5 & 3.4 & NF\\
-			   &      & 0.5 & NF & NF\\ \hline
-			200 & 200 & 0.8 &  4 & NF\\
-			   &      & 0.5 & NF & NF\\
-			   &      & 0.2 & NF & NF\\ \hline
-			200 & 250 & 0.8 & 4 & NF\\
-			   &      & 0.5 & NF & NF\\
-			   &      & 0.2 & NF & NF\\ \hline
-		\end{tabular}
-
-
-		\vspace{2cm}
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
-			200 & 50  & 0.8 & 29 & 57509\\
-			   &      & 0.5 & 32 & NF\\
-			   &      & 0.2 & 5400 & NF\\ \hline
-			200 & 100  & 0.8 & 138 & NF \\
-			   &      & 0.5 & 807 & NF\\
-			   &      & 0.5 & NF & NF\\ \hline
-			200 & 200 & 0.8 &  22500 & NF\\
-			   &      & 0.5 & NF & NF\\
-			   &      & 0.2 & NF & NF\\ \hline
-			200 & 250 & 0.8 & 206000 & NF\\
-			   &      & 0.5 & NF & NF\\
-			   &      & 0.2 & NF & NF\\ \hline
-		\end{tabular}
-
+			\begin {table}[H]
+				\begin{tabular}{c|c|c|c|c} \hline
+					n & l & d & Exact & A* \\ \hline
+					& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
+					200 & 50  & 0.8 & 29 & 57509\\
+					   &      & 0.5 & 32 & NF\\
+					   &      & 0.2 & 5400 & NF\\ \hline
+					200 & 100  & 0.8 & 138 & NF \\
+					   &      & 0.5 & 807 & NF\\
+					   &      & 0.5 & NF & NF\\ \hline
+					200 & 200 & 0.8 &  22500 & NF\\
+					   &      & 0.5 & NF & NF\\
+					   &      & 0.2 & NF & NF\\ \hline
+					200 & 250 & 0.8 & 206000 & NF\\
+					   &      & 0.5 & NF & NF\\
+					   &      & 0.2 & NF & NF\\ \hline
+				\end{tabular}
+				\caption {Tempo computacional}
+			\end {table}
+		\end{multicols}
 	\subsection{Análise}\label{sec:analise}
 
 Observou-se uma excelente qualidade da solução, sendo todos os casos a solução ideal. Porém o custo computacional foi muito elevado, impossibilitando a execução do algoritmo para instâncias com muitos vértices e/ou muitas labels.
