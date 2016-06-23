@@ -27,7 +27,6 @@
 \usepackage{fancyhdr}
 \usepackage{boxedminipage}
 \usepackage{enumitem}
-\usepackage{hyperref}
 
 
 \sloppy
@@ -107,9 +106,9 @@
 
 \section{Trabalhos Relacionados}\label{sec:trabalhosRelacionados}
 
-	Revisando a literatura, verificam-se várias tentativas de otimização para o problema, combinando variadas formas de algoritmos de busca que venham a fornecer melhores resultados.
+	Revisando a literatura, verifica-se que.
 
-	Vários testes são executados em \cite{consoli:2009}
+	\cite{knuth:84}, \cite{boulic:91}, and \cite{smith:99}.
 
 \section{Solução Proposta}\label{sec:solucao}
 
@@ -145,7 +144,7 @@
 
 		Implementou-se a solução na linguagem de programação Java, lançando mão do arcabouço de métodos, interfaces e classes previamente implementadas pelo tutor da disciplina.
 
-		Respaldado pelo algoritmo proposto por \cite{chang:1996}, implementou-se este cuja ideia central em altíssimo nível é:
+		Respaldado pelo algoritmo proposto por [x], implementou-se este cuja ideia central em altíssimo nível é:
 
 		\begin{algorithm}[H]
 			\SetAlgoLined
@@ -163,7 +162,7 @@
 			\caption{Busca A* para resolver 8-Puzzle}
 		\end{algorithm}
 
-		Cabe comentar que apropriou-se da ideia do algoritmo de Prim para resolução da árvore geradora de pesos mínimos. Neste caso, utilizou-se da ideia de englobar sempre ao conjunto de vértices pertencentes ao corte $S$ aquele vértice pertencente à $V - S$ ao qual houver uma aresta segura incindindo nele. No escopo deste problema não há a necessidade de comparar os pesos das arestas, uma vez que são apenas rótulos. Ao final da execução do algoritmo de Prim, obtém-se uma árvore, isto é, os ciclos são removidos. Conforme discutido a respeito da remoção de uma aresta qualquer que forme um ciclo, aplicou-se uma adaptação do algoritmo de Prim que escolha quaisquer arestas seguras para $T'$.
+		Cabe discutir que
 
 	\subsection{Diagramação}\label{sec:diagramacao}
 
@@ -182,90 +181,7 @@
 
 \section{Testes}\label{sec:testes}
 	
-<<<<<<< HEAD
-	Para testar o algoritmo usou-se as mesmas intâncias usadas pelo \cite{consoli:2009}, 
-
-	\subsection{Resultados}\label{sec:resultados}
-		
-		Os resultados obtidos 
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
-			20 & 20 & 0.8 & 2.4 & 2.8\\
-			 &  & 0.5 & 3.1 & 3.6\\
-			 &  & 0.2 & 6.7 & 7.8\\ \hline
-			30 & 30 & 0.8 & 2.8 & 2.9 \\
-			 &  & 0.5 & 3.7 & 4.1\\
-			 &  & 0.2 & 7.4 & 8.7\\ \hline
-			40 & 40 & 0.8 & 2.9 & 2.7\\
-			 &  & 0.5 & 3.7 & 4.1\\
-			 &  & 0.2 & 7.4 & 8.9\\ \hline
-			50 & 50 & 0.8 & 3 & 3.0\\
-			 &  & 0.5 & 4 & 4.5\\
-			 &  & 0.2 & 8.6 & 10.5\\ \hline
-		\end{tabular}
-
-		\vspace{2cm}
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
-			20 & 20 & 0.8 &  0 & 11\\
-			   &    & 0.5 &  0 & 2\\
-			   &    & 0.2 & 11 & 4\\ \hline
-			30 & 30 & 0.8 &  0 & 88 \\
-			   &    & 0.5 &  0 & 103\\
-			   &    & 0.2 & 138 & 719\\ \hline
-			40 & 40 & 0.8 &  2 & 490\\
-			   &    & 0.5 & 3.2 & 323\\
-			   &    & 0.2 & 100200 & 144\\ \hline
-			50 & 50 & 0.8 & 3.1 & 2155\\
-			   &    & 0.5 & 21.9 & 19866\\
-			   &    & 0.2 & 66300 & 18839\\ \hline
-		\end{tabular}
-		
-		\vspace{2cm}
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
-			100 & 25  & 0.8 & 1.8 & 1.8\\
-			   &      & 0.5 &  2 & 2\\
-			   &      & 0.2 & 4.5 & NF\\ \hline
-			100 & 50  & 0.8 &  2 & 2 \\
-			   &      & 0.5 &  3 & NF\\
-			   &      & 0.5 & 6.7 & NF\\ \hline
-			100 & 100 & 0.8 &  3 & NF\\
-			   &      & 0.5 & 4.7 & NF\\
-			   &      & 0.2 & NF & NF\\ \hline
-			100 & 125 & 0.8 & 4 & NF\\
-			   &      & 0.5 & 5.2 & NF\\
-			   &      & 0.2 & NF & NF\\ \hline
-		\end{tabular}
-
-
-		\vspace{2cm}
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
-			100 & 25  & 0.8 &  0 & 2101\\
-			   &      & 0.5 &  0 & 2303\\
-			   &      & 0.2 & 11 & NF\\ \hline
-			100 & 50  & 0.8 &  0 & 19384 \\
-			   &      & 0.5 &  0 & NF\\
-			   &      & 0.2 & 138 & NF\\ \hline
-			100 & 100 & 0.8 &  2 & NF\\
-			   &      & 0.5 & 3.2 & NF\\
-			   &      & 0.2 & 100200 & NF\\ \hline
-			100 & 125 & 0.8 & 3.1 & NF\\
-			   &      & 0.5 & 21.9 & NF\\
-			   &      & 0.2 & 66300 & NF\\ \hline
-		\end{tabular}
-=======
 	Nesta seção comparou-se o tempo computacional e qualidade da solução do algoritmo A* proposto pelo \cite{chang:1996}. E executou-se a implementação deste algoritmo para uma base de dados quem contém 10(dez) grafos cada arquivo, e os arquivos variavam a quantidade de labels, vértices e a densidade.
->>>>>>> 32472f3546207b1cebd146f240932346a551ced3
 
 	A base de dados proposta pelo \cite{consoli:2009} foi executada em um computador Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz com 16GB de RAM. E obteu-se os seguintes resultados da seguinte seção.
 
@@ -406,9 +322,9 @@ Observou-se uma excelente qualidade da solução, sendo todos os casos a soluç�
 	
 	Considera-se acerca deste trabalho três aspectos, a saber: Sua concepção, seu desenvolvimento e sua execução.
 
-	Concebeu-se este trabalho como um problema cujo espaço de soluções é grande o suficiente para que seja necessário o maior número possível de otimizações, deste modo, 
+	Concebeu-se
 
-	Desenvolveu-se todo o trabalho, desde a elaboração da solução até a fase de implementação pensando em todas as melhorias possíveis para que o algoritmo pudesse ser executado em menor tempo possível. Conforme discutido, optou-se por consumir mais RAM que processamento, contudo as 
+	Desenvolveu-se.
 
 	Testou-se.
 
@@ -417,18 +333,6 @@ Observou-se uma excelente qualidade da solução, sendo todos os casos a soluç�
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
 
-\begin{thebibliography}{}
-
-	\bibitem[1]{chang:1996}
-	Chang, R., Leu, S.
-	\newblock \textit{The minimum labeling spanning trees.}
-	\newblock Information Processing Letters, 63(5), 277–282, 1997.
-	
-	\bibitem[2]{consoli:2009}
-	Consoli, S., Darby-Dowman, K., Mladenovic, N., Moreno-P`erez, J.A.
-	\newblock \textit{Greedy randomized adaptive search and variable neighbourhood search for the minimum labelling spanning tree problem.}
-	\newblock European Journal of Operational Research 196(2), 440-449, 2009.
-
-\end{thebibliography}
+%https://www.ime.usp.br/~cris/aulas/12_1_6711/slides/aula13.pdf
 
 \end{document}

@@ -1,7 +1,5 @@
 \documentclass[12pt]{article}
 
-\usepackage{longtable}
-\usepackage{multicol}
 \usepackage{sbc-template}
 \usepackage{graphicx,url}
 \usepackage[brazil]{babel}
@@ -37,7 +35,7 @@
 \author{Marco Cezar Moreira de Mattos\inst{1}, Rômulo Manciola Meloca\inst{1}}
 
 \address{DACOM -- Universidade Tecnológica Federal do Paraná (UTFPR)\\
-	Caixa Postal 271 -- 87301-899 -- Campo Mourão -- PR -- Brasil
+	Caixa Postal 271 -- 87301-899 -- Campo Mourão -- PR -- Brazil
 	\email{\{marco.cmm,rmeloca\}@gmail.com}
 }
 
@@ -55,7 +53,7 @@
 
 	Definindo: Um grafo $G = \{V, E\}$ é um conjunto de vértices $v \in V$ conectados por meio de arestas $E = \{\{u, v\} \mid u, v \in V \wedge u \neq v\}$; Cada aresta $e$ possui dois vértices $(u, v)$ (abuso de notação adotado), podendo esta ser omnidirecional ou bidirecional caracterizando um grafo dirigido ou não-dirigido, respectivamente. As arestas podem portar informações relativas a distâncias caracterizando um grafo cujas arestas sejam ponderadas em sua presença ou não-ponderadas na ausência destas informações; Um vértice é uma unidade mínima que porta informações que deseja-se modelar.
 
-	Outras definições: Uma árvore $T$ não é senão um grafo bipartido, planar, acíclico e conexo, de modo que uma árvore é uma particularidade de um grafo (assim como quadrado está para retângulo); Um grafo bipartido é aquele cujos vértices podem ser divididos em dois conjuntos disjuntos, isto é, cuja intersecção entre os conjuntos seja nula; Um grafo planar é aquele que pode ser representado em um plano (bidimensional) no qual nenhuma aresta seja concorrente a qualquer outra; Um grafo acíclico é aquele que não apresenta arestas que formem um caminho que contenha um ou mais vértices repetidos; Um grafo conexo, no âmbito de grafos não-dirigidos, é aquele que conecta todos os vértices do grafo, de modo que é possível acessar qualquer vértice a partir de qualquer outro vértice.
+	Outras definições: Uma árvore $T$ não é senão um grafo bipartido, planar, acíclico e conexo, de modo que uma árvore é uma particularidade de um grafo (assim como quadrado está para retângulo); Um grafo bipartido é aquele cujos vértices podem ser divididos em dois conjuntos disjuntos, isto é, cuja interesecção entre os conjuntos seja nula; Um grafo planar é aquele que pode ser representado em um plano (bidimensional) no qual nenhuma aresta seja concorrente a qualquer outra; Um grafo acíclico é aquele que não apresenta arestas que formem um caminho que contenha um ou mais vértices repetidos; Um grafo conexo, no âmbito de grafos não-dirigidos, é aquele que conecta todos os vértices do grafo, de modo que é possível acessar qualquer vértice a partir de qualquer outro vértice.
 
 	Mais definições: Um subgrafo $G' = \{V', E'\}$ de um grafo $G = \{V, E\}$ é um grafo em que $V' \subseteq V \wedge E' \subseteq E$; Um grafo $G'$ induzido por $V'$ é um subgrafo de $G$ em que o conjunto de arestas $E'$ é formado a partir do conjunto de vértices $V'$ tal que para todo vértice $v$ adiciona-se em $E'$ todas as arestas relacionadas a este originalmente contidas em $E$. Matematicamente define-se um grafo induzido como sendo um grafo $G' = \{V', E'\} \mid E' = \{(u, v) \in E : u, v \in V'\} \wedge V' \subseteq V \wedge E' \subseteq E$. Nota-se que também é possível induzir um grafo a partir de outros conjuntos; Uma árvore geradora $T$ é um subgrafo $G'$ de $G$ tal que este seja conexo, não-dirigido e que possua o mesmo conjunto inicial de vértices $V' = V$; Define-se o peso total das arestas $w(E')$ como sendo $\displaystyle{w(E') = \sum_{(u,v \in E')}[w(u, v)]}$.
 
@@ -95,7 +93,7 @@
 
 	Nota-se que ao combinar determinados rótulos o subgrafo obtido pode admitir ciclos, e portanto não configura-se como árvore, todavia, diferente do PAGPM esta pode ser a solução desde que conecte todo o grafo e utilize o menor número possível de rótulos. Neste caso, para tornar o subgrafo uma árvore geradora, basta remover uma aresta qualquer de cada ciclo, uma vez que o objetivo é atingir o menor número de rótulos; Remover uma aresta em nada impacta o número de rótulos utilizados, pois se o fizesse então o subconjunto $L'$ de rótulos em questão não seria a solução uma vez que ao remover uma aresta que forme ciclo obteria-se um número menor de rótulos utilizados e, portanto, esta seria a solução.
 
-	Evidentemente, não seria necessário percorrer todos os elementos do conjunto $C$ uma vez que, sendo este gerado de maneira ordenada progressivamente pelo número de rótulos utilizados, o algoritmo chegaria em seu objetivo na primeira ocorrência de uma árvore geradora que satisfaça os critérios de saída do algoritmo. Nestas circunstâncias, para obter-se a solução haveria-se necessário buscar linearmente em no máximo todas as combinações de todos os rótulos possíveis com o número de rótulos variando de $1 \dots |V| - 1$, uma vez que o número máximo de arestas necessárias para conectar um grafo é $|V| - 1$ arestas e que cada uma pode assumir um rótulo diferente. Caso o número de rótulos seja menor que $|V| - 1$, então este é o máximo a ser buscado.
+	Evidentemente, não seria necessário percorrer todos os elementos do conjunto $C$ uma vez que, sendo este gerado de maneira ordenada progressivamente pelo número de rótulos utilizados, o algoritmo chegaria em seu objetivo na primeira ocorrência de uma árvora geradora que satisfaça os critérios de saída do algoritmo. Nestas circunstâncias, para obter-se a solução haveria-se necessário buscar linearmente em no máximo todas as combinações de todos os rótulos possíveis com o número de rótulos variando de $1 \dots |V| - 1$, uma vez que o número máximo de arestas necessárias para conectar um grafo é $|V| - 1$ arestas e que cada uma pode assumir um rótulo diferente. Caso o número de rótulos seja menor que $|V| - 1$, então este é o máximo a ser buscado.
 
 	\begin{center}
 	$\displaystyle{\sum_{i = 1}^{\min (|L|, |V| - 1)}{|L| \choose i}}$
@@ -182,7 +180,6 @@
 
 \section{Testes}\label{sec:testes}
 	
-<<<<<<< HEAD
 	Para testar o algoritmo usou-se as mesmas intâncias usadas pelo \cite{consoli:2009}, 
 
 	\subsection{Resultados}\label{sec:resultados}
@@ -263,144 +260,49 @@
 			   &      & 0.5 & 21.9 & NF\\
 			   &      & 0.2 & 66300 & NF\\ \hline
 		\end{tabular}
-=======
-	Nesta seção comparou-se o tempo computacional e qualidade da solução do algoritmo A* proposto pelo \cite{chang:1996}. E executou-se a implementação deste algoritmo para uma base de dados quem contém 10(dez) grafos cada arquivo, e os arquivos variavam a quantidade de labels, vértices e a densidade.
->>>>>>> 32472f3546207b1cebd146f240932346a551ced3
 
-	A base de dados proposta pelo \cite{consoli:2009} foi executada em um computador Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz com 16GB de RAM. E obteu-se os seguintes resultados da seguinte seção.
 
-	\subsection{Resultados}\label{sec:resultados}
 		
-		Utilizou-se 16 grupos, variando a quantidade de vértices de 20 até 500, a quantidade de labels de 20 até 625. Para cada grupo, existem 3(três) densidades diferentes, sendo elas 0.2, 0.5 e 0.8. As tabelas a baixo, mostram, de par em par, a qualidade da solução e o tempo computacional.
+		\vspace{2cm}
 
-		\begin{multicols}{2}
-			\begin {table}[H]
-				\begin{tabular}{c|c|c|c|c} \hline
-					n & l & d & Exact & A* \\ \hline
-					& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
-					20 & 20 & 0.8 & 2.4 & 2.8\\
-					 &  & 0.5 & 3.1 & 3.6\\
-					 &  & 0.2 & 6.7 & 7.8\\ \hline
-					30 & 30 & 0.8 & 2.8 & 2.9 \\
-					 &  & 0.5 & 3.7 & 4.1\\
-					 &  & 0.2 & 7.4 & 8.7\\ \hline
-					40 & 40 & 0.8 & 2.9 & 2.7\\
-					 &  & 0.5 & 3.7 & 4.1\\
-					 &  & 0.2 & 7.4 & 8.9\\ \hline
-					50 & 50 & 0.8 & 3 & 3.0\\
-					 &  & 0.5 & 4 & 4.5\\
-					 &  & 0.2 & 8.6 & 10.5\\ \hline
-				
-				\end{tabular}
-				\caption {Qualidade da solução}
-			\end {table}
-			
-			\begin {table}[H]
-	
-				\begin{tabular}{c|c|c|c|c} \hline
-					n & l & d & Exact & A* \\ \hline
-					& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
-					20 & 20 & 0.8 &  0 & 11\\
-					   &    & 0.5 &  0 & 2\\
-					   &    & 0.2 & 11 & 4\\ \hline
-					30 & 30 & 0.8 &  0 & 88 \\
-					   &    & 0.5 &  0 & 103\\
-					   &    & 0.2 & 138 & 719\\ \hline
-					40 & 40 & 0.8 &  2 & 490\\
-					   &    & 0.5 & 3.2 & 323\\
-					   &    & 0.2 & 100200 & 144\\ \hline
-					50 & 50 & 0.8 & 3.1 & 2155\\
-					   &    & 0.5 & 21.9 & 19866\\
-					   &    & 0.2 & 66300 & 18839\\ \hline
-				\end{tabular}
-				\caption {Tempo computacional}
-			\end {table}
+		\begin{tabular}{c|c|c|c|c} \hline
+			n & l & d & Exact & A* \\ \hline
+			& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
+			200 & 50  & 0.8 & 2 & 2\\
+			   &      & 0.5 & 2.2 & NF\\
+			   &      & 0.2 & 5.2 & NF\\ \hline
+			200 & 100  & 0.8 & 2.6 & NF \\
+			   &      & 0.5 & 3.4 & NF\\
+			   &      & 0.5 & NF & NF\\ \hline
+			200 & 200 & 0.8 &  4 & NF\\
+			   &      & 0.5 & NF & NF\\
+			   &      & 0.2 & NF & NF\\ \hline
+			200 & 250 & 0.8 & 4 & NF\\
+			   &      & 0.5 & NF & NF\\
+			   &      & 0.2 & NF & NF\\ \hline
+		\end{tabular}
 
 
-			\begin {table}[H]
-				\begin{tabular}{c|c|c|c|c} \hline
-					n & l & d & Exact & A* \\ \hline
-					& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
-					100 & 25  & 0.8 & 1.8 & 1.8\\
-					   &      & 0.5 &  2 & 2\\
-					   &      & 0.2 & 4.5 & NF\\ \hline
-					100 & 50  & 0.8 &  2 & 2 \\
-					   &      & 0.5 &  3 & NF\\
-					   &      & 0.5 & 6.7 & NF\\ \hline
-					100 & 100 & 0.8 &  3 & NF\\
-					   &      & 0.5 & 4.7 & NF\\
-					   &      & 0.2 & NF & NF\\ \hline
-					100 & 125 & 0.8 & 4 & NF\\
-					   &      & 0.5 & 5.2 & NF\\
-					   &      & 0.2 & NF & NF\\ \hline
-				\end{tabular}
-				\caption {Qualidade da solução}
-			\end {table}
-			
+		\vspace{2cm}
 
-			\begin {table}[H]
-				\begin{tabular}{c|c|c|c|c} \hline
-					n & l & d & Exact & A* \\ \hline
-					& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
-					200 & 50  & 0.8 & 2 & 2\\
-					   &      & 0.5 & 2.2 & NF\\
-					   &      & 0.2 & 5.2 & NF\\ \hline
-					200 & 100  & 0.8 & 2.6 & NF \\
-					   &      & 0.5 & 3.4 & NF\\
-					   &      & 0.5 & NF & NF\\ \hline
-					200 & 200 & 0.8 &  4 & NF\\
-					   &      & 0.5 & NF & NF\\
-					   &      & 0.2 & NF & NF\\ \hline
-					200 & 250 & 0.8 & 4 & NF\\
-					   &      & 0.5 & NF & NF\\
-					   &      & 0.2 & NF & NF\\ \hline
-				\end{tabular}
-				\caption {Qualidade da solução}
-			\end {table}
+		\begin{tabular}{c|c|c|c|c} \hline
+			n & l & d & Exact & A* \\ \hline
+			& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
+			200 & 50  & 0.8 & 29 & 57509\\
+			   &      & 0.5 & 32 & NF\\
+			   &      & 0.2 & 5400 & NF\\ \hline
+			200 & 100  & 0.8 & 138 & NF \\
+			   &      & 0.5 & 807 & NF\\
+			   &      & 0.5 & NF & NF\\ \hline
+			200 & 200 & 0.8 &  22500 & NF\\
+			   &      & 0.5 & NF & NF\\
+			   &      & 0.2 & NF & NF\\ \hline
+			200 & 250 & 0.8 & 206000 & NF\\
+			   &      & 0.5 & NF & NF\\
+			   &      & 0.2 & NF & NF\\ \hline
+		\end{tabular}
 
-			\begin {table}[H]
-				\begin{tabular}{c|c|c|c|c} \hline
-					n & l & d & Exact & A* \\ \hline
-					& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
-					100 & 25  & 0.8 &  0 & 2101\\
-					   &      & 0.5 &  0 & 2303\\
-					   &      & 0.2 & 11 & NF\\ \hline
-					100 & 50  & 0.8 &  0 & 19384 \\
-					   &      & 0.5 &  0 & NF\\
-					   &      & 0.2 & 138 & NF\\ \hline
-					100 & 100 & 0.8 &  2 & NF\\
-					   &      & 0.5 & 3.2 & NF\\
-					   &      & 0.2 & 100200 & NF\\ \hline
-					100 & 125 & 0.8 & 3.1 & NF\\
-					   &      & 0.5 & 21.9 & NF\\
-					   &      & 0.2 & 66300 & NF\\ \hline
-				\end{tabular}
-				\caption {Tempo computacional}
-			\end {table}
-
-			\begin {table}[H]
-				\begin{tabular}{c|c|c|c|c} \hline
-					n & l & d & Exact & A* \\ \hline
-					& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
-					200 & 50  & 0.8 & 29 & 57509\\
-					   &      & 0.5 & 32 & NF\\
-					   &      & 0.2 & 5400 & NF\\ \hline
-					200 & 100  & 0.8 & 138 & NF \\
-					   &      & 0.5 & 807 & NF\\
-					   &      & 0.5 & NF & NF\\ \hline
-					200 & 200 & 0.8 &  22500 & NF\\
-					   &      & 0.5 & NF & NF\\
-					   &      & 0.2 & NF & NF\\ \hline
-					200 & 250 & 0.8 & 206000 & NF\\
-					   &      & 0.5 & NF & NF\\
-					   &      & 0.2 & NF & NF\\ \hline
-				\end{tabular}
-				\caption {Tempo computacional}
-			\end {table}
-		\end{multicols}
 	\subsection{Análise}\label{sec:analise}
-
-Observou-se uma excelente qualidade da solução, sendo todos os casos a solução ideal. Porém o custo computacional foi muito elevado, impossibilitando a execução do algoritmo para instâncias com muitos vértices e/ou muitas labels.
 
 \section{Considerações Finais}\label{sec:conclusao}
 	
