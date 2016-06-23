@@ -181,91 +181,8 @@
 		\restoregeometry
 
 \section{Testes}\label{sec:testes}
-	
-<<<<<<< HEAD
-	Para testar o algoritmo usou-se as mesmas intâncias usadas pelo \cite{consoli:2009}, 
 
-	\subsection{Resultados}\label{sec:resultados}
-		
-		Os resultados obtidos 
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
-			20 & 20 & 0.8 & 2.4 & 2.8\\
-			 &  & 0.5 & 3.1 & 3.6\\
-			 &  & 0.2 & 6.7 & 7.8\\ \hline
-			30 & 30 & 0.8 & 2.8 & 2.9 \\
-			 &  & 0.5 & 3.7 & 4.1\\
-			 &  & 0.2 & 7.4 & 8.7\\ \hline
-			40 & 40 & 0.8 & 2.9 & 2.7\\
-			 &  & 0.5 & 3.7 & 4.1\\
-			 &  & 0.2 & 7.4 & 8.9\\ \hline
-			50 & 50 & 0.8 & 3 & 3.0\\
-			 &  & 0.5 & 4 & 4.5\\
-			 &  & 0.2 & 8.6 & 10.5\\ \hline
-		\end{tabular}
-
-		\vspace{2cm}
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
-			20 & 20 & 0.8 &  0 & 11\\
-			   &    & 0.5 &  0 & 2\\
-			   &    & 0.2 & 11 & 4\\ \hline
-			30 & 30 & 0.8 &  0 & 88 \\
-			   &    & 0.5 &  0 & 103\\
-			   &    & 0.2 & 138 & 719\\ \hline
-			40 & 40 & 0.8 &  2 & 490\\
-			   &    & 0.5 & 3.2 & 323\\
-			   &    & 0.2 & 100200 & 144\\ \hline
-			50 & 50 & 0.8 & 3.1 & 2155\\
-			   &    & 0.5 & 21.9 & 19866\\
-			   &    & 0.2 & 66300 & 18839\\ \hline
-		\end{tabular}
-		
-		\vspace{2cm}
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $\bar{|L'|}$ & $\bar{|L'|}$ \\ \hline
-			100 & 25  & 0.8 & 1.8 & 1.8\\
-			   &      & 0.5 &  2 & 2\\
-			   &      & 0.2 & 4.5 & NF\\ \hline
-			100 & 50  & 0.8 &  2 & 2 \\
-			   &      & 0.5 &  3 & NF\\
-			   &      & 0.5 & 6.7 & NF\\ \hline
-			100 & 100 & 0.8 &  3 & NF\\
-			   &      & 0.5 & 4.7 & NF\\
-			   &      & 0.2 & NF & NF\\ \hline
-			100 & 125 & 0.8 & 4 & NF\\
-			   &      & 0.5 & 5.2 & NF\\
-			   &      & 0.2 & NF & NF\\ \hline
-		\end{tabular}
-
-
-		\vspace{2cm}
-
-		\begin{tabular}{c|c|c|c|c} \hline
-			n & l & d & Exact & A* \\ \hline
-			& & & $Tempo(ms)$ & $Tempo(ms)$\\ \hline
-			100 & 25  & 0.8 &  0 & 2101\\
-			   &      & 0.5 &  0 & 2303\\
-			   &      & 0.2 & 11 & NF\\ \hline
-			100 & 50  & 0.8 &  0 & 19384 \\
-			   &      & 0.5 &  0 & NF\\
-			   &      & 0.2 & 138 & NF\\ \hline
-			100 & 100 & 0.8 &  2 & NF\\
-			   &      & 0.5 & 3.2 & NF\\
-			   &      & 0.2 & 100200 & NF\\ \hline
-			100 & 125 & 0.8 & 3.1 & NF\\
-			   &      & 0.5 & 21.9 & NF\\
-			   &      & 0.2 & 66300 & NF\\ \hline
-		\end{tabular}
-=======
 	Nesta seção comparou-se o tempo computacional e qualidade da solução do algoritmo A* proposto pelo \cite{chang:1996}. E executou-se a implementação deste algoritmo para uma base de dados quem contém 10(dez) grafos cada arquivo, e os arquivos variavam a quantidade de labels, vértices e a densidade.
->>>>>>> 32472f3546207b1cebd146f240932346a551ced3
 
 	A base de dados proposta pelo \cite{consoli:2009} foi executada em um computador Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz com 16GB de RAM. E obteu-se os seguintes resultados da seguinte seção.
 
@@ -400,7 +317,7 @@
 		\end{multicols}
 	\subsection{Análise}\label{sec:analise}
 
-Observou-se uma excelente qualidade da solução, sendo todos os casos a solução ideal. Porém o custo computacional foi muito elevado, impossibilitando a execução do algoritmo para instâncias com muitos vértices e/ou muitas labels.
+	Observou-se uma excelente qualidade da solução, sendo todos os casos a solução ideal. Porém o custo computacional foi muito elevado, impossibilitando a execução do algoritmo para instâncias com muitos vértices e/ou muitas labels.
 
 \section{Considerações Finais}\label{sec:conclusao}
 	
